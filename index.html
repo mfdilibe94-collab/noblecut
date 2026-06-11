@@ -220,11 +220,27 @@ footer{background:#0A0A0F;color:rgba(255,255,255,0.5);padding:4rem 3rem 2rem}
   .hero-trust{gap:1.5rem}
 }
 @media(max-width:380px){.product-grid{grid-template-columns:1fr}}
+
+.screen-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:500;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:1rem}
+.screen-overlay.open{opacity:1;pointer-events:all}
+.screen-modal{background:white;width:100%;max-width:460px;max-height:90vh;overflow-y:auto}
+.screen-head{background:var(--navy);color:white;padding:1.2rem 1.6rem;display:flex;align-items:center;justify-content:space-between}
+.screen-head h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600}
+.screen-close{background:none;border:none;color:rgba(255,255,255,0.6);font-size:1.2rem;cursor:pointer}
+.screen-body{padding:1.6rem}
+.screen-note{background:#FFF8EC;border:1px solid #FFD700;padding:0.8rem 1rem;font-size:0.8rem;color:#8B6914;margin-bottom:1.2rem;line-height:1.6}
+.screen-field{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:0.9rem}
+.screen-field label{font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid)}
+.screen-field input,.screen-field select{border:1px solid var(--border);padding:0.65rem 0.9rem;font-size:0.88rem;font-family:'DM Sans',sans-serif;background:var(--cream);outline:none;width:100%;transition:border-color .2s}
+.screen-field input:focus,.screen-field select:focus{border-color:var(--gold)}
+.btn-screen{width:100%;background:#25D366;color:white;padding:0.9rem;font-size:0.85rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:none;cursor:pointer;margin-top:0.5rem;display:flex;align-items:center;justify-content:center;gap:0.5rem;transition:background .2s}
+.btn-screen:hover{background:#1db954}
+.screen-disclaimer{font-size:0.72rem;color:var(--mid);margin-top:0.8rem;text-align:center;line-height:1.6}
 </style>
 </head>
 <body>
 
-<div class="topbar">Free US shipping on all orders over <span>$299</span> · Est. delivery 2–3 weeks</div>
+<div class="topbar">Free US shipping on all orders over <span>$149</span> · Est. delivery 2–3 weeks</div>
 
 <nav id="navbar">
   <a href="#" class="nav-logo">Noble<span>Cut</span></a>
@@ -293,19 +309,19 @@ footer{background:#0A0A0F;color:rgba(255,255,255,0.5);padding:4rem 3rem 2rem}
   <div class="bs-grid reveal">
     <div class="bs-card">
       <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=500&q=80" alt="Navy pinstripe suit">
-      <div class="bs-info"><div class="bs-name">Navy Pinstripe</div><div class="bs-price">$399</div></div>
+      <div class="bs-info"><div class="bs-name">Navy Pinstripe</div><div class="bs-price">$149</div></div>
     </div>
     <div class="bs-card">
       <img src="https://images.unsplash.com/photo-1593032465175-481ac7f401a0?w=500&q=80" alt="Charcoal business suit">
-      <div class="bs-info"><div class="bs-name">Charcoal Business</div><div class="bs-price">$449</div></div>
+      <div class="bs-info"><div class="bs-name">Charcoal Business</div><div class="bs-price">$169</div></div>
     </div>
     <div class="bs-card">
       <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500&q=80" alt="Royal blue wedding suit">
-      <div class="bs-info"><div class="bs-name">Royal Blue Wedding</div><div class="bs-price">$499</div></div>
+      <div class="bs-info"><div class="bs-name">Royal Blue Wedding</div><div class="bs-price">$199</div></div>
     </div>
     <div class="bs-card">
       <img src="https://images.unsplash.com/photo-1598808503746-f34cfdf35f7e?w=500&q=80" alt="Black tuxedo">
-      <div class="bs-info"><div class="bs-name">Black Tuxedo</div><div class="bs-price">$599</div></div>
+      <div class="bs-info"><div class="bs-name">Black Tuxedo</div><div class="bs-price">$249</div></div>
     </div>
   </div>
 </div>
@@ -408,7 +424,7 @@ footer{background:#0A0A0F;color:rgba(255,255,255,0.5);padding:4rem 3rem 2rem}
       <span class="cart-total-price" id="cartTotal">$0</span>
     </div>
     <button class="btn-checkout" onclick="openCheckout()">Checkout</button>
-    <button class="btn-wa-checkout" onclick="whatsappOrder()">
+    <button class="btn-wa-checkout" onclick="openScreen()">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Order via WhatsApp
     </button>
@@ -441,7 +457,7 @@ footer{background:#0A0A0F;color:rgba(255,255,255,0.5);padding:4rem 3rem 2rem}
       <div class="stripe-note"><strong>To activate Stripe payments:</strong> Add your Stripe secret key to Render environment as STRIPE_SECRET_KEY. Until then, orders are recorded and you'll contact customers manually.</div>
       <button class="btn-pay" onclick="placeOrder()">Place Order</button>
       <div class="secure-note">🔒 Secured · SSL encrypted · All orders confirmed via email</div>
-      <button class="btn-wa-checkout" style="width:100%;margin-top:0.8rem" onclick="whatsappOrderDirect()">
+      <button class="btn-wa-checkout" style="width:100%;margin-top:0.8rem" onclick="openScreen()">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Order via WhatsApp
       </button>
@@ -449,20 +465,20 @@ footer{background:#0A0A0F;color:rgba(255,255,255,0.5);padding:4rem 3rem 2rem}
   </div>
 </div>
 
-<button class="wa-float" onclick="window.open('https://wa.me/447700000000?text=Hi+NobleCut%2C+I%27d+like+to+enquire+about+a+suit.','_blank')">
+<button class="wa-float" onclick="openScreen()">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </button>
 
 <script>
 const API = 'https://forexdash.onrender.com';
-const WA  = '447700000000'; // ← CHANGE TO YOUR WHATSAPP NUMBER
+const WA  = '13176528058'; // ← CHANGE TO YOUR WHATSAPP NUMBER
 
 // ── 10 REAL SUITS with Unsplash photos ──
 const products = [
   {
     id:1, name:'The Mayfair',
     style:'Navy Pinstripe — Slim Fit',
-    price:399, supplier:45,
+    price:149, supplier:104,
     category:'business',
     tag:'best',
     img:'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&q=80',
@@ -473,7 +489,7 @@ const products = [
   {
     id:2, name:'The Savile',
     style:'Charcoal Herringbone — Regular Fit',
-    price:449, supplier:55,
+    price:169, supplier:118,
     category:'business',
     tag:null,
     img:'https://images.unsplash.com/photo-1593032465175-481ac7f401a0?w=600&q=80',
@@ -484,7 +500,7 @@ const products = [
   {
     id:3, name:'The Kensington',
     style:'Royal Blue — Three Piece',
-    price:499, supplier:65,
+    price:199, supplier:139,
     category:'wedding',
     tag:'trending',
     img:'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80',
@@ -495,7 +511,7 @@ const products = [
   {
     id:4, name:'The Knightsbridge',
     style:'Black Tuxedo — Shawl Lapel',
-    price:599, supplier:75,
+    price:249, supplier:174,
     category:'evening',
     tag:'best',
     img:'https://images.unsplash.com/photo-1598808503746-f34cfdf35f7e?w=600&q=80',
@@ -506,7 +522,7 @@ const products = [
   {
     id:5, name:'The Belgravia',
     style:'Burgundy — Three Piece Wedding',
-    price:549, supplier:68,
+    price:219, supplier:153,
     category:'wedding',
     tag:'new',
     img:'https://images.unsplash.com/photo-1610652492500-ded49ceeb378?w=600&q=80',
@@ -517,8 +533,8 @@ const products = [
   {
     id:6, name:'The Chelsea',
     style:'Light Grey — Slim Fit Business',
-    price:379, supplier:42,
-    was:449,
+    price:129, supplier:90,
+    was:179,
     category:'business',
     tag:'sale',
     img:'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80',
@@ -529,7 +545,7 @@ const products = [
   {
     id:7, name:'The Fitzrovia',
     style:'Camel Linen — Summer Weight',
-    price:429, supplier:52,
+    price:159, supplier:111,
     category:'casual',
     tag:'new',
     img:'https://images.unsplash.com/photo-1568252542512-9fe8fe9c87bb?w=600&q=80',
@@ -540,7 +556,7 @@ const products = [
   {
     id:8, name:'The Soho',
     style:'Dark Green — Modern Cut',
-    price:479, supplier:58,
+    price:179, supplier:125,
     category:'casual',
     tag:'trending',
     img:'https://images.unsplash.com/photo-1580657018950-f78f9bba2d8a?w=600&q=80',
@@ -551,7 +567,7 @@ const products = [
   {
     id:9, name:'The Marylebone',
     style:'Chocolate Brown — Double Breasted',
-    price:459, supplier:56,
+    price:189, supplier:132,
     category:'business',
     tag:null,
     img:'https://images.unsplash.com/photo-1626497764746-6dc36546b388?w=600&q=80',
@@ -562,7 +578,7 @@ const products = [
   {
     id:10, name:'The Claridge',
     style:'Ivory White — Wedding Collection',
-    price:529, supplier:65,
+    price:209, supplier:146,
     category:'wedding',
     tag:'new',
     img:'https://images.unsplash.com/photo-1541614101331-1a5a3a194e92?w=600&q=80',
@@ -606,7 +622,7 @@ function renderProducts(filter='all') {
         </div>
         <div class="card-actions">
           <button class="btn-add" id="add-${p.id}" onclick="addToCart(${p.id})">Add to Bag</button>
-          <button class="btn-wa" title="Enquire on WhatsApp" onclick="waProduct('${p.name}','$${p.price}')">
+          <button class="btn-wa" title="Enquire on WhatsApp" onclick="openScreen()">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           </button>
         </div>
@@ -785,6 +801,82 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
 
 // Init
 renderProducts('all');
+
+// Screen all WA clicks
+function waProduct(n,p){openScreen()}
 </script>
+
+<!-- WHATSAPP SCREENING MODAL -->
+<div class="screen-overlay" id="screenModal">
+  <div class="screen-modal">
+    <div class="screen-head">
+      <h3>Before we connect you</h3>
+      <button class="screen-close" onclick="closeScreen()">✕</button>
+    </div>
+    <div class="screen-body">
+      <div class="screen-note">
+        ⚠️ <strong>Text only — no calls.</strong> We screen all enquiries to ensure the best service for genuine customers. Please complete the short form below.
+      </div>
+      <div class="screen-field">
+        <label>Your Full Name *</label>
+        <input id="sc_name" placeholder="John Smith" type="text">
+      </div>
+      <div class="screen-field">
+        <label>Your Email Address *</label>
+        <input id="sc_email" placeholder="john@example.com" type="email">
+      </div>
+      <div class="screen-field">
+        <label>Which suit are you interested in? *</label>
+        <select id="sc_suit">
+          <option value="">— select a suit —</option>
+          <option>The Mayfair — Navy Pinstripe ($149)</option>
+          <option>The Savile — Charcoal Herringbone ($169)</option>
+          <option>The Kensington — Royal Blue ($199)</option>
+          <option>The Knightsbridge — Black Tuxedo ($249)</option>
+          <option>The Belgravia — Burgundy Wedding ($219)</option>
+          <option>The Chelsea — Light Grey ($129)</option>
+          <option>The Fitzrovia — Camel Linen ($159)</option>
+          <option>The Soho — Dark Green ($179)</option>
+          <option>The Marylebone — Chocolate Brown ($189)</option>
+          <option>The Claridge — Ivory White ($209)</option>
+          <option>Bespoke commission</option>
+          <option>General enquiry</option>
+        </select>
+      </div>
+      <div class="screen-field">
+        <label>What is your occasion? *</label>
+        <select id="sc_occasion">
+          <option value="">— select occasion —</option>
+          <option>Wedding</option>
+          <option>Business / work</option>
+          <option>Black tie / formal event</option>
+          <option>Graduation</option>
+          <option>General smart wear</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="screen-field">
+        <label>How did you hear about us?</label>
+        <select id="sc_source">
+          <option value="">— select —</option>
+          <option>Social media</option>
+          <option>Google search</option>
+          <option>Friend / referral</option>
+          <option>Instagram</option>
+          <option>Facebook</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <button class="btn-screen" onclick="passScreening()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Connect via WhatsApp (Text Only)
+      </button>
+      <div class="screen-disclaimer">
+        By continuing you agree to text-only communication. No sales calls. No spam. Your details are kept private and used only to process your enquiry.
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
