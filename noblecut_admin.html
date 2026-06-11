@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NobleCut — Order Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1628;--gold:#C9973A;--white:#fff;--cream:#FDFAF4;--border:#E8E2D5;--mid:#6B6B6B;--green:#1A7A3A;--red:#C0392B;--orange:#E67E22}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#F4F6F9;color:#1C1C1C;min-height:100vh}
+.sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--navy);padding:1.5rem 0;z-index:100}
+.s-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:white;padding:0 1.4rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:1rem}
+.s-logo span{color:var(--gold)}
+.s-link{display:flex;align-items:center;gap:0.7rem;padding:0.7rem 1.4rem;font-size:0.82rem;font-weight:500;color:rgba(255,255,255,0.55);cursor:pointer;transition:all .2s;text-decoration:none;border:none;background:none;width:100%;text-align:left}
+.s-link:hover,.s-link.active{color:white;background:rgba(255,255,255,0.07)}
+.s-link.active{border-left:2px solid var(--gold)}
+.main{margin-left:220px;padding:2rem}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem}
+.page-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700}
+.api-note{background:#FFF3CD;border:1px solid #FFD700;padding:0.7rem 1rem;font-size:0.82rem;border-radius:2px;margin-bottom:1.5rem}
+.api-note strong{color:var(--navy)}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
+.stat-card{background:white;padding:1.4rem;border-left:3px solid var(--gold)}
+.stat-label{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-bottom:0.4rem}
+.stat-value{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--navy)}
+.stat-sub{font-size:0.78rem;color:var(--mid);margin-top:0.2rem}
+.card{background:white;padding:1.4rem;margin-bottom:1.5rem}
+.card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;padding-bottom:0.8rem;border-bottom:1px solid var(--border)}
+.card-title{font-weight:600;font-size:0.95rem}
+.filters{display:flex;gap:0.5rem;flex-wrap:wrap}
+.filter-pill{padding:0.35rem 0.9rem;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border:1.5px solid var(--border);background:none;cursor:pointer;transition:all .2s;color:var(--mid)}
+.filter-pill:hover,.filter-pill.active{background:var(--navy);color:white;border-color:var(--navy)}
+table{width:100%;border-collapse:collapse;font-size:0.84rem}
+th{text-align:left;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);padding:0.6rem 0.8rem;background:#F9F9F9;border-bottom:2px solid var(--border);font-weight:600}
+td{padding:0.85rem 0.8rem;border-bottom:1px solid var(--border);vertical-align:middle}
+tr:hover td{background:#FAFAFA}
+.badge{display:inline-block;padding:0.2rem 0.6rem;font-size:0.67rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-radius:2px}
+.badge-new{background:#E8F4FD;color:#1A6A9A}
+.badge-paid{background:#E8F9EE;color:var(--green)}
+.badge-pending{background:#FFF3E0;color:var(--orange)}
+.badge-shipped{background:#E8F9EE;color:var(--green)}
+.badge-processing{background:#F3E8FF;color:#7B2FBE}
+.badge-cancelled{background:#FFEBEB;color:var(--red)}
+.action-btn{background:none;border:1px solid var(--border);padding:0.3rem 0.7rem;font-size:0.72rem;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;color:var(--navy)}
+.action-btn:hover{background:var(--navy);color:white;border-color:var(--navy)}
+.action-btn.green{border-color:var(--green);color:var(--green)}
+.action-btn.green:hover{background:var(--green);color:white}
+.profit-cell{font-weight:600;color:var(--green)}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;display:none;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{display:flex}
+.modal{background:white;width:100%;max-width:520px;max-height:90vh;overflow-y:auto}
+.modal-head{background:var(--navy);color:white;padding:1.2rem 1.4rem;display:flex;justify-content:space-between;align-items:center}
+.modal-head h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600}
+.modal-close{background:none;border:none;color:rgba(255,255,255,0.6);font-size:1.2rem;cursor:pointer}
+.modal-body{padding:1.5rem}
+.field-group{margin-bottom:1rem}
+.field-group label{display:block;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid);margin-bottom:0.4rem}
+.field-group input,.field-group select,.field-group textarea{width:100%;border:1px solid var(--border);padding:0.65rem 0.9rem;font-size:0.88rem;font-family:'DM Sans',sans-serif;outline:none;background:var(--cream)}
+.field-group input:focus,.field-group select:focus{border-color:var(--gold)}
+.btn-save{background:var(--navy);color:white;padding:0.75rem 2rem;font-size:0.82rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:none;cursor:pointer;width:100%;transition:background .2s}
+.btn-save:hover{background:#152238}
+.wa-link{display:inline-flex;align-items:center;gap:0.4rem;background:#25D366;color:white;padding:0.35rem 0.8rem;font-size:0.75rem;font-weight:600;border:none;cursor:pointer;text-decoration:none;transition:background .2s}
+.wa-link:hover{background:#1db954}
+.order-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem}
+.detail-item label{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:0.2rem}
+.detail-item span{font-size:0.88rem;font-weight:500}
+@media(max-width:900px){.sidebar{display:none}.main{margin-left:0}.stats-row{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="s-logo">Noble<span>Cut</span></div>
+  <button class="s-link active" onclick="showTab('orders')">📦 Orders</button>
+  <button class="s-link" onclick="showTab('revenue')">💰 Revenue</button>
+  <button class="s-link" onclick="showTab('enquiries')">✉️ Enquiries</button>
+  <div style="position:absolute;bottom:1.5rem;left:0;right:0;padding:0 1.4rem">
+    <div style="font-size:0.72rem;color:rgba(255,255,255,0.3);margin-bottom:0.5rem">BACKEND URL</div>
+    <input id="apiUrlInput" style="width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:white;padding:0.4rem 0.6rem;font-size:0.72rem;font-family:monospace" placeholder="https://forexdash.onrender.com" value="https://forexdash.onrender.com">
+  </div>
+</div>
+
+<div class="main">
+  <div class="topbar">
+    <div class="page-title">Order Dashboard</div>
+    <div style="display:flex;gap:0.8rem">
+      <button class="action-btn" onclick="loadOrders()">↻ Refresh</button>
+      <button class="action-btn green" onclick="openNewOrder()">+ New Order</button>
+    </div>
+  </div>
+
+  <div class="api-note">
+    <strong>Setup:</strong> Edit the backend URL in the bottom left to match your Render URL. Add <code>STRIPE_SECRET_KEY</code> to Render environment variables to enable payments.
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row" id="statsRow">
+    <div class="stat-card"><div class="stat-label">Total Orders</div><div class="stat-value" id="statOrders">—</div></div>
+    <div class="stat-card"><div class="stat-label">New Orders</div><div class="stat-value" id="statNew">—</div><div class="stat-sub">Awaiting fulfilment</div></div>
+    <div class="stat-card"><div class="stat-label">Total Revenue</div><div class="stat-value" id="statRevenue">—</div></div>
+    <div class="stat-card" style="border-color:var(--green)"><div class="stat-label">Total Profit</div><div class="stat-value" id="statProfit" style="color:var(--green)">—</div></div>
+  </div>
+
+  <!-- ORDERS TAB -->
+  <div id="tab-orders">
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">All Orders</div>
+        <div class="filters">
+          <button class="filter-pill active" onclick="filterOrders('all',this)">All</button>
+          <button class="filter-pill" onclick="filterOrders('new',this)">New</button>
+          <button class="filter-pill" onclick="filterOrders('processing',this)">Processing</button>
+          <button class="filter-pill" onclick="filterOrders('shipped',this)">Shipped</button>
+        </div>
+      </div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Order</th>
+              <th>Customer</th>
+              <th>Product</th>
+              <th>Size</th>
+              <th>Price</th>
+              <th>Profit</th>
+              <th>Payment</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTable">
+            <tr><td colspan="9" style="text-align:center;padding:2rem;color:var(--mid)">Click Refresh to load orders</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVENUE TAB -->
+  <div id="tab-revenue" style="display:none">
+    <div class="card">
+      <div class="card-head"><div class="card-title">Revenue Breakdown</div></div>
+      <div id="revenueContent" style="padding:1rem;color:var(--mid);text-align:center">Load orders first to see revenue data</div>
+    </div>
+  </div>
+
+  <!-- ENQUIRIES TAB -->
+  <div id="tab-enquiries" style="display:none">
+    <div class="card">
+      <div class="card-head"><div class="card-title">Bespoke Enquiries</div></div>
+      <p style="color:var(--mid);font-size:0.88rem">Enquiries come via Telegram. Check your Telegram for new bespoke consultation requests.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER DETAIL MODAL -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modalOrderNum">Order Details</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- NEW ORDER MODAL -->
+<div class="modal-overlay" id="newOrderModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Create Manual Order</h3>
+      <button class="modal-close" onclick="document.getElementById('newOrderModal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div class="field-group"><label>Customer Name</label><input id="no_name" placeholder="John Smith"></div>
+        <div class="field-group"><label>Email</label><input id="no_email" type="email" placeholder="john@example.com"></div>
+        <div class="field-group"><label>Phone</label><input id="no_phone" placeholder="+44 7700 000000"></div>
+        <div class="field-group"><label>Product Name</label><input id="no_product" placeholder="The Diplomat"></div>
+        <div class="field-group"><label>Fabric</label><input id="no_fabric" placeholder="Navy Pinstripe"></div>
+        <div class="field-group"><label>Size</label><input id="no_size" placeholder="40R"></div>
+        <div class="field-group"><label>Sale Price (£)</label><input id="no_price" type="number" placeholder="2400"></div>
+        <div class="field-group"><label>Supplier Cost (£)</label><input id="no_cost" type="number" placeholder="80"></div>
+      </div>
+      <div class="field-group"><label>Delivery Address</label><input id="no_addr" placeholder="123 Example Street"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div class="field-group"><label>City</label><input id="no_city" placeholder="London"></div>
+        <div class="field-group"><label>Postcode</label><input id="no_postcode" placeholder="SW1A 1AA"></div>
+      </div>
+      <div class="field-group"><label>Notes</label><textarea id="no_notes" rows="2" placeholder="Any special requirements..."></textarea></div>
+      <button class="btn-save" onclick="createManualOrder()">Create Order</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let allOrders = [];
+let currentFilter = 'all';
+
+function getApiUrl() {
+  return document.getElementById('apiUrlInput').value.replace(/\/$/, '');
+}
+
+function showTab(tab) {
+  ['orders','revenue','enquiries'].forEach(t => {
+    document.getElementById('tab-'+t).style.display = t===tab ? 'block' : 'none';
+  });
+  document.querySelectorAll('.s-link').forEach((l,i) => {
+    l.classList.toggle('active', ['orders','revenue','enquiries'][i] === tab);
+  });
+}
+
+async function loadOrders() {
+  try {
+    const r = await fetch(getApiUrl() + '/noblecut/orders');
+    allOrders = await r.json();
+    renderOrders(allOrders);
+    loadStats();
+  } catch(e) {
+    document.getElementById('ordersTable').innerHTML = 
+      '<tr><td colspan="9" style="text-align:center;padding:2rem;color:#C0392B">Cannot connect to backend. Check the URL in the bottom left.</td></tr>';
+  }
+}
+
+async function loadStats() {
+  try {
+    const r = await fetch(getApiUrl() + '/noblecut/orders/stats');
+    const s = await r.json();
+    document.getElementById('statOrders').textContent = s.total_orders;
+    document.getElementById('statNew').textContent = s.new_orders;
+    document.getElementById('statRevenue').textContent = '£' + s.total_revenue.toLocaleString();
+    document.getElementById('statProfit').textContent = '£' + s.total_profit.toLocaleString();
+  } catch(e) {}
+}
+
+function renderOrders(orders) {
+  const tbody = document.getElementById('ordersTable');
+  if (!orders.length) {
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;padding:2rem;color:var(--mid)">No orders yet</td></tr>';
+    return;
+  }
+  tbody.innerHTML = orders.map(o => `
+    <tr>
+      <td><strong>${o.order_number}</strong><br><span style="font-size:0.72rem;color:var(--mid)">${o.created_at?.slice(0,10)||''}</span></td>
+      <td>${o.customer_name}<br><span style="font-size:0.72rem;color:var(--mid)">${o.customer_email}</span></td>
+      <td style="max-width:160px">${o.product_name}</td>
+      <td>${o.product_size}</td>
+      <td><strong>£${(o.customer_price||0).toLocaleString()}</strong></td>
+      <td class="profit-cell">${o.profit ? '£'+o.profit.toLocaleString() : '—'}</td>
+      <td><span class="badge badge-${o.payment_status==='paid'?'paid':'pending'}">${o.payment_status}</span></td>
+      <td><span class="badge badge-${o.status}">${o.status}</span></td>
+      <td style="white-space:nowrap">
+        <button class="action-btn" onclick="viewOrder(${o.id})">View</button>
+        <a class="wa-link" href="https://wa.me/${waNumber(o.customer_phone)}?text=${waMsg(o)}" target="_blank">WhatsApp</a>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function filterOrders(status, btn) {
+  currentFilter = status;
+  document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered = status === 'all' ? allOrders : allOrders.filter(o => o.status === status);
+  renderOrders(filtered);
+}
+
+function viewOrder(id) {
+  const o = allOrders.find(x => x.id === id);
+  if (!o) return;
+  document.getElementById('modalOrderNum').textContent = o.order_number;
+  document.getElementById('modalBody').innerHTML = `
+    <div class="order-detail-grid">
+      <div class="detail-item"><label>Customer</label><span>${o.customer_name}</span></div>
+      <div class="detail-item"><label>Email</label><span>${o.customer_email}</span></div>
+      <div class="detail-item"><label>Phone</label><span>${o.customer_phone}</span></div>
+      <div class="detail-item"><label>Status</label><span><span class="badge badge-${o.status}">${o.status}</span></span></div>
+      <div class="detail-item"><label>Product</label><span>${o.product_name}</span></div>
+      <div class="detail-item"><label>Size</label><span>${o.product_size}</span></div>
+      <div class="detail-item"><label>Sale Price</label><span><strong>£${(o.customer_price||0).toLocaleString()}</strong></span></div>
+      <div class="detail-item"><label>Profit</label><span style="color:var(--green);font-weight:600">${o.profit ? '£'+o.profit.toLocaleString() : 'Set supplier cost'}</span></div>
+      <div class="detail-item" style="grid-column:span 2"><label>Address</label><span>${o.address}</span></div>
+      ${o.customer_notes ? `<div class="detail-item" style="grid-column:span 2"><label>Notes</label><span>${o.customer_notes}</span></div>` : ''}
+      ${o.tracking ? `<div class="detail-item" style="grid-column:span 2"><label>Tracking</label><span>${o.tracking}</span></div>` : ''}
+      ${o.aliexpress_url ? `<div class="detail-item" style="grid-column:span 2"><label>AliExpress Link</label><span><a href="${o.aliexpress_url}" target="_blank" style="color:var(--navy)">View product</a></span></div>` : ''}
+    </div>
+    <hr style="border:none;border-top:1px solid var(--border);margin:1rem 0">
+    <div style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-bottom:0.8rem">Update Order</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:0.8rem">
+      <div class="field-group" style="margin:0"><label>Status</label>
+        <select id="upd_status">
+          <option value="">— no change —</option>
+          <option value="new">New</option>
+          <option value="processing">Processing</option>
+          <option value="shipped">Shipped</option>
+          <option value="delivered">Delivered</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+      </div>
+      <div class="field-group" style="margin:0"><label>Supplier Cost (£)</label>
+        <input id="upd_cost" type="number" placeholder="e.g. 80">
+      </div>
+    </div>
+    <div class="field-group"><label>AliExpress Product URL</label><input id="upd_ali_url" placeholder="https://aliexpress.com/item/..."></div>
+    <div class="field-group"><label>AliExpress Order ID</label><input id="upd_ali_id" placeholder="AliExpress order number"></div>
+    <div class="field-group"><label>Tracking Number</label><input id="upd_tracking" placeholder="Tracking number (marks as shipped)"></div>
+    <div class="field-group"><label>Admin Notes</label><textarea id="upd_notes" rows="2" placeholder="Internal notes..."></textarea></div>
+    <button class="btn-save" onclick="saveUpdate(${o.id})">Save Update</button>
+    <div style="margin-top:0.8rem;display:flex;gap:0.8rem">
+      <a class="wa-link" style="flex:1;justify-content:center" href="https://wa.me/${waNumber(o.customer_phone)}?text=Hi+${encodeURIComponent(o.customer_name)}%2C+your+NobleCut+order+${o.order_number}+is+being+processed." target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Customer
+      </a>
+    </div>
+  `;
+  document.getElementById('orderModal').classList.add('open');
+}
+
+async function saveUpdate(id) {
+  const data = {};
+  const status  = document.getElementById('upd_status').value;
+  const cost    = document.getElementById('upd_cost').value;
+  const ali_url = document.getElementById('upd_ali_url').value;
+  const ali_id  = document.getElementById('upd_ali_id').value;
+  const tracking= document.getElementById('upd_tracking').value;
+  const notes   = document.getElementById('upd_notes').value;
+  if(status)   data.status              = status;
+  if(cost)     data.supplier_cost       = parseFloat(cost);
+  if(ali_url)  data.aliexpress_url      = ali_url;
+  if(ali_id)   data.aliexpress_order_id = ali_id;
+  if(tracking) data.tracking_number     = tracking;
+  if(notes)    data.admin_notes         = notes;
+  try {
+    const r = await fetch(getApiUrl()+'/noblecut/orders/'+id, {
+      method:'PATCH',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(data)
+    });
+    const res = await r.json();
+    if(res.success){
+      closeModal();
+      loadOrders();
+      alert('Order updated successfully!');
+    }
+  } catch(e) { alert('Update failed: '+e.message); }
+}
+
+async function createManualOrder() {
+  const order = {
+    customer_name:  document.getElementById('no_name').value,
+    customer_email: document.getElementById('no_email').value,
+    customer_phone: document.getElementById('no_phone').value,
+    address_line1:  document.getElementById('no_addr').value,
+    city:           document.getElementById('no_city').value,
+    postcode:       document.getElementById('no_postcode').value,
+    product_name:   document.getElementById('no_product').value,
+    product_fabric: document.getElementById('no_fabric').value,
+    product_size:   document.getElementById('no_size').value,
+    customer_price: parseFloat(document.getElementById('no_price').value)||0,
+    customer_notes: document.getElementById('no_notes').value,
+    payment_method: 'manual',
+  };
+  try {
+    const r = await fetch(getApiUrl()+'/noblecut/orders', {
+      method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(order)
+    });
+    const res = await r.json();
+    if(res.success){
+      document.getElementById('newOrderModal').classList.remove('open');
+      loadOrders();
+      alert('Order '+res.order_number+' created!');
+    } else { alert('Error: '+(res.detail||'Unknown error')); }
+  } catch(e) { alert('Failed: '+e.message); }
+}
+
+function openNewOrder(){ document.getElementById('newOrderModal').classList.add('open'); }
+function closeModal(){ document.getElementById('orderModal').classList.remove('open'); }
+
+function waNumber(phone){ return (phone||'').replace(/\D/g,''); }
+function waMsg(o){
+  return encodeURIComponent(
+    `Hi ${o.customer_name}, your NobleCut order ${o.order_number} for ${o.product_name} has been received. We'll update you shortly.`
+  );
+}
+
+// Load on start
+window.addEventListener('load', loadOrders);
+</script>
+</body>
+</html>
