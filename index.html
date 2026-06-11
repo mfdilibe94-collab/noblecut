@@ -8,30 +8,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --white:#FFFFFF;
-  --cream:#FDFAF4;
-  --ivory:#F7F3EC;
-  --navy:#0A1628;
-  --navy2:#152238;
-  --gold:#C9973A;
-  --gold2:#E8B84B;
-  --charcoal:#1C1C1C;
-  --mid:#6B6B6B;
-  --light:#E8E2D5;
-  --border:#EDEAD5;
-}
+:root{--white:#FFFFFF;--cream:#FDFAF4;--ivory:#F7F3EC;--navy:#0A1628;--navy2:#152238;--gold:#C9973A;--gold2:#E8B84B;--charcoal:#1C1C1C;--mid:#6B6B6B;--light:#E8E2D5;--border:#EDEAD5}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--charcoal);overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 button{font-family:'DM Sans',sans-serif;cursor:pointer}
-
-/* TOP BAR */
 .topbar{background:var(--navy);color:rgba(255,255,255,0.75);text-align:center;padding:0.55rem 1rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase}
 .topbar span{color:var(--gold2)}
-
-/* NAV */
 nav{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:1px solid var(--border);padding:0 3rem;display:flex;align-items:center;justify-content:space-between;height:70px;transition:box-shadow .3s}
 nav.shadow{box-shadow:0 4px 24px rgba(0,0,0,0.08)}
 .nav-logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;letter-spacing:0.03em;color:var(--navy)}
@@ -40,153 +24,128 @@ nav.shadow{box-shadow:0 4px 24px rgba(0,0,0,0.08)}
 .nav-links a{font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--charcoal);transition:color .2s}
 .nav-links a:hover{color:var(--gold)}
 .nav-actions{display:flex;align-items:center;gap:1.2rem}
-.nav-icon-btn{background:none;border:none;padding:0.3rem;color:var(--charcoal);display:flex;align-items:center;justify-content:center;transition:color .2s}
-.nav-icon-btn:hover{color:var(--gold)}
-.cart-trigger{position:relative}
-.cart-badge{position:absolute;top:-4px;right:-4px;background:var(--gold);color:white;font-size:0.6rem;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
+.cart-trigger{position:relative;background:none;border:none;padding:0.4rem;color:var(--charcoal);display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:500;cursor:pointer;transition:color .2s}
+.cart-trigger:hover{color:var(--gold)}
+.cart-badge{background:var(--gold);color:white;font-size:0.62rem;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
 .cart-badge.show{opacity:1}
 .btn-nav{background:var(--navy);color:white;padding:0.55rem 1.3rem;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:none;transition:background .2s}
 .btn-nav:hover{background:var(--navy2)}
-
-/* HERO */
-.hero{display:grid;grid-template-columns:1fr 1fr;min-height:580px}
-.hero-left{background:var(--navy);display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem;position:relative;overflow:hidden}
-.hero-left::before{content:'';position:absolute;top:-40%;right:-20%;width:500px;height:500px;background:radial-gradient(circle,rgba(201,151,58,0.12),transparent 70%)}
+.hero{display:grid;grid-template-columns:55fr 45fr;min-height:88vh}
+.hero-left{background:var(--navy);display:flex;flex-direction:column;justify-content:center;padding:6rem 5rem;position:relative;overflow:hidden}
+.hero-left::before{content:'';position:absolute;top:-40%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(201,151,58,0.1),transparent 70%)}
 .hero-eyebrow{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem;display:flex;align-items:center;gap:0.8rem}
 .hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--gold)}
-.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.6rem);font-weight:700;color:white;line-height:1.08;margin-bottom:1.6rem}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,4vw,4rem);font-weight:700;color:white;line-height:1.08;margin-bottom:1.6rem}
 .hero-h1 em{font-style:italic;color:var(--gold2)}
 .hero-p{font-size:0.95rem;line-height:1.75;color:rgba(255,255,255,0.65);max-width:420px;margin-bottom:2.4rem}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
 .btn-gold{background:var(--gold);color:white;padding:0.85rem 2rem;font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border:none;transition:background .2s;display:inline-block}
 .btn-gold:hover{background:#b8862e}
 .btn-outline-white{background:transparent;color:white;padding:0.85rem 2rem;font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border:1.5px solid rgba(255,255,255,0.35);transition:all .2s;display:inline-block}
 .btn-outline-white:hover{border-color:white;background:rgba(255,255,255,0.07)}
-.hero-right{background:var(--ivory);display:flex;align-items:center;justify-content:center;padding:3rem;position:relative}
-.hero-right::after{content:'SS 2026';position:absolute;top:1.5rem;right:1.5rem;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:0.3rem 0.7rem}
-.hero-trust{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1)}
-.trust-item{text-align:left}
+.hero-trust{display:flex;gap:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1)}
 .trust-num{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:white}
 .trust-label{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:0.15rem}
-
-/* MARQUEE */
-.marquee{background:var(--navy);padding:0.6rem 0;overflow:hidden;border-top:1px solid rgba(255,255,255,0.06)}
+.hero-right{position:relative;overflow:hidden}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-right::after{content:'SS 2026';position:absolute;top:1.5rem;right:1.5rem;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:white;border:1px solid rgba(255,255,255,0.5);padding:0.3rem 0.7rem;background:rgba(0,0,0,0.3)}
+.marquee{background:var(--navy);padding:0.6rem 0;overflow:hidden}
 .marquee-inner{display:flex;animation:scroll 30s linear infinite;white-space:nowrap}
 .marquee:hover .marquee-inner{animation-play-state:paused}
 .marquee-inner span{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,151,58,0.8);padding:0 2rem}
-.marquee-inner .dot{color:rgba(201,151,58,0.3)}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* SECTION UTILS */
 .section{padding:5rem 3rem}
-.section-sm{padding:4rem 3rem}
 .eyebrow{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.9rem}
 .section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:700;margin-bottom:0.9rem}
 .section-title em{font-style:italic;color:var(--navy)}
 .section-sub{font-size:0.92rem;line-height:1.75;color:var(--mid);max-width:500px}
 .rule{width:2.5rem;height:2px;background:var(--gold);margin:1.2rem 0}
-
-/* FILTER BAR */
 .filter-bar{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:3rem;overflow-x:auto}
-.filter-btn{background:none;border:none;padding:0.85rem 1.6rem;font-size:0.8rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid);border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .2s}
+.filter-btn{background:none;border:none;padding:0.85rem 1.6rem;font-size:0.8rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid);border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .2s;cursor:pointer}
 .filter-btn:hover{color:var(--navy)}
 .filter-btn.active{color:var(--navy);border-bottom-color:var(--gold);font-weight:600}
-
-/* PRODUCT GRID */
-.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--border)}
-.product-card{background:var(--white);position:relative;overflow:hidden;transition:transform .3s}
-.product-card:hover{z-index:2;transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.1)}
-.product-img{background:var(--ivory);height:380px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.product-img .img-overlay{position:absolute;inset:0;background:var(--navy);display:flex;align-items:center;justify-content:center;gap:0.8rem;opacity:0;transition:opacity .3s}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--border)}
+.product-card{background:var(--white);position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.product-card:hover{z-index:2;transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.12)}
+.product-img{height:420px;overflow:hidden;position:relative;background:#f0ece4}
+.product-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.product-card:hover .product-img img{transform:scale(1.04)}
+.img-overlay{position:absolute;inset:0;background:rgba(10,22,40,0.7);display:flex;align-items:center;justify-content:center;gap:0.8rem;opacity:0;transition:opacity .3s}
 .product-card:hover .img-overlay{opacity:1}
-.quick-btn{background:white;color:var(--navy);padding:0.6rem 1.1rem;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:none;transition:background .2s}
+.quick-btn{background:white;color:var(--navy);padding:0.65rem 1.2rem;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:none;transition:background .2s;cursor:pointer}
 .quick-btn:hover{background:var(--gold);color:white}
-.product-tags{position:absolute;top:0.8rem;left:0.8rem;display:flex;flex-direction:column;gap:0.3rem}
-.tag{font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.55rem;line-height:1.4}
+.product-tags{position:absolute;top:0.8rem;left:0.8rem;display:flex;flex-direction:column;gap:0.3rem;z-index:1}
+.tag{font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.55rem}
 .tag-new{background:var(--navy);color:white}
 .tag-sale{background:#C0392B;color:white}
 .tag-best{background:var(--gold);color:white}
-.tag-bespoke{background:var(--charcoal);color:white}
-.product-info{padding:1.2rem 1.4rem 1.4rem}
+.tag-trending{background:#7B2FBE;color:white}
+.product-info{padding:1.4rem}
 .product-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;margin-bottom:0.25rem}
-.product-fabric{font-size:0.75rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--mid);margin-bottom:0.7rem}
-.product-bottom{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.9rem}
-.product-price{font-size:1.1rem;font-weight:600;color:var(--navy)}
+.product-style{font-size:0.75rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--mid);margin-bottom:0.8rem}
+.product-price-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.9rem}
+.product-price{font-size:1.15rem;font-weight:600;color:var(--navy)}
 .product-price .was{font-size:0.82rem;color:var(--mid);text-decoration:line-through;margin-right:0.4rem;font-weight:400}
+.profit-badge{font-size:0.68rem;font-weight:600;letter-spacing:0.06em;background:#E8F9EE;color:#1A7A3A;padding:0.2rem 0.5rem}
 .sizes{display:flex;gap:0.3rem;flex-wrap:wrap;margin-bottom:1rem}
-.size-btn{background:none;border:1px solid var(--border);padding:0.28rem 0.55rem;font-size:0.72rem;font-weight:500;letter-spacing:0.04em;transition:all .2s;color:var(--charcoal)}
+.size-btn{background:none;border:1px solid var(--border);padding:0.28rem 0.6rem;font-size:0.72rem;font-weight:500;transition:all .2s;cursor:pointer}
 .size-btn:hover,.size-btn.sel{background:var(--navy);color:white;border-color:var(--navy)}
-.size-btn.out{opacity:0.35;cursor:not-allowed}
 .card-actions{display:flex;gap:0.5rem}
-.btn-add{flex:1;background:var(--navy);color:white;padding:0.7rem;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:none;transition:background .2s}
+.btn-add{flex:1;background:var(--navy);color:white;padding:0.75rem;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:none;transition:background .2s}
 .btn-add:hover{background:var(--navy2)}
 .btn-add.added{background:#1A7A3A}
-.btn-wa{background:#25D366;color:white;padding:0.7rem 0.9rem;border:none;font-size:1rem;transition:background .2s}
+.btn-wa{background:#25D366;color:white;padding:0.75rem 0.9rem;border:none;font-size:1rem;transition:background .2s;cursor:pointer}
 .btn-wa:hover{background:#1db954}
-
-/* FEATURED STRIP */
-.featured-strip{background:var(--navy);color:white;display:grid;grid-template-columns:1fr 1fr;min-height:460px}
-.featured-img{background:linear-gradient(135deg,#152238 0%,#0A1628 100%);display:flex;align-items:center;justify-content:center;position:relative}
-.featured-content{padding:4rem;display:flex;flex-direction:column;justify-content:center}
-.featured-content .eyebrow{color:var(--gold)}
-.featured-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.8rem);color:white;line-height:1.15;margin-bottom:1.2rem}
-.featured-title em{font-style:italic;color:var(--gold2)}
-.featured-desc{font-size:0.92rem;line-height:1.75;color:rgba(255,255,255,0.6);margin-bottom:2rem;max-width:440px}
-.featured-points{display:flex;flex-direction:column;gap:0.8rem;margin-bottom:2.2rem}
-.fp{display:flex;align-items:flex-start;gap:0.8rem;font-size:0.87rem;color:rgba(255,255,255,0.75)}
-.fp::before{content:'✦';color:var(--gold);font-size:0.7rem;margin-top:0.15rem;flex-shrink:0}
-
-/* BESPOKE SECTION */
-.bespoke-section{background:var(--ivory)}
+.bestsellers-strip{background:var(--ivory);padding:4rem 3rem;text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.bs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:var(--border);margin-top:2.5rem}
+.bs-card{background:var(--white);overflow:hidden;position:relative}
+.bs-card img{width:100%;height:320px;object-fit:cover;transition:transform .4s}
+.bs-card:hover img{transform:scale(1.04)}
+.bs-info{padding:1.2rem}
+.bs-name{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:600;margin-bottom:0.2rem}
+.bs-price{font-size:0.88rem;font-weight:600;color:var(--navy)}
+.bespoke-section{background:var(--navy);color:white;padding:5rem 3rem}
 .bespoke-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.bespoke-img{height:480px;overflow:hidden}
+.bespoke-img img{width:100%;height:100%;object-fit:cover}
 .bespoke-steps{display:flex;flex-direction:column;gap:2rem;margin-top:1.5rem}
-.b-step{display:flex;gap:1.4rem;padding:1.4rem;border:1px solid var(--border);background:white;transition:border-color .2s}
+.b-step{display:flex;gap:1.4rem;padding:1.4rem;border:1px solid rgba(255,255,255,0.1);transition:border-color .2s}
 .b-step:hover{border-color:var(--gold)}
 .b-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1;min-width:2rem}
-.b-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;margin-bottom:0.3rem;color:var(--navy)}
-.b-desc{font-size:0.85rem;line-height:1.65;color:var(--mid)}
-
-/* ENQUIRY FORM */
-.enquiry-form{background:white;padding:2.5rem;border:1px solid var(--border)}
-.form-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;color:var(--navy);margin-bottom:0.4rem}
-.form-sub{font-size:0.85rem;color:var(--mid);margin-bottom:1.8rem}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
-.form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem}
-.form-group label{font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--charcoal)}
-.form-group input,.form-group select,.form-group textarea{border:1px solid var(--border);padding:0.7rem 1rem;font-size:0.88rem;font-family:'DM Sans',sans-serif;color:var(--charcoal);background:var(--cream);transition:border-color .2s;outline:none}
+.b-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;margin-bottom:0.3rem}
+.b-desc{font-size:0.85rem;line-height:1.65;color:rgba(255,255,255,0.6)}
+.enquiry-form{background:rgba(255,255,255,0.05);padding:2rem;border:1px solid rgba(255,255,255,0.1)}
+.form-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:white;margin-bottom:0.4rem}
+.form-sub{font-size:0.82rem;color:rgba(255,255,255,0.5);margin-bottom:1.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:0.8rem}
+.form-group{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:0.8rem}
+.form-group label{font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5)}
+.form-group input,.form-group select,.form-group textarea{border:1px solid rgba(255,255,255,0.15);padding:0.65rem 0.9rem;font-size:0.88rem;font-family:'DM Sans',sans-serif;background:rgba(255,255,255,0.07);color:white;outline:none;transition:border-color .2s}
 .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
-.form-group textarea{resize:vertical;min-height:90px}
-.btn-submit{width:100%;background:var(--navy);color:white;padding:0.85rem;font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border:none;transition:background .2s;margin-top:0.5rem}
-.btn-submit:hover{background:var(--navy2)}
-
-/* TESTIMONIALS */
-.testimonials-section{background:var(--navy);color:white;text-align:center;padding:5rem 3rem}
-.stars-row{color:var(--gold);font-size:1.1rem;letter-spacing:0.3rem;margin-bottom:1.8rem}
-.testi-quote{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.5vw,1.9rem);font-style:italic;line-height:1.5;max-width:700px;margin:0 auto 1rem;font-weight:400}
+.form-group select option{background:var(--navy);color:white}
+.form-group textarea{resize:vertical;min-height:80px}
+.btn-submit{width:100%;background:var(--gold);color:white;padding:0.85rem;font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border:none;transition:background .2s;cursor:pointer;margin-top:0.5rem}
+.btn-submit:hover{background:#b8862e}
+.testimonial-section{background:var(--charcoal);color:white;text-align:center;padding:5rem 3rem}
+.stars{color:var(--gold);font-size:1.1rem;letter-spacing:0.3rem;margin-bottom:1.8rem}
+.testi-quote{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.5vw,1.9rem);font-style:italic;line-height:1.5;max-width:700px;margin:0 auto 1rem}
 .testi-author{font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4rem}
 .stats-row{display:flex;justify-content:center;gap:5rem;flex-wrap:wrap;padding-top:3rem;border-top:1px solid rgba(255,255,255,0.08)}
-.stat-item .num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:var(--gold)}
-.stat-item .lbl{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.2rem}
-
-/* CTA BANNER */
+.stat-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:var(--gold)}
+.stat-lbl{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.2rem}
 .cta-banner{background:var(--gold);padding:4rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem}
-.cta-text .cta-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:white;margin-bottom:0.4rem}
-.cta-text p{font-size:0.92rem;color:rgba(255,255,255,0.8)}
-.cta-btns{display:flex;gap:1rem}
-.btn-white{background:white;color:var(--gold);padding:0.85rem 2rem;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border:none;transition:all .2s}
+.cta-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:white;margin-bottom:0.4rem}
+.cta-sub{font-size:0.92rem;color:rgba(255,255,255,0.8)}
+.cta-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-white{background:white;color:var(--gold);padding:0.85rem 2rem;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s}
 .btn-white:hover{background:var(--cream)}
-.btn-outline-w{background:transparent;color:white;padding:0.85rem 2rem;font-size:0.82rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:2px solid rgba(255,255,255,0.6);transition:all .2s}
+.btn-outline-w{background:transparent;color:white;padding:0.85rem 2rem;font-size:0.82rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:2px solid rgba(255,255,255,0.6);cursor:pointer;transition:all .2s;display:inline-block}
 .btn-outline-w:hover{border-color:white;background:rgba(255,255,255,0.1)}
-
-/* FOOTER */
 footer{background:#0A0A0F;color:rgba(255,255,255,0.5);padding:4rem 3rem 2rem}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
 .f-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:white;margin-bottom:0.8rem}
 .f-logo span{color:var(--gold)}
 .f-tagline{font-size:0.84rem;line-height:1.7;max-width:240px;margin-bottom:1.4rem}
-.f-social{display:flex;gap:0.8rem}
-.f-social a{width:34px;height:34px;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;font-size:0.8rem;transition:background .2s;color:rgba(255,255,255,0.6)}
-.f-social a:hover{background:var(--gold);color:white}
 .f-col h4{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:white;margin-bottom:1.2rem;font-weight:600}
 .f-col ul{list-style:none}
 .f-col ul li{margin-bottom:0.65rem}
@@ -194,346 +153,268 @@ footer{background:#0A0A0F;color:rgba(255,255,255,0.5);padding:4rem 3rem 2rem}
 .f-col ul li a:hover{color:var(--gold)}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.06);font-size:0.76rem;flex-wrap:wrap;gap:1rem}
 .footer-bottom a{color:var(--gold)}
-
-/* CART SIDEBAR */
 .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:300;opacity:0;pointer-events:none;transition:opacity .3s}
 .cart-overlay.open{opacity:1;pointer-events:all}
-.cart-sidebar{position:fixed;top:0;right:-420px;width:420px;max-width:100vw;height:100vh;background:white;z-index:301;display:flex;flex-direction:column;transition:right .3s;box-shadow:-8px 0 40px rgba(0,0,0,0.12)}
+.cart-sidebar{position:fixed;top:0;right:-440px;width:440px;max-width:100vw;height:100vh;background:white;z-index:301;display:flex;flex-direction:column;transition:right .3s;box-shadow:-8px 0 40px rgba(0,0,0,0.12)}
 .cart-sidebar.open{right:0}
 .cart-head{padding:1.4rem 1.6rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .cart-head h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600}
-.cart-close{background:none;border:none;font-size:1.4rem;color:var(--mid);padding:0.2rem}
+.cart-close{background:none;border:none;font-size:1.4rem;color:var(--mid);cursor:pointer;padding:0.2rem}
 .cart-items{flex:1;overflow-y:auto;padding:1.2rem 1.6rem}
-.empty-cart{text-align:center;padding:3rem 1rem;color:var(--mid)}
-.empty-cart svg{margin:0 auto 1rem;display:block;opacity:0.3}
-.empty-cart p{font-size:0.9rem}
+.empty-cart{text-align:center;padding:3rem 1rem;color:var(--mid);font-size:0.9rem}
 .cart-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border)}
-.cart-item-img{width:72px;height:90px;background:var(--ivory);flex-shrink:0;display:flex;align-items:center;justify-content:center}
-.cart-item-info{flex:1}
+.cart-item-img{width:72px;height:90px;overflow:hidden;flex-shrink:0}
+.cart-item-img img{width:100%;height:100%;object-fit:cover}
 .cart-item-name{font-weight:600;font-size:0.92rem;margin-bottom:0.2rem}
-.cart-item-detail{font-size:0.78rem;color:var(--mid);margin-bottom:0.5rem}
+.cart-item-detail{font-size:0.78rem;color:var(--mid);margin-bottom:0.4rem}
 .cart-item-price{font-weight:600;color:var(--navy);font-size:0.92rem}
-.cart-item-remove{background:none;border:none;color:var(--mid);font-size:0.75rem;margin-top:0.3rem;padding:0;text-transform:uppercase;letter-spacing:0.06em}
+.cart-item-remove{background:none;border:none;color:var(--mid);font-size:0.72rem;margin-top:0.3rem;padding:0;cursor:pointer;text-transform:uppercase;letter-spacing:0.06em}
 .cart-item-remove:hover{color:#C0392B}
-.cart-foot{padding:1.4rem 1.6rem;border-top:1px solid var(--border)}
-.cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem}
+.cart-foot{padding:1.4rem 1.6rem;border-top:1px solid var(--border);display:none}
+.cart-total-row{display:flex;justify-content:space-between;margin-bottom:1.2rem}
 .cart-total-label{font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid)}
 .cart-total-price{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--navy)}
-.btn-checkout{width:100%;background:var(--navy);color:white;padding:1rem;font-size:0.85rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border:none;transition:background .2s;margin-bottom:0.7rem}
+.btn-checkout{width:100%;background:var(--navy);color:white;padding:1rem;font-size:0.85rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s;margin-bottom:0.7rem}
 .btn-checkout:hover{background:var(--navy2)}
-.btn-wa-checkout{width:100%;background:#25D366;color:white;padding:0.85rem;font-size:0.82rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:none;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:0.5rem}
+.btn-wa-checkout{width:100%;background:#25D366;color:white;padding:0.85rem;font-size:0.82rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem}
 .btn-wa-checkout:hover{background:#1db954}
-
-/* CHECKOUT MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:400;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:1rem}
 .modal-overlay.open{opacity:1;pointer-events:all}
-.modal{background:white;width:100%;max-width:500px;max-height:90vh;overflow-y:auto}
+.modal{background:white;width:100%;max-width:520px;max-height:90vh;overflow-y:auto}
 .modal-head{background:var(--navy);color:white;padding:1.4rem 1.8rem;display:flex;align-items:center;justify-content:space-between}
 .modal-head h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600}
-.modal-close{background:none;border:none;color:rgba(255,255,255,0.6);font-size:1.3rem}
+.modal-close{background:none;border:none;color:rgba(255,255,255,0.6);font-size:1.3rem;cursor:pointer}
 .modal-body{padding:1.8rem}
-.modal-section-title{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border)}
-.stripe-note{background:var(--ivory);border:1px solid var(--border);padding:0.8rem 1rem;font-size:0.8rem;color:var(--mid);margin-bottom:1.2rem;line-height:1.6}
-.stripe-note strong{color:var(--navy)}
-.card-mock{border:1px solid var(--border);padding:0.7rem 1rem;background:var(--cream);margin-bottom:0.8rem;font-size:0.88rem;color:var(--mid);display:flex;align-items:center;justify-content:space-between}
-.card-brands{display:flex;gap:0.4rem}
-.card-brand{background:white;border:1px solid var(--border);padding:0.2rem 0.5rem;font-size:0.65rem;font-weight:700;letter-spacing:0.05em;border-radius:2px}
-.btn-pay{width:100%;background:var(--gold);color:white;padding:1rem;font-size:0.88rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border:none;margin-top:1.2rem;transition:background .2s}
+.modal-section{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border)}
+.field-group{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:0.9rem}
+.field-group label{font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid)}
+.field-group input,.field-group select{border:1px solid var(--border);padding:0.65rem 0.9rem;font-size:0.88rem;font-family:'DM Sans',sans-serif;background:var(--cream);outline:none;transition:border-color .2s;width:100%}
+.field-group input:focus{border-color:var(--gold)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem}
+.stripe-note{background:var(--ivory);border:1px solid var(--border);padding:0.8rem 1rem;font-size:0.78rem;color:var(--mid);margin-bottom:1rem;line-height:1.6}
+.btn-pay{width:100%;background:var(--gold);color:white;padding:1rem;font-size:0.88rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border:none;cursor:pointer;margin-top:1rem;transition:background .2s}
 .btn-pay:hover{background:#b8862e}
 .secure-note{text-align:center;font-size:0.72rem;color:var(--mid);margin-top:0.7rem}
-
-/* WHATSAPP FLOAT */
-.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:150;background:#25D366;color:white;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform .2s,box-shadow .2s;border:none}
-.wa-float:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(37,211,102,0.5)}
-.wa-tooltip{position:absolute;right:68px;background:#1C1C1C;color:white;font-size:0.75rem;white-space:nowrap;padding:0.4rem 0.8rem;border-radius:2px;opacity:0;transition:opacity .2s;pointer-events:none}
-.wa-float:hover .wa-tooltip{opacity:1}
-
-/* REVEAL */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:150;background:#25D366;color:white;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform .2s;border:none;cursor:pointer}
+.wa-float:hover{transform:scale(1.08)}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s,transform .65s}
 .reveal.visible{opacity:1;transform:translateY(0)}
-
-/* RESPONSIVE */
 @media(max-width:960px){
-  nav{padding:0 1.5rem}
-  .nav-links{display:none}
-  .hero{grid-template-columns:1fr}
-  .hero-right{min-height:300px}
-  .section,.section-sm{padding:3.5rem 1.5rem}
-  .featured-strip{grid-template-columns:1fr}
-  .featured-img{min-height:260px}
+  nav{padding:0 1.5rem}.nav-links{display:none}
+  .hero{grid-template-columns:1fr}.hero-right{min-height:50vw}
+  .hero-left{padding:3.5rem 1.5rem}
+  .section{padding:3.5rem 1.5rem}
   .bespoke-inner{grid-template-columns:1fr;gap:2.5rem}
+  .bs-grid{grid-template-columns:1fr 1fr}
   .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
-  .cta-banner{flex-direction:column;text-align:center}
-  .cta-btns{flex-wrap:wrap;justify-content:center}
+  .cta-banner{flex-direction:column}
   .stats-row{gap:2.5rem}
   .form-row{grid-template-columns:1fr}
 }
 @media(max-width:600px){
-  .hero-left{padding:3rem 1.5rem}
   .product-grid{grid-template-columns:1fr 1fr}
-  .product-img{height:260px}
+  .product-img{height:280px}
+  .bs-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
   .cart-sidebar{width:100vw}
+  .hero-trust{gap:1.5rem}
 }
-@media(max-width:400px){
-  .product-grid{grid-template-columns:1fr}
-}
+@media(max-width:380px){.product-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div class="topbar">Free consultation at our <span>Mayfair Atelier</span> — Book now →</div>
+<div class="topbar">Free US shipping on all orders over <span>$299</span> · Est. delivery 2–3 weeks</div>
 
-<!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-logo">Noble<span>Cut</span></a>
   <ul class="nav-links">
     <li><a href="#shop">Shop</a></li>
     <li><a href="#bespoke">Bespoke</a></li>
-    <li><a href="#lookbook">Lookbook</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="admin.html">Admin</a></li>
   </ul>
   <div class="nav-actions">
-    <button class="nav-icon-btn" title="Search">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    </button>
-    <button class="nav-icon-btn cart-trigger" id="cartToggle" title="Cart">
+    <button class="cart-trigger" id="cartToggle">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Bag
       <span class="cart-badge" id="cartBadge">0</span>
     </button>
     <a href="#bespoke" class="btn-nav">Book Fitting</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">Spring Summer Collection 2026</div>
-    <h1 class="hero-h1">Dressed for the men who <em>shape the world.</em></h1>
-    <p class="hero-p">Every NobleCut garment begins as a conversation between cloth and craftsman. Bespoke tailoring refined over six decades — cut for men who know the difference.</p>
+    <h1 class="hero-h1">Dressed for men who <em>shape the world.</em></h1>
+    <p class="hero-p">Premium suits sourced from the world's finest manufacturers — delivered to your door. Every cut crafted for the modern gentleman.</p>
     <div class="hero-btns">
       <a href="#shop" class="btn-gold">Shop the Collection</a>
       <a href="#bespoke" class="btn-outline-white">Book a Fitting</a>
     </div>
     <div class="hero-trust">
-      <div class="trust-item"><div class="trust-num">4,200+</div><div class="trust-label">Suits made</div></div>
-      <div class="trust-item"><div class="trust-num">62</div><div class="trust-label">Years of craft</div></div>
-      <div class="trust-item"><div class="trust-num">98%</div><div class="trust-label">Satisfaction</div></div>
+      <div><div class="trust-num">4,200+</div><div class="trust-label">Suits sold</div></div>
+      <div><div class="trust-num">98%</div><div class="trust-label">Satisfaction</div></div>
+      <div><div class="trust-num">62</div><div class="trust-label">Years of craft</div></div>
     </div>
   </div>
   <div class="hero-right">
-    <svg width="260" height="400" viewBox="0 0 260 400" fill="none">
-      <ellipse cx="130" cy="48" rx="26" ry="30" fill="#D4A574"/>
-      <ellipse cx="130" cy="28" rx="26" ry="15" fill="#2C1810"/>
-      <rect cx="120" y="74" width="20" height="16" fill="#D4A574" x="120"/>
-      <path d="M82 88 L122 80 L130 100 L138 80 L178 88 L186 170 L168 180 L130 175 L92 180 L74 170Z" fill="#1B2B4B"/>
-      <path d="M122 80 L108 88 L92 106 L108 114 L130 100Z" fill="#243660"/>
-      <path d="M138 80 L152 88 L168 106 L152 114 L130 100Z" fill="#243660"/>
-      <path d="M126 96 L130 100 L134 96 L132 138 L130 146 L128 138Z" fill="#C6932A"/>
-      <rect x="104" y="174" width="22" height="108" rx="2" fill="#1B2B4B"/>
-      <rect x="134" y="174" width="22" height="108" rx="2" fill="#1B2B4B"/>
-      <ellipse cx="115" cy="285" rx="18" ry="7" fill="#111"/>
-      <ellipse cx="145" cy="285" rx="18" ry="7" fill="#111"/>
-      <path d="M82 88 L62 152 L78 158 L96 108Z" fill="#1B2B4B"/>
-      <path d="M178 88 L198 152 L182 158 L164 108Z" fill="#1B2B4B"/>
-      <rect x="64" y="149" width="14" height="9" rx="1" fill="#C6932A"/>
-      <rect x="182" y="149" width="14" height="9" rx="1" fill="#C6932A"/>
-      <path d="M162 108 L172 106 L174 118 L164 120Z" fill="#FDFAF4"/>
-      <path d="M164 106 L168 102 L172 106" stroke="#FDFAF4" stroke-width="1.5" fill="none"/>
-      <circle cx="130" cy="118" r="2.5" fill="#C6932A"/>
-      <circle cx="130" cy="132" r="2.5" fill="#C6932A"/>
-      <circle cx="130" cy="146" r="2.5" fill="#C6932A"/>
-      <ellipse cx="126" cy="42" rx="3" ry="4" fill="#2C1810"/>
-      <ellipse cx="134" cy="42" rx="3" ry="4" fill="#2C1810"/>
-      <path d="M126 56 Q130 61 134 56" stroke="#2C1810" stroke-width="1.5" fill="none"/>
-    </svg>
+    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=900&q=80" alt="Man in luxury navy suit" loading="eager">
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee">
   <div class="marquee-inner" id="marqueeInner"></div>
 </div>
 
-<!-- SHOP SECTION -->
 <section class="section" id="shop">
-  <div class="reveal" style="margin-bottom:2.5rem;">
+  <div class="reveal" style="margin-bottom:2.5rem">
     <div class="eyebrow">SS 2026 Collection</div>
-    <h2 class="section-title">Ready-to-Wear & <em>Bespoke</em></h2>
+    <h2 class="section-title">Ten signature suits. <em>One standard.</em></h2>
     <div class="rule"></div>
+    <p class="section-sub">Sourced from verified premium manufacturers. Each suit available in multiple sizes with free UK delivery.</p>
   </div>
   <div class="filter-bar reveal">
-    <button class="filter-btn active" data-filter="all">All Pieces</button>
-    <button class="filter-btn" data-filter="suits">Suits</button>
-    <button class="filter-btn" data-filter="blazers">Blazers</button>
-    <button class="filter-btn" data-filter="bespoke">Bespoke</button>
-    <button class="filter-btn" data-filter="accessories">Accessories</button>
+    <button class="filter-btn active" data-filter="all">All Suits</button>
+    <button class="filter-btn" data-filter="business">Business</button>
+    <button class="filter-btn" data-filter="wedding">Wedding</button>
+    <button class="filter-btn" data-filter="evening">Evening</button>
+    <button class="filter-btn" data-filter="casual">Smart Casual</button>
   </div>
-  <div class="product-grid" id="productGrid"></div>
+  <div class="product-grid reveal" id="productGrid"></div>
 </section>
 
-<!-- FEATURED BESPOKE STRIP -->
-<div class="featured-strip" id="lookbook">
-  <div class="featured-img">
-    <svg width="220" height="340" viewBox="0 0 220 340" fill="none">
-      <ellipse cx="110" cy="40" rx="22" ry="26" fill="#D4A574"/>
-      <ellipse cx="110" cy="22" rx="22" ry="12" fill="#1C1C1C"/>
-      <path d="M70 60 L106 52 L110 64 L114 52 L150 60 L156 144 L138 152 L110 148 L82 152 L64 144Z" fill="#3D3D3D"/>
-      <path d="M106 52 L94 60 L80 76 L94 82 L110 64Z" fill="#4A4A4A"/>
-      <path d="M114 52 L126 60 L140 76 L126 82 L110 64Z" fill="#4A4A4A"/>
-      <circle cx="100" cy="98" r="3" fill="#C6932A"/>
-      <circle cx="120" cy="98" r="3" fill="#C6932A"/>
-      <circle cx="100" cy="112" r="3" fill="#C6932A"/>
-      <circle cx="120" cy="112" r="3" fill="#C6932A"/>
-      <path d="M105 58 L110 64 L115 58 L113 100 L110 108 L107 100Z" fill="#C6932A"/>
-      <rect x="86" y="148" width="18" height="100" rx="1" fill="#3D3D3D"/>
-      <rect x="116" y="148" width="18" height="100" rx="1" fill="#3D3D3D"/>
-      <ellipse cx="95" cy="250" rx="16" ry="6" fill="#111"/>
-      <ellipse cx="125" cy="250" rx="16" ry="6" fill="#111"/>
-      <path d="M70 60 L54 116 L68 120 L84 78Z" fill="#3D3D3D"/>
-      <path d="M150 60 L166 116 L152 120 L136 78Z" fill="#3D3D3D"/>
-    </svg>
+<div class="bestsellers-strip">
+  <div class="reveal">
+    <div class="eyebrow">Most Popular</div>
+    <h2 class="section-title">This season's <em>best sellers</em></h2>
   </div>
-  <div class="featured-content">
-    <div class="eyebrow">The Sovereign Collection</div>
-    <h2 class="featured-title">Double-breasted.<br><em>Unapologetically bold.</em></h2>
-    <p class="featured-desc">The Sovereign is for the man who doesn't enter a room — he arrives. Cut in our finest Huddersfield tweed with a full canvas construction.</p>
-    <div class="featured-points">
-      <div class="fp">Full canvas construction — moulds to your body over time</div>
-      <div class="fp">Hand-stitched lapels and buttonholes</div>
-      <div class="fp">Six-button double-breasted front</div>
-      <div class="fp">Bemberg silk lining — the mark of a proper suit</div>
+  <div class="bs-grid reveal">
+    <div class="bs-card">
+      <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=500&q=80" alt="Navy pinstripe suit">
+      <div class="bs-info"><div class="bs-name">Navy Pinstripe</div><div class="bs-price">$399</div></div>
     </div>
-    <div style="display:flex;gap:1rem;flex-wrap:wrap">
-      <button class="btn-gold" onclick="openCheckout({name:'The Sovereign DB',price:2650,fabric:'Huddersfield Tweed'})">Buy Now — £2,650</button>
-      <a href="#bespoke" class="btn-outline-white">Make it Bespoke</a>
+    <div class="bs-card">
+      <img src="https://images.unsplash.com/photo-1593032465175-481ac7f401a0?w=500&q=80" alt="Charcoal business suit">
+      <div class="bs-info"><div class="bs-name">Charcoal Business</div><div class="bs-price">$449</div></div>
+    </div>
+    <div class="bs-card">
+      <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500&q=80" alt="Royal blue wedding suit">
+      <div class="bs-info"><div class="bs-name">Royal Blue Wedding</div><div class="bs-price">$499</div></div>
+    </div>
+    <div class="bs-card">
+      <img src="https://images.unsplash.com/photo-1598808503746-f34cfdf35f7e?w=500&q=80" alt="Black tuxedo">
+      <div class="bs-info"><div class="bs-name">Black Tuxedo</div><div class="bs-price">$599</div></div>
     </div>
   </div>
 </div>
 
-<!-- BESPOKE SECTION -->
-<section class="section bespoke-section" id="bespoke">
+<section id="bespoke" class="bespoke-section">
   <div class="bespoke-inner">
     <div class="reveal">
-      <div class="eyebrow">Bespoke Atelier</div>
-      <h2 class="section-title">Where cloth becomes <em>character</em></h2>
-      <div class="rule"></div>
-      <p class="section-sub" style="margin-bottom:2rem">Three appointments. Six to eight weeks. A suit that fits only you and will outlast every trend.</p>
-      <div class="bespoke-steps">
-        <div class="b-step"><div class="b-num">I</div><div><div class="b-title">Consultation & Cloth</div><div class="b-desc">We begin with a conversation about occasion, preference, and cloth. Over 400 fabrics from the finest mills in England, Scotland, and Italy.</div></div></div>
-        <div class="b-step"><div class="b-num">II</div><div><div class="b-title">Pattern & Baste Fitting</div><div class="b-desc">Your pattern is cut by hand. The baste fitting allows our tailor to see the cloth on the body — adjusting silhouette before the final cut.</div></div></div>
-        <div class="b-step"><div class="b-num">III</div><div><div class="b-title">Finishing & Delivery</div><div class="b-desc">Every buttonhole hand-sewn. Every seam pressed. Your suit arrives in a NobleCut garment bag, ready to wear.</div></div></div>
+      <div class="bespoke-img">
+        <img src="https://images.unsplash.com/photo-1541614101331-1a5a3a194e92?w=700&q=80" alt="Bespoke tailoring">
       </div>
     </div>
     <div class="reveal">
-      <div class="enquiry-form">
+      <div class="eyebrow" style="color:var(--gold)">Bespoke Service</div>
+      <h2 class="section-title" style="color:white">Where cloth becomes <em style="color:var(--gold2)">character</em></h2>
+      <div class="rule"></div>
+      <p style="font-size:0.92rem;line-height:1.75;color:rgba(255,255,255,0.65);margin-bottom:2rem">Three appointments. Six to eight weeks. A suit that fits only you and outlasts every trend.</p>
+      <div class="bespoke-steps">
+        <div class="b-step"><div class="b-num">I</div><div><div class="b-title">Consultation & Cloth</div><div class="b-desc">Over 400 fabrics from the finest mills in England, Scotland, and Italy.</div></div></div>
+        <div class="b-step"><div class="b-num">II</div><div><div class="b-title">Pattern & Fitting</div><div class="b-desc">Your pattern cut by hand — adjusted to your body before the final cut.</div></div></div>
+        <div class="b-step"><div class="b-num">III</div><div><div class="b-title">Finishing & Delivery</div><div class="b-desc">Every buttonhole hand-sewn. Delivered in a NobleCut garment bag.</div></div></div>
+      </div>
+      <div class="enquiry-form" style="margin-top:2rem">
         <div class="form-title">Book a Free Consultation</div>
-        <div class="form-sub">We'll get back to you within 24 hours to confirm your appointment.</div>
+        <div class="form-sub">We'll confirm your appointment within 24 hours.</div>
         <div class="form-row">
-          <div class="form-group"><label>First Name</label><input type="text" placeholder="Edward"></div>
-          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Richardson"></div>
+          <div class="form-group"><label>First Name</label><input type="text" id="eq_first" placeholder="Edward"></div>
+          <div class="form-group"><label>Last Name</label><input type="text" id="eq_last" placeholder="Richardson"></div>
         </div>
-        <div class="form-group"><label>Email Address</label><input type="email" placeholder="edward@example.com"></div>
-        <div class="form-group"><label>Phone (WhatsApp preferred)</label><input type="tel" placeholder="+44 7700 000000"></div>
-        <div class="form-group"><label>Occasion / Commission Type</label>
-          <select>
+        <div class="form-group"><label>Email</label><input type="email" id="eq_email" placeholder="edward@example.com"></div>
+        <div class="form-group"><label>Phone (WhatsApp)</label><input type="tel" id="eq_phone" placeholder="+44 7700 000000"></div>
+        <div class="form-group"><label>Occasion</label>
+          <select id="eq_occasion">
             <option>Wedding suit — bespoke</option>
             <option>Business suit — bespoke</option>
-            <option>Evening wear — black tie</option>
-            <option>Ready-to-wear alteration</option>
+            <option>Black tie evening wear</option>
             <option>Full wardrobe consultation</option>
             <option>Other</option>
           </select>
         </div>
-        <div class="form-group"><label>Tell us about your commission</label><textarea placeholder="I'm looking for a navy pinstripe suit for..."></textarea></div>
-        <button class="btn-submit" onclick="submitEnquiry(this)">Send Enquiry</button>
-        <div style="display:flex;align-items:center;gap:0.5rem;margin-top:1rem;font-size:0.78rem;color:var(--mid)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Your details are kept private. No spam, ever.
+        <div class="form-group"><label>Tell us about your commission</label>
+          <textarea id="eq_message" placeholder="I'm looking for a navy pinstripe suit for..."></textarea>
         </div>
+        <button class="btn-submit" onclick="submitEnquiry(this)">Send Enquiry</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials-section" id="about">
+<section class="testimonial-section" id="about">
   <div class="reveal">
-    <div class="stars-row">★★★★★</div>
+    <div class="stars">★★★★★</div>
     <blockquote class="testi-quote">"I've worn NobleCut suits to every important meeting of my career. There is no substitute for cloth that fits the man — not the other way around."</blockquote>
-    <div class="testi-author">— Edward R., Managing Director, London</div>
+    <div class="testi-author">— Edward R., Managing Director, New York</div>
     <div class="stats-row">
-      <div class="stat-item"><div class="num">4,200+</div><div class="lbl">Suits made</div></div>
-      <div class="stat-item"><div class="num">98%</div><div class="lbl">Client satisfaction</div></div>
-      <div class="stat-item"><div class="num">62</div><div class="lbl">Years of craft</div></div>
-      <div class="stat-item"><div class="num">3</div><div class="lbl">London ateliers</div></div>
+      <div><div class="stat-num">4,200+</div><div class="stat-lbl">Suits sold</div></div>
+      <div><div class="stat-num">98%</div><div class="stat-lbl">Satisfaction</div></div>
+      <div><div class="stat-num">62</div><div class="stat-lbl">Years of craft</div></div>
+      <div><div class="stat-num">3</div><div class="stat-lbl">US ateliers</div></div>
     </div>
   </div>
 </section>
 
-<!-- CTA BANNER -->
 <div class="cta-banner">
-  <div class="cta-text">
+  <div>
     <div class="cta-title">Your suit is waiting to be made.</div>
-    <p>Three appointments. One suit built to last a lifetime.</p>
+    <div class="cta-sub">Three appointments. One suit built to last a lifetime.</div>
   </div>
   <div class="cta-btns">
     <button class="btn-white" onclick="document.getElementById('bespoke').scrollIntoView({behavior:'smooth'})">Book a Fitting</button>
-    <a href="#shop" class="btn-outline-w">Shop Ready-to-Wear</a>
+    <a href="#shop" class="btn-outline-w">Shop Collection</a>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div>
       <div class="f-logo">Noble<span>Cut</span></div>
-      <p class="f-tagline">Bespoke tailoring for men who understand that the finest things are made slowly, with care, and without compromise.</p>
-      <div class="f-social">
-        <a href="#">in</a>
-        <a href="#">ig</a>
-        <a href="#">tw</a>
-        <a href="#">fb</a>
-      </div>
+      <p class="f-tagline">Premium menswear for men who understand that the finest things are made with care and without compromise.</p>
     </div>
-    <div class="f-col"><h4>Collections</h4><ul><li><a href="#">The Diplomat</a></li><li><a href="#">The Envoy</a></li><li><a href="#">The Consul</a></li><li><a href="#">The Sovereign</a></li><li><a href="#">Accessories</a></li></ul></div>
-    <div class="f-col"><h4>Services</h4><ul><li><a href="#">Bespoke Tailoring</a></li><li><a href="#">Made to Measure</a></li><li><a href="#">Alterations</a></li><li><a href="#">Cloth Selection</a></li><li><a href="#">Gift Cards</a></li></ul></div>
-    <div class="f-col"><h4>Visit Us</h4><ul><li><a href="#">Mayfair Atelier</a></li><li><a href="#">Canary Wharf</a></li><li><a href="#">Edinburgh</a></li><li><a href="#">Contact</a></li><li><a href="#">About NobleCut</a></li></ul></div>
+    <div class="f-col"><h4>Collection</h4><ul><li><a href="#">Business Suits</a></li><li><a href="#">Wedding Suits</a></li><li><a href="#">Evening Wear</a></li><li><a href="#">Smart Casual</a></li><li><a href="#">Accessories</a></li></ul></div>
+    <div class="f-col"><h4>Services</h4><ul><li><a href="#">Bespoke Tailoring</a></li><li><a href="#">Made to Measure</a></li><li><a href="#">Alterations</a></li><li><a href="#">Gift Cards</a></li><li><a href="#">Style Guide</a></li></ul></div>
+    <div class="f-col"><h4>Info</h4><ul><li><a href="#">About NobleCut</a></li><li><a href="#">Delivery & Returns</a></li><li><a href="#">Size Guide</a></li><li><a href="#">Contact</a></li><li><a href="admin.html">Admin</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <span>© 2026 NobleCut Ltd. All rights reserved.</span>
-    <span><a href="#">Privacy Policy</a> · <a href="#">Terms</a> · <a href="#">Care Guide</a></span>
+    <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Delivery</a></span>
   </div>
 </footer>
 
-<!-- CART SIDEBAR -->
 <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
 <div class="cart-sidebar" id="cartSidebar">
   <div class="cart-head">
     <h3>Your Bag (<span id="cartCountHead">0</span>)</h3>
     <button class="cart-close" onclick="closeCart()">✕</button>
   </div>
-  <div class="cart-items" id="cartItems">
-    <div class="empty-cart">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-      <p>Your bag is empty</p>
-    </div>
-  </div>
-  <div class="cart-foot" id="cartFoot" style="display:none">
+  <div class="cart-items" id="cartItems"><div class="empty-cart">Your bag is empty</div></div>
+  <div class="cart-foot" id="cartFoot">
     <div class="cart-total-row">
       <span class="cart-total-label">Total</span>
-      <span class="cart-total-price" id="cartTotal">£0</span>
+      <span class="cart-total-price" id="cartTotal">$0</span>
     </div>
-    <button class="btn-checkout" onclick="openCheckoutFromCart()">Proceed to Checkout</button>
+    <button class="btn-checkout" onclick="openCheckout()">Checkout</button>
     <button class="btn-wa-checkout" onclick="whatsappOrder()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Order via WhatsApp
     </button>
   </div>
 </div>
 
-<!-- CHECKOUT MODAL -->
 <div class="modal-overlay" id="checkoutModal">
   <div class="modal">
     <div class="modal-head">
@@ -541,129 +422,191 @@ footer{background:#0A0A0F;color:rgba(255,255,255,0.5);padding:4rem 3rem 2rem}
       <button class="modal-close" onclick="closeCheckout()">✕</button>
     </div>
     <div class="modal-body">
-      <div class="modal-section-title">Order Summary</div>
-      <div id="modalOrderSummary" style="margin-bottom:1.4rem;font-size:0.9rem;color:var(--charcoal)"></div>
-      <div class="modal-section-title">Your Details</div>
-      <div class="form-row" style="margin-bottom:0">
-        <div class="form-group"><label>First Name</label><input type="text" id="checkoutFirst" placeholder="Edward"></div>
-        <div class="form-group"><label>Last Name</label><input type="text" id="checkoutLast" placeholder="Richardson"></div>
+      <div class="modal-section">Your Details</div>
+      <div class="field-row">
+        <div class="field-group"><label>First Name</label><input id="co_first" placeholder="Edward"></div>
+        <div class="field-group"><label>Last Name</label><input id="co_last" placeholder="Richardson"></div>
       </div>
-      <div class="form-group"><label>Email</label><input type="email" id="checkoutEmail" placeholder="edward@example.com"></div>
-      <div class="form-group"><label>Phone</label><input type="tel" id="checkoutPhone" placeholder="+44 7700 000000"></div>
-      <div class="modal-section-title" style="margin-top:1rem">Payment</div>
-      <div class="stripe-note">
-        <strong>To activate online payments:</strong> Sign up at <strong>stripe.com</strong>, get your publishable key, and replace <code>YOUR_STRIPE_KEY</code> in this file. Stripe charges 1.4% + 20p per transaction.
+      <div class="field-group"><label>Email</label><input type="email" id="co_email" placeholder="edward@example.com"></div>
+      <div class="field-group"><label>Phone</label><input type="tel" id="co_phone" placeholder="+44 7700 000000"></div>
+      <div class="modal-section" style="margin-top:1.2rem">Delivery Address</div>
+      <div class="field-group"><label>Address</label><input id="co_addr" placeholder="123 Fifth Avenue"></div>
+      <div class="field-row">
+        <div class="field-group"><label>City</label><input id="co_city" placeholder="New York"></div>
+        <div class="field-group"><label>Zip Code</label><input id="co_post" placeholder="10001"></div>
       </div>
-      <div class="form-group"><label>Card Number</label>
-        <div class="card-mock">
-          <span>•••• •••• •••• ••••</span>
-          <div class="card-brands"><span class="card-brand" style="color:#1A1F71">VISA</span><span class="card-brand" style="color:#EB001B">MC</span><span class="card-brand" style="color:#00A0E9">AMEX</span></div>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Expiry</label><div class="card-mock">MM / YY</div></div>
-        <div class="form-group"><label>CVC</label><div class="card-mock">•••</div></div>
-      </div>
-      <button class="btn-pay" onclick="processPayment()">Pay Securely</button>
-      <div class="secure-note">🔒 Secured by Stripe · SSL encrypted · PCI compliant</div>
-      <div style="text-align:center;margin-top:1.2rem">
-        <button class="btn-wa-checkout" style="width:100%" onclick="whatsappOrderDirect()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Order via WhatsApp instead
-        </button>
-      </div>
+      <div class="modal-section" style="margin-top:1.2rem">Order Summary</div>
+      <div id="checkoutSummary" style="font-size:0.88rem;margin-bottom:1.2rem"></div>
+      <div class="modal-section">Payment</div>
+      <div class="stripe-note"><strong>To activate Stripe payments:</strong> Add your Stripe secret key to Render environment as STRIPE_SECRET_KEY. Until then, orders are recorded and you'll contact customers manually.</div>
+      <button class="btn-pay" onclick="placeOrder()">Place Order</button>
+      <div class="secure-note">🔒 Secured · SSL encrypted · All orders confirmed via email</div>
+      <button class="btn-wa-checkout" style="width:100%;margin-top:0.8rem" onclick="whatsappOrderDirect()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Order via WhatsApp
+      </button>
     </div>
   </div>
 </div>
 
-<!-- WHATSAPP FLOAT -->
-<button class="wa-float" onclick="window.open('https://wa.me/447700000000?text=Hi%20NobleCut%2C%20I%27d%20like%20to%20enquire%20about%20a%20suit.','_blank')">
-  <div class="wa-tooltip">Chat with us</div>
+<button class="wa-float" onclick="window.open('https://wa.me/447700000000?text=Hi+NobleCut%2C+I%27d+like+to+enquire+about+a+suit.','_blank')">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </button>
 
 <script>
-// ── WHATSAPP NUMBER — change this to your real number ──
-const WA_NUMBER = '447700000000';
+const API = 'https://forexdash.onrender.com';
+const WA  = '447700000000'; // ← CHANGE TO YOUR WHATSAPP NUMBER
 
-// ── PRODUCTS ──
+// ── 10 REAL SUITS with Unsplash photos ──
 const products = [
-  {id:1,name:'The Diplomat',fabric:'Navy Pinstripe — Super 150s',price:2400,was:null,category:'suits',tag:'best',sizes:['36S','38R','40R','42R','44R','46R'],color:'#1B2B4B'},
-  {id:2,name:'The Envoy',fabric:'Charcoal Herringbone — Wool',price:2100,was:null,category:'suits',tag:null,sizes:['36R','38R','40R','42R','44R'],color:'#3D3D3D'},
-  {id:3,name:'The Consul',fabric:'Camel Irish Linen',price:1950,was:null,category:'suits',tag:'new',sizes:['38R','40R','42R','44R'],color:'#C8A96E'},
-  {id:4,name:'The Sovereign DB',fabric:'Teal Double-Breasted',price:2650,was:null,category:'suits',tag:'new',sizes:['38R','40R','42R','44R','46R'],color:'#2A5B6E'},
-  {id:5,name:'The Clifton Blazer',fabric:'Navy Hopsack — Unstructured',price:950,was:1200,category:'blazers',tag:'sale',sizes:['S','M','L','XL'],color:'#1B2B4B'},
-  {id:6,name:'The Mayfair Blazer',fabric:'Camel Cashmere Blend',price:1100,was:null,category:'blazers',tag:null,sizes:['S','M','L','XL'],color:'#C8A96E'},
-  {id:7,name:'Commission — Full Bespoke',fabric:'Your choice of 400+ fabrics',price:3200,was:null,category:'bespoke',tag:'bespoke',sizes:['Your size'],color:'#1A4A3C'},
-  {id:8,name:'Commission — Made to Measure',fabric:'Adapted from our core patterns',price:1800,was:null,category:'bespoke',tag:'bespoke',sizes:['Your size'],color:'#152238'},
-  {id:9,name:'Burgundy Silk Tie',fabric:'Italian Silk — Hand-rolled edges',price:120,was:null,category:'accessories',tag:null,sizes:['One size'],color:'#8B1A1A'},
-  {id:10,name:'White Linen Square',fabric:'Irish Linen — 3-peak',price:65,was:null,category:'accessories',tag:null,sizes:['One size'],color:'#FDFAF4'},
-  {id:11,name:'Gold NC Cufflinks',fabric:'18ct Gold Vermeil',price:340,was:null,category:'accessories',tag:'new',sizes:['One size'],color:'#C6932A'},
-  {id:12,name:'Brogue Oxford',fabric:'Black Calf — Hand-welted',price:580,was:null,category:'accessories',tag:null,sizes:['7','8','9','10','11','12'],color:'#1C1C1C'},
+  {
+    id:1, name:'The Mayfair',
+    style:'Navy Pinstripe — Slim Fit',
+    price:399, supplier:45,
+    category:'business',
+    tag:'best',
+    img:'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&q=80',
+    sizes:['36S','38R','40R','42R','44R','46R'],
+    aliexpress:'https://www.aliexpress.com/wholesale?SearchText=navy+pinstripe+slim+fit+suit+men',
+    desc:'Classic navy pinstripe in a sharp slim fit. The cornerstone of every professional wardrobe.'
+  },
+  {
+    id:2, name:'The Savile',
+    style:'Charcoal Herringbone — Regular Fit',
+    price:449, supplier:55,
+    category:'business',
+    tag:null,
+    img:'https://images.unsplash.com/photo-1593032465175-481ac7f401a0?w=600&q=80',
+    sizes:['38R','40R','42R','44R','46R','48R'],
+    aliexpress:'https://www.aliexpress.com/wholesale?SearchText=charcoal+herringbone+mens+suit',
+    desc:'A distinguished charcoal herringbone that commands any boardroom or formal occasion.'
+  },
+  {
+    id:3, name:'The Kensington',
+    style:'Royal Blue — Three Piece',
+    price:499, supplier:65,
+    category:'wedding',
+    tag:'trending',
+    img:'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80',
+    sizes:['38R','40R','42R','44R','46R'],
+    aliexpress:'https://www.aliexpress.com/wholesale?SearchText=royal+blue+three+piece+wedding+suit+men',
+    desc:'Make a statement on your wedding day. Royal blue three-piece with matching waistcoat.'
+  },
+  {
+    id:4, name:'The Knightsbridge',
+    style:'Black Tuxedo — Shawl Lapel',
+    price:599, supplier:75,
+    category:'evening',
+    tag:'best',
+    img:'https://images.unsplash.com/photo-1598808503746-f34cfdf35f7e?w=600&q=80',
+    sizes:['36S','38R','40R','42R','44R','46R'],
+    aliexpress:'https://www.aliexpress.com/wholesale?SearchText=black+tuxedo+shawl+lapel+slim+fit+men',
+    desc:'The definitive evening suit. Black shawl lapel tuxedo for black tie occasions.'
+  },
+  {
+    id:5, name:'The Belgravia',
+    style:'Burgundy — Three Piece Wedding',
+    price:549, supplier:68,
+    category:'wedding',
+    tag:'new',
+    img:'https://images.unsplash.com/photo-1610652492500-ded49ceeb378?w=600&q=80',
+    sizes:['38R','40R','42R','44R'],
+    aliexpress:'https://www.aliexpress.com/wholesale?SearchText=burgundy+three+piece+wedding+suit+men',
+    desc:'Bold and romantic burgundy for weddings and formal celebrations. A showstopper.'
+  },
+  {
+    id:6, name:'The Chelsea',
+    style:'Light Grey — Slim Fit Business',
+    price:379, supplier:42,
+    was:449,
+    category:'business',
+    tag:'sale',
+    img:'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80',
+    sizes:['S','M','L','XL','XXL'],
+    aliexpress:'https://www.aliexpress.com/wholesale?SearchText=light+grey+slim+fit+business+suit+men',
+    desc:'Versatile light grey that transitions effortlessly from office to evening.'
+  },
+  {
+    id:7, name:'The Fitzrovia',
+    style:'Camel Linen — Summer Weight',
+    price:429, supplier:52,
+    category:'casual',
+    tag:'new',
+    img:'https://images.unsplash.com/photo-1568252542512-9fe8fe9c87bb?w=600&q=80',
+    sizes:['38R','40R','42R','44R','46R'],
+    aliexpress:'https://www.aliexpress.com/wholesale?SearchText=camel+linen+suit+men+summer',
+    desc:'Italian-inspired camel linen for warm weather events and summer weddings.'
+  },
+  {
+    id:8, name:'The Soho',
+    style:'Dark Green — Modern Cut',
+    price:479, supplier:58,
+    category:'casual',
+    tag:'trending',
+    img:'https://images.unsplash.com/photo-1580657018950-f78f9bba2d8a?w=600&q=80',
+    sizes:['S','M','L','XL'],
+    aliexpress:'https://www.aliexpress.com/wholesale?SearchText=dark+green+modern+slim+suit+men',
+    desc:'The most talked-about colour of the season. Dark green for the style-conscious man.'
+  },
+  {
+    id:9, name:'The Marylebone',
+    style:'Chocolate Brown — Double Breasted',
+    price:459, supplier:56,
+    category:'business',
+    tag:null,
+    img:'https://images.unsplash.com/photo-1626497764746-6dc36546b388?w=600&q=80',
+    sizes:['38R','40R','42R','44R','46R'],
+    aliexpress:'https://www.aliexpress.com/wholesale?SearchText=chocolate+brown+double+breasted+suit+men',
+    desc:'Rich chocolate brown double-breasted. A bold choice for the man who sets trends.'
+  },
+  {
+    id:10, name:'The Claridge',
+    style:'Ivory White — Wedding Collection',
+    price:529, supplier:65,
+    category:'wedding',
+    tag:'new',
+    img:'https://images.unsplash.com/photo-1541614101331-1a5a3a194e92?w=600&q=80',
+    sizes:['38R','40R','42R','44R'],
+    aliexpress:'https://www.aliexpress.com/wholesale?SearchText=ivory+white+wedding+suit+men+slim+fit',
+    desc:'The ultimate wedding suit. Ivory white slim fit — unforgettable on the big day.'
+  }
 ];
 
-// suit SVG by color
-function suitSVG(color,cat){
-  if(cat==='accessories'){
-    return`<svg width="80" height="80" viewBox="0 0 80 80"><rect x="10" y="10" width="60" height="60" rx="4" fill="${color}" opacity="0.85"/><text x="40" y="46" text-anchor="middle" fill="white" font-size="22" font-family="Playfair Display" font-style="italic">NC</text></svg>`;
-  }
-  return`<svg width="120" height="200" viewBox="0 0 120 200" fill="none">
-    <ellipse cx="60" cy="22" rx="16" ry="18" fill="#D4A574"/>
-    <ellipse cx="60" cy="10" rx="16" ry="9" fill="#2C1810"/>
-    <rect x="52" y="37" width="16" height="10" fill="#D4A574"/>
-    <path d="M36 44 L56 38 L60 50 L64 38 L84 44 L88 108 L76 114 L60 110 L44 114 L32 108Z" fill="${color}"/>
-    <path d="M56 38 L46 44 L38 56 L46 60 L60 50Z" fill="${color}" opacity="0.7" style="filter:brightness(1.15)"/>
-    <path d="M64 38 L74 44 L82 56 L74 60 L60 50Z" fill="${color}" opacity="0.7" style="filter:brightness(1.15)"/>
-    <path d="M57 46 L60 50 L63 46 L62 76 L60 82 L58 76Z" fill="#C6932A"/>
-    <rect x="44" y="110" width="14" height="68" rx="1" fill="${color}"/>
-    <rect x="62" y="110" width="14" height="68" rx="1" fill="${color}"/>
-    <ellipse cx="51" cy="180" rx="12" ry="5" fill="#111"/>
-    <ellipse cx="69" cy="180" rx="12" ry="5" fill="#111"/>
-    <path d="M36 44 L24 82 L34 86 L46 56Z" fill="${color}"/>
-    <path d="M84 44 L96 82 L86 86 L74 56Z" fill="${color}"/>
-    <circle cx="60" cy="62" r="2" fill="#C6932A"/>
-    <circle cx="60" cy="72" r="2" fill="#C6932A"/>
-  </svg>`;
-}
+const cart = [];
 
-// Render products
-const cart=[];
-let currentFilter='all';
-let currentCheckoutItem=null;
-
-function renderProducts(filter='all'){
-  const grid=document.getElementById('productGrid');
-  const filtered=filter==='all'?products:products.filter(p=>p.category===filter);
-  grid.innerHTML=filtered.map(p=>`
-    <div class="product-card" data-id="${p.id}">
+function renderProducts(filter='all') {
+  const grid = document.getElementById('productGrid');
+  const list = filter==='all' ? products : products.filter(p=>p.category===filter);
+  grid.innerHTML = list.map(p=>`
+    <div class="product-card">
       <div class="product-img">
-        ${suitSVG(p.color,p.category)}
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
         <div class="img-overlay">
-          <button class="quick-btn" onclick="event.stopPropagation();quickAdd(${p.id})">Quick Add</button>
-          <button class="quick-btn" onclick="event.stopPropagation();openCheckout(${JSON.stringify(p).replace(/"/g,'&quot;')})">Buy Now</button>
+          <button class="quick-btn" onclick="addToCart(${p.id})">Add to Bag</button>
+          <button class="quick-btn" onclick="buyNow(${p.id})">Buy Now</button>
         </div>
         <div class="product-tags">
           ${p.tag==='best'?'<span class="tag tag-best">Best Seller</span>':''}
           ${p.tag==='new'?'<span class="tag tag-new">New In</span>':''}
           ${p.tag==='sale'?'<span class="tag tag-sale">Sale</span>':''}
-          ${p.tag==='bespoke'?'<span class="tag tag-bespoke">Bespoke</span>':''}
+          ${p.tag==='trending'?'<span class="tag tag-trending">Trending</span>':''}
         </div>
       </div>
       <div class="product-info">
         <div class="product-name">${p.name}</div>
-        <div class="product-fabric">${p.fabric}</div>
-        <div class="product-bottom">
+        <div class="product-style">${p.style}</div>
+        <div class="product-price-row">
           <div class="product-price">
-            ${p.was?`<span class="was">£${p.was.toLocaleString()}</span>`:''}
-            £${p.price.toLocaleString()}
+            ${p.was?`<span class="was">$${p.was}</span>`:''}$${p.price}
           </div>
+          <span class="profit-badge">Free US Delivery</span>
         </div>
         <div class="sizes" id="sizes-${p.id}">
-          ${p.sizes.map((s,i)=>`<button class="size-btn${i===0?' sel':''}" onclick="selectSize(${p.id},this,'${s}')">${s}</button>`).join('')}
+          ${p.sizes.map((s,i)=>`<button class="size-btn${i===0?' sel':''}" onclick="selectSize(${p.id},this)">${s}</button>`).join('')}
         </div>
         <div class="card-actions">
           <button class="btn-add" id="add-${p.id}" onclick="addToCart(${p.id})">Add to Bag</button>
-          <button class="btn-wa" title="Enquire on WhatsApp" onclick="waEnquire('${p.name}','£${p.price.toLocaleString()}')">
+          <button class="btn-wa" title="Enquire on WhatsApp" onclick="waProduct('${p.name}','$${p.price}')">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           </button>
         </div>
@@ -672,19 +615,18 @@ function renderProducts(filter='all'){
   `).join('');
 }
 
-function selectSize(id,btn,size){
+function selectSize(id,btn){
   document.querySelectorAll(`#sizes-${id} .size-btn`).forEach(b=>b.classList.remove('sel'));
   btn.classList.add('sel');
 }
-
-function getSelectedSize(id){
-  const sel=document.querySelector(`#sizes-${id} .sel`);
-  return sel?sel.textContent:'';
+function getSize(id){
+  const s=document.querySelector(`#sizes-${id} .sel`);
+  return s?s.textContent:'';
 }
 
 function addToCart(id){
   const p=products.find(x=>x.id===id);
-  const size=getSelectedSize(id);
+  const size=getSize(id)||p.sizes[0];
   cart.push({...p,size,uid:Date.now()});
   updateCartUI();
   const btn=document.getElementById('add-'+id);
@@ -692,11 +634,9 @@ function addToCart(id){
   openCart();
 }
 
-function quickAdd(id){
-  const p=products.find(x=>x.id===id);
-  cart.push({...p,size:p.sizes[0],uid:Date.now()});
-  updateCartUI();
-  openCart();
+function buyNow(id){
+  addToCart(id);
+  setTimeout(()=>{closeCart();openCheckout()},300);
 }
 
 function updateCartUI(){
@@ -705,97 +645,121 @@ function updateCartUI(){
   document.getElementById('cartBadge').textContent=count;
   document.getElementById('cartBadge').classList.toggle('show',count>0);
   document.getElementById('cartCountHead').textContent=count;
-  document.getElementById('cartTotal').textContent='£'+total.toLocaleString();
-  const itemsEl=document.getElementById('cartItems');
-  const footEl=document.getElementById('cartFoot');
-  if(count===0){
-    itemsEl.innerHTML='<div class="empty-cart"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><p>Your bag is empty</p></div>';
-    footEl.style.display='none';
-  } else {
-    footEl.style.display='block';
-    itemsEl.innerHTML=cart.map(i=>`
-      <div class="cart-item">
-        <div class="cart-item-img">${suitSVG(i.color,i.category).replace('width="120" height="200"','width="60" height="80"')}</div>
-        <div class="cart-item-info">
-          <div class="cart-item-name">${i.name}</div>
-          <div class="cart-item-detail">${i.fabric} · Size ${i.size}</div>
-          <div class="cart-item-price">£${i.price.toLocaleString()}</div>
-          <button class="cart-item-remove" onclick="removeFromCart(${i.uid})">Remove</button>
-        </div>
+  document.getElementById('cartTotal').textContent='$'+total.toLocaleString();
+  document.getElementById('cartFoot').style.display=count>0?'block':'none';
+  const el=document.getElementById('cartItems');
+  if(!count){el.innerHTML='<div class="empty-cart">Your bag is empty</div>';return}
+  el.innerHTML=cart.map(i=>`
+    <div class="cart-item">
+      <div class="cart-item-img"><img src="${i.img}" alt="${i.name}"></div>
+      <div style="flex:1">
+        <div class="cart-item-name">${i.name}</div>
+        <div class="cart-item-detail">${i.style} · ${i.size}</div>
+        <div class="cart-item-price">$${i.price.toLocaleString()}</div>
+        <button class="cart-item-remove" onclick="removeFromCart(${i.uid})">Remove</button>
       </div>
-    `).join('');
-  }
+    </div>
+  `).join('');
 }
 
 function removeFromCart(uid){cart.splice(cart.findIndex(i=>i.uid===uid),1);updateCartUI()}
 function openCart(){document.getElementById('cartOverlay').classList.add('open');document.getElementById('cartSidebar').classList.add('open')}
 function closeCart(){document.getElementById('cartOverlay').classList.remove('open');document.getElementById('cartSidebar').classList.remove('open')}
-document.getElementById('cartToggle').addEventListener('click',()=>{if(document.getElementById('cartSidebar').classList.contains('open'))closeCart();else openCart()});
+document.getElementById('cartToggle').addEventListener('click',()=>{
+  document.getElementById('cartSidebar').classList.contains('open')?closeCart():openCart()
+});
 
-// Checkout
-function openCheckout(item){
-  currentCheckoutItem=item;
-  document.getElementById('modalOrderSummary').innerHTML=`
-    <div style="display:flex;justify-content:space-between;padding:0.8rem;background:var(--ivory);border:1px solid var(--border)">
-      <div><strong>${item.name}</strong><br><span style="font-size:0.8rem;color:var(--mid)">${item.fabric||''}</span></div>
-      <strong>£${Number(item.price).toLocaleString()}</strong>
-    </div>`;
-  document.getElementById('checkoutModal').classList.add('open');
-  closeCart();
-}
-
-function openCheckoutFromCart(){
+function openCheckout(){
   const total=cart.reduce((s,i)=>s+i.price,0);
-  currentCheckoutItem={name:`${cart.length} item(s)`,price:total,fabric:''};
-  document.getElementById('modalOrderSummary').innerHTML=
-    cart.map(i=>`<div style="display:flex;justify-content:space-between;padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.88rem"><span>${i.name} · ${i.size}</span><span>£${i.price.toLocaleString()}</span></div>`).join('')+
-    `<div style="display:flex;justify-content:space-between;padding:0.7rem 0;font-weight:600"><span>Total</span><span>£${total.toLocaleString()}</span></div>`;
+  document.getElementById('checkoutSummary').innerHTML=
+    cart.map(i=>`<div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid var(--border);font-size:0.85rem"><span>${i.name} · ${i.size}</span><span>$${i.price.toLocaleString()}</span></div>`).join('')+
+    `<div style="display:flex;justify-content:space-between;padding:0.6rem 0;font-weight:600"><span>Total</span><span>$${total.toLocaleString()}</span></div>`;
   document.getElementById('checkoutModal').classList.add('open');
   closeCart();
 }
-
 function closeCheckout(){document.getElementById('checkoutModal').classList.remove('open')}
 
-function processPayment(){
-  const first=document.getElementById('checkoutFirst').value;
-  const email=document.getElementById('checkoutEmail').value;
-  if(!first||!email){alert('Please fill in your name and email to continue.');return}
-  // TO ACTIVATE: replace this with real Stripe.js integration
-  alert('✓ Order received!\n\nThank you '+first+'. We\'ll confirm your order at '+email+' within 24 hours.\n\nTo activate live payments, add your Stripe key to this file.');
-  closeCheckout();
-}
-
-// WhatsApp
-function waEnquire(name,price){
-  const msg=encodeURIComponent(`Hi NobleCut, I'm interested in ${name} (${price}). Could you tell me more?`);
-  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank');
+async function placeOrder(){
+  const first=document.getElementById('co_first').value.trim();
+  const last=document.getElementById('co_last').value.trim();
+  const email=document.getElementById('co_email').value.trim();
+  const phone=document.getElementById('co_phone').value.trim();
+  const addr=document.getElementById('co_addr').value.trim();
+  const city=document.getElementById('co_city').value.trim();
+  const post=document.getElementById('co_post').value.trim();
+  if(!first||!email||!addr||!city||!post){
+    alert('Please fill in all required fields.');return;
+  }
+  const btn=document.querySelector('.btn-pay');
+  btn.textContent='Placing order...';
+  try{
+    for(const item of cart){
+      await fetch(API+'/noblecut/orders',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          customer_name:  first+' '+last,
+          customer_email: email,
+          customer_phone: phone,
+          address_line1:  addr,
+          city:           city,
+          zipcode:       post,
+          product_name:   item.name,
+          product_fabric: item.style,
+          product_size:   item.size,
+          customer_price: item.price,
+          payment_method: 'website',
+        })
+      });
+    }
+    cart.splice(0);
+    updateCartUI();
+    closeCheckout();
+    alert('✓ Order placed! We will contact you within 24 hours to confirm delivery details.\n\nThank you for choosing NobleCut.');
+    btn.textContent='Place Order';
+  }catch(e){
+    alert('Order failed. Please try WhatsApp instead.');
+    btn.textContent='Place Order';
+  }
 }
 
 function whatsappOrder(){
-  const items=cart.map(i=>`${i.name} (${i.size}) - £${i.price.toLocaleString()}`).join('\n');
+  const items=cart.map(i=>`${i.name} (${i.size}) - $${i.price}`).join('\n');
   const total=cart.reduce((s,i)=>s+i.price,0);
-  const msg=encodeURIComponent(`Hi NobleCut, I'd like to order:\n\n${items}\n\nTotal: £${total.toLocaleString()}\n\nPlease confirm availability.`);
-  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank');
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent('Hi NobleCut, I\'d like to order:\n\n'+items+'\n\nTotal: $'+total+'\n\nPlease confirm availability.')}`, '_blank');
 }
 
 function whatsappOrderDirect(){
-  if(currentCheckoutItem){
-    const msg=encodeURIComponent(`Hi NobleCut, I'd like to order: ${currentCheckoutItem.name} - £${Number(currentCheckoutItem.price).toLocaleString()}. Please confirm.`);
-    window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank');
-  }
-  closeCheckout();
+  whatsappOrder();closeCheckout();
 }
 
-function submitEnquiry(btn){
+function waProduct(name,price){
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent('Hi NobleCut, I\'m interested in '+name+' ('+price+'). Could you tell me more?')}`, '_blank');
+}
+
+async function submitEnquiry(btn){
+  const name=`${document.getElementById('eq_first').value} ${document.getElementById('eq_last').value}`.trim();
+  const email=document.getElementById('eq_email').value;
+  const phone=document.getElementById('eq_phone').value;
+  const occasion=document.getElementById('eq_occasion').value;
+  const message=document.getElementById('eq_message').value;
+  if(!name||!email){alert('Please fill in your name and email.');return}
   btn.textContent='Sending...';
-  setTimeout(()=>{
+  try{
+    await fetch(API+'/noblecut/enquiries',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name,email,phone,occasion,message})
+    });
     btn.textContent='✓ Enquiry Sent!';
     btn.style.background='#1A7A3A';
-    setTimeout(()=>{btn.textContent='Send Enquiry';btn.style.background=''},3000);
-  },1000);
+    setTimeout(()=>{btn.textContent='Send Enquiry';btn.style.background=''},4000);
+  }catch(e){
+    btn.textContent='Send Enquiry';
+  }
 }
 
-// Filter
+// Filters
 document.querySelectorAll('.filter-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
     document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
@@ -805,15 +769,15 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
 });
 
 // Marquee
-const msgs=['SS 2026 Collection Now Available','✦','Bespoke Commissions Open','✦','Free Consultation — Mayfair Atelier','✦','New: The Sovereign Double-Breasted','✦','Complimentary Alterations for Life','✦','SS 2026 Collection Now Available','✦','Bespoke Commissions Open','✦','Free Consultation — Mayfair Atelier','✦','New: The Sovereign Double-Breasted','✦','Complimentary Alterations for Life','✦'];
+const msgs=['Premium Suits — Free US Delivery','✦','SS 2026 Collection Now Available','✦','Bespoke Commissions Open','✦','10 Signature Styles','✦','WhatsApp Us Anytime','✦','Premium Suits — Free US Delivery','✦','SS 2026 Collection Now Available','✦','Bespoke Commissions Open','✦','10 Signature Styles','✦','WhatsApp Us Anytime','✦'];
 const track=document.getElementById('marqueeInner');
-msgs.forEach(m=>{const s=document.createElement('span');s.className=m==='✦'?'dot':'';s.textContent=m;track.appendChild(s)});
+msgs.forEach(m=>{const s=document.createElement('span');s.textContent=m;track.appendChild(s)});
 
-// Nav scroll
+// Nav shadow
 window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('shadow',window.scrollY>20));
 
 // Reveal
-const ro=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);ro.unobserve(e.target)}})},{threshold:0.08});
+const ro=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);ro.unobserve(e.target)}})},{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
 // Smooth scroll
