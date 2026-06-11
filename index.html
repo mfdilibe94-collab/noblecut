@@ -3,1650 +3,824 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NobleCut — Refined Menswear</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>NobleCut — Luxury Menswear</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ══════════════════════════════════════
-   NOBLECUT — COMPLETE DESIGN SYSTEM
-   Step 1 Plan → Step 10 Launch
-══════════════════════════════════════ */
+:root{
+  --white:#FFFFFF;
+  --cream:#FDFAF4;
+  --ivory:#F7F3EC;
+  --navy:#0A1628;
+  --navy2:#152238;
+  --gold:#C9973A;
+  --gold2:#E8B84B;
+  --charcoal:#1C1C1C;
+  --mid:#6B6B6B;
+  --light:#E8E2D5;
+  --border:#EDEAD5;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--charcoal);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font-family:'DM Sans',sans-serif;cursor:pointer}
 
-:root{
-  --cream:#FDFAF4;
-  --warm:#F5EDD8;
-  --ivory:#FAF7F0;
-  --gold:#C6932A;
-  --gold-l:#E8B84B;
-  --gold-xl:#F5D070;
-  --em:#1A4A3C;
-  --em2:#2D6B57;
-  --em3:#3D8F74;
-  --slate:#2A2D3A;
-  --charcoal:#1C1C1C;
-  --mid:#2E2E2E;
-  --muted:#6B6055;
-  --border:rgba(198,147,42,0.15);
-}
+/* TOP BAR */
+.topbar{background:var(--navy);color:rgba(255,255,255,0.75);text-align:center;padding:0.55rem 1rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase}
+.topbar span{color:var(--gold2)}
 
-body{
-  background:var(--cream);
-  color:var(--charcoal);
-  font-family:'DM Sans',sans-serif;
-  font-weight:300;
-  overflow-x:hidden;
-}
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:1px solid var(--border);padding:0 3rem;display:flex;align-items:center;justify-content:space-between;height:70px;transition:box-shadow .3s}
+nav.shadow{box-shadow:0 4px 24px rgba(0,0,0,0.08)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;letter-spacing:0.03em;color:var(--navy)}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--charcoal);transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-actions{display:flex;align-items:center;gap:1.2rem}
+.nav-icon-btn{background:none;border:none;padding:0.3rem;color:var(--charcoal);display:flex;align-items:center;justify-content:center;transition:color .2s}
+.nav-icon-btn:hover{color:var(--gold)}
+.cart-trigger{position:relative}
+.cart-badge{position:absolute;top:-4px;right:-4px;background:var(--gold);color:white;font-size:0.6rem;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
+.cart-badge.show{opacity:1}
+.btn-nav{background:var(--navy);color:white;padding:0.55rem 1.3rem;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:none;transition:background .2s}
+.btn-nav:hover{background:var(--navy2)}
 
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:var(--warm)}
-::-webkit-scrollbar-thumb{background:var(--gold)}
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:580px}
+.hero-left{background:var(--navy);display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem;position:relative;overflow:hidden}
+.hero-left::before{content:'';position:absolute;top:-40%;right:-20%;width:500px;height:500px;background:radial-gradient(circle,rgba(201,151,58,0.12),transparent 70%)}
+.hero-eyebrow{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem;display:flex;align-items:center;gap:0.8rem}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--gold)}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.6rem);font-weight:700;color:white;line-height:1.08;margin-bottom:1.6rem}
+.hero-h1 em{font-style:italic;color:var(--gold2)}
+.hero-p{font-size:0.95rem;line-height:1.75;color:rgba(255,255,255,0.65);max-width:420px;margin-bottom:2.4rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:white;padding:0.85rem 2rem;font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border:none;transition:background .2s;display:inline-block}
+.btn-gold:hover{background:#b8862e}
+.btn-outline-white{background:transparent;color:white;padding:0.85rem 2rem;font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border:1.5px solid rgba(255,255,255,0.35);transition:all .2s;display:inline-block}
+.btn-outline-white:hover{border-color:white;background:rgba(255,255,255,0.07)}
+.hero-right{background:var(--ivory);display:flex;align-items:center;justify-content:center;padding:3rem;position:relative}
+.hero-right::after{content:'SS 2026';position:absolute;top:1.5rem;right:1.5rem;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:0.3rem 0.7rem}
+.hero-trust{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1)}
+.trust-item{text-align:left}
+.trust-num{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:white}
+.trust-label{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:0.15rem}
 
-/* ── UTILITY ── */
-.btn-em{
-  display:inline-block;background:var(--em);color:#fff;
-  padding:16px 40px;font-family:'DM Sans',sans-serif;
-  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
-  font-weight:500;text-decoration:none;border:none;cursor:pointer;
-  transition:background .28s,transform .18s;
-}
-.btn-em:hover{background:var(--em2);transform:translateY(-2px)}
+/* MARQUEE */
+.marquee{background:var(--navy);padding:0.6rem 0;overflow:hidden;border-top:1px solid rgba(255,255,255,0.06)}
+.marquee-inner{display:flex;animation:scroll 30s linear infinite;white-space:nowrap}
+.marquee:hover .marquee-inner{animation-play-state:paused}
+.marquee-inner span{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,151,58,0.8);padding:0 2rem}
+.marquee-inner .dot{color:rgba(201,151,58,0.3)}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-.btn-outline-dark{
-  display:inline-block;background:transparent;
-  color:var(--charcoal);border:1.5px solid rgba(28,28,28,.22);
-  padding:15px 40px;font-family:'DM Sans',sans-serif;
-  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
-  font-weight:400;text-decoration:none;
-  transition:border-color .25s,color .25s;cursor:pointer;
-}
-.btn-outline-dark:hover{border-color:var(--em);color:var(--em)}
+/* SECTION UTILS */
+.section{padding:5rem 3rem}
+.section-sm{padding:4rem 3rem}
+.eyebrow{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.9rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:700;margin-bottom:0.9rem}
+.section-title em{font-style:italic;color:var(--navy)}
+.section-sub{font-size:0.92rem;line-height:1.75;color:var(--mid);max-width:500px}
+.rule{width:2.5rem;height:2px;background:var(--gold);margin:1.2rem 0}
 
-.btn-white{
-  display:inline-block;background:#fff;color:var(--em);
-  padding:16px 40px;font-family:'DM Sans',sans-serif;
-  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
-  font-weight:500;text-decoration:none;
-  transition:background .25s;cursor:pointer;border:none;
-}
-.btn-white:hover{background:var(--warm)}
+/* FILTER BAR */
+.filter-bar{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:3rem;overflow-x:auto}
+.filter-btn{background:none;border:none;padding:0.85rem 1.6rem;font-size:0.8rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid);border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .2s}
+.filter-btn:hover{color:var(--navy)}
+.filter-btn.active{color:var(--navy);border-bottom-color:var(--gold);font-weight:600}
 
-.btn-outline-white{
-  display:inline-block;background:transparent;color:#fff;
-  border:1.5px solid rgba(255,255,255,.3);
-  padding:15px 40px;font-family:'DM Sans',sans-serif;
-  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
-  font-weight:400;text-decoration:none;
-  transition:border-color .25s,color .25s;cursor:pointer;
-}
-.btn-outline-white:hover{border-color:#fff;color:#fff}
+/* PRODUCT GRID */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--border)}
+.product-card{background:var(--white);position:relative;overflow:hidden;transition:transform .3s}
+.product-card:hover{z-index:2;transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.1)}
+.product-img{background:var(--ivory);height:380px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.product-img .img-overlay{position:absolute;inset:0;background:var(--navy);display:flex;align-items:center;justify-content:center;gap:0.8rem;opacity:0;transition:opacity .3s}
+.product-card:hover .img-overlay{opacity:1}
+.quick-btn{background:white;color:var(--navy);padding:0.6rem 1.1rem;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:none;transition:background .2s}
+.quick-btn:hover{background:var(--gold);color:white}
+.product-tags{position:absolute;top:0.8rem;left:0.8rem;display:flex;flex-direction:column;gap:0.3rem}
+.tag{font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.55rem;line-height:1.4}
+.tag-new{background:var(--navy);color:white}
+.tag-sale{background:#C0392B;color:white}
+.tag-best{background:var(--gold);color:white}
+.tag-bespoke{background:var(--charcoal);color:white}
+.product-info{padding:1.2rem 1.4rem 1.4rem}
+.product-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;margin-bottom:0.25rem}
+.product-fabric{font-size:0.75rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--mid);margin-bottom:0.7rem}
+.product-bottom{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.9rem}
+.product-price{font-size:1.1rem;font-weight:600;color:var(--navy)}
+.product-price .was{font-size:0.82rem;color:var(--mid);text-decoration:line-through;margin-right:0.4rem;font-weight:400}
+.sizes{display:flex;gap:0.3rem;flex-wrap:wrap;margin-bottom:1rem}
+.size-btn{background:none;border:1px solid var(--border);padding:0.28rem 0.55rem;font-size:0.72rem;font-weight:500;letter-spacing:0.04em;transition:all .2s;color:var(--charcoal)}
+.size-btn:hover,.size-btn.sel{background:var(--navy);color:white;border-color:var(--navy)}
+.size-btn.out{opacity:0.35;cursor:not-allowed}
+.card-actions{display:flex;gap:0.5rem}
+.btn-add{flex:1;background:var(--navy);color:white;padding:0.7rem;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:none;transition:background .2s}
+.btn-add:hover{background:var(--navy2)}
+.btn-add.added{background:#1A7A3A}
+.btn-wa{background:#25D366;color:white;padding:0.7rem 0.9rem;border:none;font-size:1rem;transition:background .2s}
+.btn-wa:hover{background:#1db954}
 
-.eyebrow{
-  display:inline-flex;align-items:center;gap:12px;
-  font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--gold);font-weight:500;margin-bottom:20px;
-}
-.eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
+/* FEATURED STRIP */
+.featured-strip{background:var(--navy);color:white;display:grid;grid-template-columns:1fr 1fr;min-height:460px}
+.featured-img{background:linear-gradient(135deg,#152238 0%,#0A1628 100%);display:flex;align-items:center;justify-content:center;position:relative}
+.featured-content{padding:4rem;display:flex;flex-direction:column;justify-content:center}
+.featured-content .eyebrow{color:var(--gold)}
+.featured-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.8rem);color:white;line-height:1.15;margin-bottom:1.2rem}
+.featured-title em{font-style:italic;color:var(--gold2)}
+.featured-desc{font-size:0.92rem;line-height:1.75;color:rgba(255,255,255,0.6);margin-bottom:2rem;max-width:440px}
+.featured-points{display:flex;flex-direction:column;gap:0.8rem;margin-bottom:2.2rem}
+.fp{display:flex;align-items:flex-start;gap:0.8rem;font-size:0.87rem;color:rgba(255,255,255,0.75)}
+.fp::before{content:'✦';color:var(--gold);font-size:0.7rem;margin-top:0.15rem;flex-shrink:0}
 
-.section-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(2rem,3.8vw,3.6rem);
-  font-weight:700;line-height:1.08;
-  color:var(--charcoal);margin-bottom:14px;
-}
-.section-title em{font-style:italic;color:var(--em)}
-.section-desc{font-size:.88rem;line-height:1.9;color:var(--muted);max-width:500px}
+/* BESPOKE SECTION */
+.bespoke-section{background:var(--ivory)}
+.bespoke-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.bespoke-steps{display:flex;flex-direction:column;gap:2rem;margin-top:1.5rem}
+.b-step{display:flex;gap:1.4rem;padding:1.4rem;border:1px solid var(--border);background:white;transition:border-color .2s}
+.b-step:hover{border-color:var(--gold)}
+.b-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1;min-width:2rem}
+.b-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;margin-bottom:0.3rem;color:var(--navy)}
+.b-desc{font-size:0.85rem;line-height:1.65;color:var(--mid)}
 
-/* ── REVEAL ANIMATIONS ── */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
-.reveal.up{opacity:1;transform:translateY(0)}
-.reveal-l{opacity:0;transform:translateX(-30px);transition:opacity .8s ease,transform .8s ease}
-.reveal-l.up{opacity:1;transform:translateX(0)}
-.reveal-r{opacity:0;transform:translateX(30px);transition:opacity .8s ease,transform .8s ease}
-.reveal-r.up{opacity:1;transform:translateX(0)}
+/* ENQUIRY FORM */
+.enquiry-form{background:white;padding:2.5rem;border:1px solid var(--border)}
+.form-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;color:var(--navy);margin-bottom:0.4rem}
+.form-sub{font-size:0.85rem;color:var(--mid);margin-bottom:1.8rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem}
+.form-group label{font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--charcoal)}
+.form-group input,.form-group select,.form-group textarea{border:1px solid var(--border);padding:0.7rem 1rem;font-size:0.88rem;font-family:'DM Sans',sans-serif;color:var(--charcoal);background:var(--cream);transition:border-color .2s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group textarea{resize:vertical;min-height:90px}
+.btn-submit{width:100%;background:var(--navy);color:white;padding:0.85rem;font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border:none;transition:background .2s;margin-top:0.5rem}
+.btn-submit:hover{background:var(--navy2)}
 
-/* ══════════════════════════════════════
-   NAV
-══════════════════════════════════════ */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:900;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:20px 64px;
-  background:rgba(253,250,244,.94);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid transparent;
-  transition:border-color .3s,box-shadow .3s,padding .3s;
-}
-nav.scrolled{
-  border-color:var(--border);
-  box-shadow:0 2px 32px rgba(0,0,0,.06);
-  padding:14px 64px;
-}
-.nav-logo{
-  font-family:'Playfair Display',serif;
-  font-size:1.45rem;font-weight:700;letter-spacing:.04em;
-  color:var(--charcoal);text-decoration:none;
-  display:flex;align-items:center;gap:9px;
-}
-.logo-star{
-  width:26px;height:26px;background:var(--em);
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-}
-.nav-links{display:flex;gap:34px;list-style:none}
-.nav-links a{
-  color:var(--charcoal);text-decoration:none;
-  font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;font-weight:400;
-  opacity:.6;transition:opacity .25s,color .25s;
-}
-.nav-links a:hover{opacity:1;color:var(--em)}
-.nav-right{display:flex;align-items:center;gap:18px}
-.nav-icon{
-  background:none;border:none;cursor:pointer;
-  font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--charcoal);opacity:.6;font-family:'DM Sans',sans-serif;
-  transition:opacity .25s;padding:0;
-}
-.nav-icon:hover{opacity:1;color:var(--em)}
-.nav-cart{
-  background:var(--em);color:#fff;
-  padding:9px 22px;font-size:.68rem;
-  letter-spacing:.2em;text-transform:uppercase;
-  text-decoration:none;font-weight:500;
-  transition:background .25s;
-}
-.nav-cart:hover{background:var(--em2)}
-.nav-ham{
-  display:none;background:none;border:none;
-  cursor:pointer;flex-direction:column;gap:5px;padding:0;
-}
-.nav-ham span{display:block;width:22px;height:1.5px;background:var(--charcoal)}
+/* TESTIMONIALS */
+.testimonials-section{background:var(--navy);color:white;text-align:center;padding:5rem 3rem}
+.stars-row{color:var(--gold);font-size:1.1rem;letter-spacing:0.3rem;margin-bottom:1.8rem}
+.testi-quote{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.5vw,1.9rem);font-style:italic;line-height:1.5;max-width:700px;margin:0 auto 1rem;font-weight:400}
+.testi-author{font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4rem}
+.stats-row{display:flex;justify-content:center;gap:5rem;flex-wrap:wrap;padding-top:3rem;border-top:1px solid rgba(255,255,255,0.08)}
+.stat-item .num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:var(--gold)}
+.stat-item .lbl{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.2rem}
 
-/* ══════════════════════════════════════
-   HERO
-══════════════════════════════════════ */
-.hero{
-  min-height:100vh;padding-top:82px;
-  display:grid;grid-template-columns:52% 48%;
-  background:var(--ivory);overflow:hidden;
-}
-.hero-left{
-  padding:70px 56px 80px 64px;
-  display:flex;flex-direction:column;justify-content:center;
-  position:relative;
-}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:12px;
-  font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--gold);font-weight:500;margin-bottom:26px;
-}
-.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--gold)}
-.hero-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(3rem,5.2vw,5.4rem);
-  font-weight:700;line-height:1.04;
-  color:var(--charcoal);margin-bottom:26px;
-}
-.hero-title em{font-style:italic;color:var(--em)}
-.hero-sub{
-  font-size:.9rem;line-height:1.88;color:var(--muted);
-  max-width:400px;margin-bottom:44px;
-}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px}
-.hero-stats{display:flex;gap:44px}
-.stat-n{
-  font-family:'Playfair Display',serif;
-  font-size:2.1rem;font-weight:700;color:var(--em);
-  line-height:1;margin-bottom:3px;
-}
-.stat-l{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.hero-right{
-  position:relative;overflow:hidden;
-  background:var(--em);
-}
-.hero-badge{
-  position:absolute;bottom:44px;left:-2px;z-index:5;
-  background:var(--gold);padding:18px 26px;
-}
-.hero-badge p{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.8);margin-bottom:3px}
-.hero-badge strong{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#fff}
+/* CTA BANNER */
+.cta-banner{background:var(--gold);padding:4rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem}
+.cta-text .cta-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:white;margin-bottom:0.4rem}
+.cta-text p{font-size:0.92rem;color:rgba(255,255,255,0.8)}
+.cta-btns{display:flex;gap:1rem}
+.btn-white{background:white;color:var(--gold);padding:0.85rem 2rem;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border:none;transition:all .2s}
+.btn-white:hover{background:var(--cream)}
+.btn-outline-w{background:transparent;color:white;padding:0.85rem 2rem;font-size:0.82rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:2px solid rgba(255,255,255,0.6);transition:all .2s}
+.btn-outline-w:hover{border-color:white;background:rgba(255,255,255,0.1)}
 
-/* ══════════════════════════════════════
-   MARQUEE
-══════════════════════════════════════ */
-.marquee-bar{background:var(--charcoal);overflow:hidden;padding:15px 0}
-.marquee-inner{
-  display:inline-flex;white-space:nowrap;
-  animation:marquee 32s linear infinite;
-}
-.marquee-inner:hover{animation-play-state:paused}
-.marquee-inner span{
-  font-family:'Playfair Display',serif;font-style:italic;
-  font-size:.9rem;letter-spacing:.07em;
-  color:rgba(255,255,255,.45);padding:0 22px;
-}
-.marquee-inner .dot{color:var(--gold);opacity:1;padding:0 6px;font-style:normal}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* FOOTER */
+footer{background:#0A0A0F;color:rgba(255,255,255,0.5);padding:4rem 3rem 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.f-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:white;margin-bottom:0.8rem}
+.f-logo span{color:var(--gold)}
+.f-tagline{font-size:0.84rem;line-height:1.7;max-width:240px;margin-bottom:1.4rem}
+.f-social{display:flex;gap:0.8rem}
+.f-social a{width:34px;height:34px;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;font-size:0.8rem;transition:background .2s;color:rgba(255,255,255,0.6)}
+.f-social a:hover{background:var(--gold);color:white}
+.f-col h4{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:white;margin-bottom:1.2rem;font-weight:600}
+.f-col ul{list-style:none}
+.f-col ul li{margin-bottom:0.65rem}
+.f-col ul li a{font-size:0.83rem;color:rgba(255,255,255,0.45);transition:color .2s}
+.f-col ul li a:hover{color:var(--gold)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.06);font-size:0.76rem;flex-wrap:wrap;gap:1rem}
+.footer-bottom a{color:var(--gold)}
 
-/* ══════════════════════════════════════
-   SECTION BASE
-══════════════════════════════════════ */
-.section{padding:110px 64px}
+/* CART SIDEBAR */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:300;opacity:0;pointer-events:none;transition:opacity .3s}
+.cart-overlay.open{opacity:1;pointer-events:all}
+.cart-sidebar{position:fixed;top:0;right:-420px;width:420px;max-width:100vw;height:100vh;background:white;z-index:301;display:flex;flex-direction:column;transition:right .3s;box-shadow:-8px 0 40px rgba(0,0,0,0.12)}
+.cart-sidebar.open{right:0}
+.cart-head{padding:1.4rem 1.6rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.cart-head h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600}
+.cart-close{background:none;border:none;font-size:1.4rem;color:var(--mid);padding:0.2rem}
+.cart-items{flex:1;overflow-y:auto;padding:1.2rem 1.6rem}
+.empty-cart{text-align:center;padding:3rem 1rem;color:var(--mid)}
+.empty-cart svg{margin:0 auto 1rem;display:block;opacity:0.3}
+.empty-cart p{font-size:0.9rem}
+.cart-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border)}
+.cart-item-img{width:72px;height:90px;background:var(--ivory);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.cart-item-info{flex:1}
+.cart-item-name{font-weight:600;font-size:0.92rem;margin-bottom:0.2rem}
+.cart-item-detail{font-size:0.78rem;color:var(--mid);margin-bottom:0.5rem}
+.cart-item-price{font-weight:600;color:var(--navy);font-size:0.92rem}
+.cart-item-remove{background:none;border:none;color:var(--mid);font-size:0.75rem;margin-top:0.3rem;padding:0;text-transform:uppercase;letter-spacing:0.06em}
+.cart-item-remove:hover{color:#C0392B}
+.cart-foot{padding:1.4rem 1.6rem;border-top:1px solid var(--border)}
+.cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem}
+.cart-total-label{font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid)}
+.cart-total-price{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--navy)}
+.btn-checkout{width:100%;background:var(--navy);color:white;padding:1rem;font-size:0.85rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border:none;transition:background .2s;margin-bottom:0.7rem}
+.btn-checkout:hover{background:var(--navy2)}
+.btn-wa-checkout{width:100%;background:#25D366;color:white;padding:0.85rem;font-size:0.82rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:none;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:0.5rem}
+.btn-wa-checkout:hover{background:#1db954}
 
-/* ══════════════════════════════════════
-   COLLECTIONS
-══════════════════════════════════════ */
-.collections{background:var(--ivory)}
-.coll-header{
-  display:flex;justify-content:space-between;align-items:flex-end;
-  margin-bottom:52px;
-}
-.view-all{
-  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--em);text-decoration:none;font-weight:500;
-  border-bottom:1px solid var(--em);padding-bottom:2px;
-  display:inline-flex;align-items:center;gap:8px;
-  transition:opacity .25s;
-}
-.view-all:hover{opacity:.65}
-.coll-grid{
-  display:grid;
-  grid-template-columns:1.35fr 1fr 1fr;
-  grid-template-rows:490px 310px;
-  gap:14px;
-}
-.c-card{
-  position:relative;overflow:hidden;cursor:pointer;
-  background:var(--warm);
-}
-.c-card.tall{grid-row:1/3}
-.c-card-img{
-  width:100%;height:100%;
-  transition:transform .85s cubic-bezier(.25,.46,.45,.94);
-}
-.c-card:hover .c-card-img{transform:scale(1.05)}
-.c-card-img svg{width:100%;height:100%;display:block}
-.c-overlay{
-  position:absolute;bottom:0;left:0;right:0;
-  padding:26px 22px;
-  background:linear-gradient(to top,rgba(26,74,60,.92) 0%,rgba(26,74,60,.25) 65%,transparent 100%);
-  transform:translateY(5px);transition:transform .35s;
-}
-.c-card:hover .c-overlay{transform:translateY(0)}
-.c-cat{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-l);margin-bottom:5px}
-.c-name{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#fff;margin-bottom:4px}
-.c-price{font-size:.73rem;color:rgba(255,255,255,.6);letter-spacing:.06em}
-.c-tag{
-  position:absolute;top:16px;right:16px;
-  background:var(--gold);color:#fff;
-  padding:4px 12px;font-size:.55rem;
-  letter-spacing:.2em;text-transform:uppercase;font-weight:500;
-}
+/* CHECKOUT MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:400;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:white;width:100%;max-width:500px;max-height:90vh;overflow-y:auto}
+.modal-head{background:var(--navy);color:white;padding:1.4rem 1.8rem;display:flex;align-items:center;justify-content:space-between}
+.modal-head h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600}
+.modal-close{background:none;border:none;color:rgba(255,255,255,0.6);font-size:1.3rem}
+.modal-body{padding:1.8rem}
+.modal-section-title{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border)}
+.stripe-note{background:var(--ivory);border:1px solid var(--border);padding:0.8rem 1rem;font-size:0.8rem;color:var(--mid);margin-bottom:1.2rem;line-height:1.6}
+.stripe-note strong{color:var(--navy)}
+.card-mock{border:1px solid var(--border);padding:0.7rem 1rem;background:var(--cream);margin-bottom:0.8rem;font-size:0.88rem;color:var(--mid);display:flex;align-items:center;justify-content:space-between}
+.card-brands{display:flex;gap:0.4rem}
+.card-brand{background:white;border:1px solid var(--border);padding:0.2rem 0.5rem;font-size:0.65rem;font-weight:700;letter-spacing:0.05em;border-radius:2px}
+.btn-pay{width:100%;background:var(--gold);color:white;padding:1rem;font-size:0.88rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border:none;margin-top:1.2rem;transition:background .2s}
+.btn-pay:hover{background:#b8862e}
+.secure-note{text-align:center;font-size:0.72rem;color:var(--mid);margin-top:0.7rem}
 
-/* ══════════════════════════════════════
-   BESPOKE
-══════════════════════════════════════ */
-.bespoke{
-  background:var(--em);
-  display:grid;grid-template-columns:1fr 1fr;
-  min-height:72vh;
-}
-.bespoke-vis{
-  position:relative;overflow:hidden;
-  background:var(--em2);
-  display:flex;align-items:center;justify-content:center;
-}
-.bespoke-vis svg{width:100%;height:100%;display:block}
-.bespoke-content{
-  padding:80px 72px;
-  display:flex;flex-direction:column;justify-content:center;
-}
-.bespoke-eyebrow{
-  display:inline-flex;align-items:center;gap:12px;
-  font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--gold-l);font-weight:500;margin-bottom:20px;
-}
-.bespoke-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold-l)}
-.bespoke-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.8rem,3vw,3rem);font-weight:700;
-  color:#fff;line-height:1.12;margin-bottom:18px;
-}
-.bespoke-title em{font-style:italic;color:var(--gold-l)}
-.bespoke-desc{font-size:.87rem;line-height:1.9;color:rgba(255,255,255,.55);margin-bottom:36px}
-.bespoke-steps{display:flex;flex-direction:column;gap:0;margin-bottom:40px}
-.b-step{
-  display:flex;gap:20px;align-items:flex-start;
-  padding:17px 0;border-top:1px solid rgba(255,255,255,.1);
-}
-.b-step:last-child{border-bottom:1px solid rgba(255,255,255,.1)}
-.b-num{
-  font-family:'Playfair Display',serif;
-  font-size:1.4rem;font-weight:400;font-style:italic;
-  color:var(--gold-l);min-width:28px;line-height:1;
-}
-.b-body h4{
-  font-size:.73rem;letter-spacing:.14em;text-transform:uppercase;
-  color:#fff;margin-bottom:3px;
-}
-.b-body p{font-size:.78rem;color:rgba(255,255,255,.48);line-height:1.7}
+/* WHATSAPP FLOAT */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:150;background:#25D366;color:white;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform .2s,box-shadow .2s;border:none}
+.wa-float:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(37,211,102,0.5)}
+.wa-tooltip{position:absolute;right:68px;background:#1C1C1C;color:white;font-size:0.75rem;white-space:nowrap;padding:0.4rem 0.8rem;border-radius:2px;opacity:0;transition:opacity .2s;pointer-events:none}
+.wa-float:hover .wa-tooltip{opacity:1}
 
-/* ══════════════════════════════════════
-   LOOKBOOK
-══════════════════════════════════════ */
-.lookbook{background:var(--cream)}
-.look-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  grid-template-rows:400px 400px;
-  gap:14px;margin-top:52px;
-}
-.l-card{position:relative;overflow:hidden;cursor:pointer;background:var(--warm)}
-.l-card.tall{grid-row:1/3}
-.l-card.wide{grid-column:2/4}
-.l-img{
-  width:100%;height:100%;
-  transition:transform .85s cubic-bezier(.25,.46,.45,.94);
-}
-.l-card:hover .l-img{transform:scale(1.055)}
-.l-img svg{width:100%;height:100%;display:block}
-.l-info{
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  padding:26px 22px;
-  background:linear-gradient(to top,rgba(26,74,60,.82) 0%,transparent 55%);
-  opacity:0;transition:opacity .35s;
-}
-.l-card:hover .l-info{opacity:1}
-.l-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px}
-.l-sub{font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s,transform .65s}
+.reveal.visible{opacity:1;transform:translateY(0)}
 
-/* ══════════════════════════════════════
-   ACCESSORIES
-══════════════════════════════════════ */
-.accessories{background:var(--ivory)}
-.acc-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:14px;margin-top:52px;
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero-right{min-height:300px}
+  .section,.section-sm{padding:3.5rem 1.5rem}
+  .featured-strip{grid-template-columns:1fr}
+  .featured-img{min-height:260px}
+  .bespoke-inner{grid-template-columns:1fr;gap:2.5rem}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .cta-banner{flex-direction:column;text-align:center}
+  .cta-btns{flex-wrap:wrap;justify-content:center}
+  .stats-row{gap:2.5rem}
+  .form-row{grid-template-columns:1fr}
 }
-.a-card{
-  background:#fff;overflow:hidden;cursor:pointer;
-  border:1px solid rgba(198,147,42,.1);
-  transition:box-shadow .32s,transform .32s;
+@media(max-width:600px){
+  .hero-left{padding:3rem 1.5rem}
+  .product-grid{grid-template-columns:1fr 1fr}
+  .product-img{height:260px}
+  .footer-grid{grid-template-columns:1fr}
+  .cart-sidebar{width:100vw}
 }
-.a-card:hover{
-  box-shadow:0 14px 48px rgba(26,74,60,.12);
-  transform:translateY(-5px);
-}
-.a-img{
-  height:270px;background:var(--warm);
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
-}
-.a-img svg{transition:transform .65s cubic-bezier(.25,.46,.45,.94)}
-.a-card:hover .a-img svg{transform:scale(1.07)}
-.a-info{padding:17px 17px 22px}
-.a-cat{font-size:.57rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
-.a-name{font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;color:var(--charcoal);margin-bottom:11px}
-.a-foot{display:flex;justify-content:space-between;align-items:center}
-.a-price{font-size:.78rem;color:var(--em);font-weight:500;letter-spacing:.04em}
-.a-add{
-  width:30px;height:30px;border:1.5px solid var(--em);
-  background:transparent;color:var(--em);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;cursor:pointer;
-  transition:background .25s,color .25s;
-  font-family:'DM Sans',sans-serif;
-}
-.a-add:hover{background:var(--em);color:#fff}
-
-/* ══════════════════════════════════════
-   TESTIMONIAL
-══════════════════════════════════════ */
-.testimonial{
-  background:var(--charcoal);
-  padding:100px 64px;
-  display:flex;flex-direction:column;align-items:center;
-  text-align:center;
-}
-.test-stars{display:flex;gap:5px;justify-content:center;margin-bottom:22px}
-.test-star{color:var(--gold-l);font-size:1rem}
-.test-quote{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.3rem,2.7vw,2.1rem);
-  font-weight:400;font-style:italic;
-  color:#fff;line-height:1.58;
-  max-width:780px;margin-bottom:32px;
-}
-.test-eyebrow{
-  display:inline-flex;align-items:center;gap:12px;
-  font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--gold);font-weight:500;margin-bottom:28px;
-}
-.test-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
-.test-attr{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)}
-.test-clients{
-  display:flex;gap:48px;margin-top:56px;
-  border-top:1px solid rgba(255,255,255,.07);
-  padding-top:52px;flex-wrap:wrap;justify-content:center;
-}
-.test-client{text-align:center}
-.tc-n{
-  font-family:'Playfair Display',serif;
-  font-size:2rem;font-weight:700;color:var(--gold-l);
-  line-height:1;margin-bottom:5px;
-}
-.tc-l{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35)}
-
-/* ══════════════════════════════════════
-   MATERIALS
-══════════════════════════════════════ */
-.materials{background:var(--cream)}
-.mat-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  margin-top:52px;
-  border:1px solid rgba(198,147,42,.15);
-}
-.mat-cell{
-  padding:38px 30px;
-  border-right:1px solid rgba(198,147,42,.12);
-  transition:background .28s;
-}
-.mat-cell:last-child{border-right:none}
-.mat-cell:hover{background:rgba(26,74,60,.04)}
-.mat-icon{
-  width:42px;height:42px;
-  background:var(--warm);
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:18px;
-}
-.mat-name{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:700;color:var(--charcoal);margin-bottom:9px}
-.mat-desc{font-size:.76rem;line-height:1.82;color:var(--muted)}
-
-/* ══════════════════════════════════════
-   CTA BANNER
-══════════════════════════════════════ */
-.cta-banner{
-  background:var(--em);
-  padding:88px 64px;
-  display:flex;align-items:center;justify-content:space-between;gap:40px;
-  flex-wrap:wrap;
-}
-.cta-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;
-  color:#fff;line-height:1.12;margin-bottom:10px;
-}
-.cta-title em{font-style:italic;color:var(--gold-l)}
-.cta-sub{font-size:.86rem;color:rgba(255,255,255,.52);line-height:1.72}
-.cta-btns{display:flex;gap:13px;flex-shrink:0;flex-wrap:wrap}
-
-/* ══════════════════════════════════════
-   FOOTER
-══════════════════════════════════════ */
-footer{
-  background:var(--charcoal);
-  padding:78px 64px 38px;
-  border-top:1px solid rgba(255,255,255,.05);
-}
-.foot-top{
-  display:grid;grid-template-columns:2.3fr 1fr 1fr 1fr;
-  gap:56px;margin-bottom:56px;
-}
-.foot-logo{
-  font-family:'Playfair Display',serif;
-  font-size:1.3rem;font-weight:700;color:#fff;
-  letter-spacing:.04em;margin-bottom:15px;
-  display:flex;align-items:center;gap:9px;
-}
-.foot-tag{font-size:.78rem;line-height:1.82;color:rgba(255,255,255,.28);max-width:280px}
-.foot-col h5{
-  font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:17px;
-}
-.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-.foot-col a{
-  font-size:.78rem;color:rgba(255,255,255,.35);
-  text-decoration:none;transition:color .25s;
-}
-.foot-col a:hover{color:#fff}
-.foot-bottom{
-  display:flex;justify-content:space-between;align-items:center;
-  padding-top:26px;border-top:1px solid rgba(255,255,255,.06);
-  font-size:.63rem;letter-spacing:.1em;color:rgba(255,255,255,.18);
-}
-
-/* ══════════════════════════════════════
-   MOBILE
-══════════════════════════════════════ */
-@media(max-width:900px){
-  nav{padding:18px 24px}
-  nav.scrolled{padding:12px 24px}
-  .nav-links,.nav-right{display:none}
-  .nav-ham{display:flex}
-  .hero{grid-template-columns:1fr;min-height:auto}
-  .hero-right{height:420px}
-  .hero-left{padding:56px 24px 48px}
-  .hero-stats{gap:24px}
-  .section{padding:72px 24px}
-  .coll-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;gap:10px}
-  .c-card.tall{grid-row:auto}
-  .bespoke{grid-template-columns:1fr}
-  .bespoke-vis{height:320px}
-  .look-grid{grid-template-columns:1fr 1fr;grid-template-rows:280px 280px}
-  .l-card.tall{grid-row:auto}
-  .l-card.wide{grid-column:auto}
-  .acc-grid{grid-template-columns:1fr 1fr;gap:10px}
-  .mat-grid{grid-template-columns:1fr 1fr}
-  .mat-cell{border-right:none;border-bottom:1px solid rgba(198,147,42,.12)}
-  .foot-top{grid-template-columns:1fr 1fr;gap:32px}
-  .cta-banner{flex-direction:column;padding:56px 24px}
-  .coll-header{flex-direction:column;align-items:flex-start;gap:14px}
+@media(max-width:400px){
+  .product-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<!-- ══ NAV ══ -->
-<nav id="nav">
-  <a href="#" class="nav-logo">
-    <div class="logo-star">
-      <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-        <path d="M6.5 0.5L8.2 4.5H12.5L9.15 7.3L10.5 11.8L6.5 9.3L2.5 11.8L3.85 7.3L0.5 4.5H4.8Z" fill="white"/>
-      </svg>
-    </div>
-    NobleCut
-  </a>
+<!-- TOP BAR -->
+<div class="topbar">Free consultation at our <span>Mayfair Atelier</span> — Book now →</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Noble<span>Cut</span></a>
   <ul class="nav-links">
-    <li><a href="#collections">Collections</a></li>
+    <li><a href="#shop">Shop</a></li>
     <li><a href="#bespoke">Bespoke</a></li>
     <li><a href="#lookbook">Lookbook</a></li>
-    <li><a href="#accessories">Accessories</a></li>
-    <li><a href="#materials">Fabrics</a></li>
+    <li><a href="#about">About</a></li>
   </ul>
-  <div class="nav-right">
-    <button class="nav-icon">Search</button>
-    <button class="nav-icon">Wishlist</button>
-    <a href="#" class="nav-cart">Cart (0)</a>
+  <div class="nav-actions">
+    <button class="nav-icon-btn" title="Search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    </button>
+    <button class="nav-icon-btn cart-trigger" id="cartToggle" title="Cart">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+    <a href="#bespoke" class="btn-nav">Book Fitting</a>
   </div>
-  <button class="nav-ham" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
 
-<!-- ══ HERO ══ -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-eyebrow">SS 2026 — The Gentleman's Edit</p>
-    <h1 class="hero-title">
-      Wear the<br>Room. Own<br>the <em>Moment.</em>
-    </h1>
-    <p class="hero-sub">NobleCut is where master tailoring meets modern ambition. Every suit tells your story — precise, powerful, and unmistakably yours.</p>
+    <div class="hero-eyebrow">Spring Summer Collection 2026</div>
+    <h1 class="hero-h1">Dressed for the men who <em>shape the world.</em></h1>
+    <p class="hero-p">Every NobleCut garment begins as a conversation between cloth and craftsman. Bespoke tailoring refined over six decades — cut for men who know the difference.</p>
     <div class="hero-btns">
-      <a href="#collections" class="btn-em">Shop the Collection</a>
-      <a href="#bespoke" class="btn-outline-dark">Book a Fitting</a>
+      <a href="#shop" class="btn-gold">Shop the Collection</a>
+      <a href="#bespoke" class="btn-outline-white">Book a Fitting</a>
     </div>
-    <div class="hero-stats">
-      <div>
-        <div class="stat-n">62+</div>
-        <div class="stat-l">Years Heritage</div>
-      </div>
-      <div>
-        <div class="stat-n">4K+</div>
-        <div class="stat-l">Fabric Choices</div>
-      </div>
-      <div>
-        <div class="stat-n">3</div>
-        <div class="stat-l">World Ateliers</div>
-      </div>
+    <div class="hero-trust">
+      <div class="trust-item"><div class="trust-num">4,200+</div><div class="trust-label">Suits made</div></div>
+      <div class="trust-item"><div class="trust-num">62</div><div class="trust-label">Years of craft</div></div>
+      <div class="trust-item"><div class="trust-num">98%</div><div class="trust-label">Satisfaction</div></div>
     </div>
   </div>
-
   <div class="hero-right">
-    <!-- HERO SUIT SVG -->
-    <svg viewBox="0 0 560 900" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
-      <defs>
-        <linearGradient id="hbg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#2D6B57"/><stop offset="100%" stop-color="#1A4A3C"/>
-        </linearGradient>
-        <linearGradient id="hsuit" x1=".15" y1="0" x2=".85" y2="1">
-          <stop offset="0%" stop-color="#28304a"/><stop offset="50%" stop-color="#1e2438"/><stop offset="100%" stop-color="#141828"/>
-        </linearGradient>
-        <linearGradient id="hlapel" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#323858"/><stop offset="100%" stop-color="#22283e"/>
-        </linearGradient>
-        <linearGradient id="hshirt" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#f5f0e8"/><stop offset="100%" stop-color="#e8e2d8"/>
-        </linearGradient>
-        <linearGradient id="htie" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#e8b84b"/><stop offset="100%" stop-color="#c6932a"/>
-        </linearGradient>
-        <linearGradient id="htrouser" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#1c2036"/><stop offset="100%" stop-color="#121425"/>
-        </linearGradient>
-        <linearGradient id="hskin" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#d4a87a"/><stop offset="100%" stop-color="#bf9060"/>
-        </linearGradient>
-        <linearGradient id="hglow" cx="50%" cy="35%" r="50%" gradientUnits="objectBoundingBox" id="hglow2" x1=".3" y1="0" x2=".7" y2="1">
-          <stop offset="0%" stop-color="rgba(255,220,150,0.07)"/><stop offset="100%" stop-color="transparent"/>
-        </linearGradient>
-      </defs>
-      <rect width="560" height="900" fill="url(#hbg)"/>
-      <rect width="560" height="900" fill="url(#hglow2)"/>
-      <!-- subtle diagonal lines -->
-      <line x1="0" y1="0" x2="560" y2="900" stroke="rgba(255,255,255,.025)" stroke-width="1.2"/>
-      <line x1="140" y1="0" x2="700" y2="900" stroke="rgba(255,255,255,.018)" stroke-width="1.2"/>
-      <line x1="-140" y1="0" x2="420" y2="900" stroke="rgba(255,255,255,.018)" stroke-width="1.2"/>
-      <!-- vertical gold rule -->
-      <line x1="52" y1="80" x2="52" y2="820" stroke="rgba(198,147,42,.28)" stroke-width="1.2"/>
-      <text x="60" y="218" font-family="serif" font-size="8.5" fill="rgba(198,147,42,.38)" letter-spacing="3.5" transform="rotate(90,60,218)">NOBLECUT — THE SOVEREIGN COLLECTION SS 2026</text>
-      <!-- TROUSERS -->
-      <path d="M220 712 L228 900 L272 900 L280 730 Z" fill="url(#htrouser)" stroke="#161928" stroke-width=".5"/>
-      <path d="M340 712 L332 900 L288 900 L280 730 Z" fill="url(#htrouser)" stroke="#161928" stroke-width=".5"/>
-      <line x1="246" y1="738" x2="249" y2="900" stroke="rgba(255,255,255,.05)" stroke-width="1.8"/>
-      <line x1="314" y1="738" x2="311" y2="900" stroke="rgba(255,255,255,.05)" stroke-width="1.8"/>
-      <rect x="222" y="706" width="116" height="11" rx="1" fill="#141626"/>
-      <rect x="272" y="707" width="16" height="9" rx="1" fill="rgba(198,147,42,.6)"/>
-      <!-- JACKET BODY -->
-      <path d="M180 312 Q168 350 162 448 L148 712 L412 712 L398 448 Q392 350 380 312 L348 292 Q320 464 280 472 Q240 464 212 292 Z" fill="url(#hsuit)" stroke="#2a2e48" stroke-width=".5"/>
-      <!-- fabric weave lines -->
-      <line x1="234" y1="344" x2="229" y2="702" stroke="rgba(255,255,255,.033)" stroke-width="1"/>
-      <line x1="260" y1="344" x2="256" y2="702" stroke="rgba(255,255,255,.028)" stroke-width="1"/>
-      <line x1="300" y1="348" x2="300" y2="704" stroke="rgba(255,255,255,.024)" stroke-width="1"/>
-      <line x1="340" y1="344" x2="344" y2="702" stroke="rgba(255,255,255,.028)" stroke-width="1"/>
-      <line x1="366" y1="344" x2="371" y2="702" stroke="rgba(255,255,255,.033)" stroke-width="1"/>
-      <!-- LAPELS -->
-      <path d="M212 292 Q204 326 200 366 Q238 352 258 310 Z" fill="url(#hlapel)" stroke="#3a3f5e" stroke-width=".5"/>
-      <path d="M348 292 Q356 326 360 366 Q322 352 302 310 Z" fill="url(#hlapel)" stroke="#3a3f5e" stroke-width=".5"/>
-      <line x1="244" y1="366" x2="258" y2="310" stroke="rgba(255,255,255,.07)" stroke-width=".8"/>
-      <line x1="316" y1="366" x2="302" y2="310" stroke="rgba(255,255,255,.07)" stroke-width=".8"/>
-      <!-- SHIRT -->
-      <path d="M248 292 Q280 324 312 292 Q296 280 280 276 Q264 280 248 292 Z" fill="url(#hshirt)"/>
-      <path d="M253 314 Q280 346 307 314 L303 418 Q280 428 257 418 Z" fill="url(#hshirt)" opacity=".75"/>
-      <circle cx="280" cy="345" r="2.8" fill="rgba(0,0,0,.13)"/>
-      <circle cx="280" cy="363" r="2.8" fill="rgba(0,0,0,.13)"/>
-      <circle cx="280" cy="381" r="2.8" fill="rgba(0,0,0,.13)"/>
-      <circle cx="280" cy="399" r="2.8" fill="rgba(0,0,0,.13)"/>
-      <!-- GOLD TIE -->
-      <path d="M276 304 L277 318 L272 404 L280 416 L288 404 L283 318 L284 304 Z" fill="url(#htie)"/>
-      <path d="M276 304 L274 294 L280 286 L286 294 L284 304 Z" fill="#e8b84b"/>
-      <path d="M276 304 L280 300 L284 304 L280 310 Z" fill="rgba(0,0,0,.15)"/>
-      <!-- POCKET SQUARE -->
-      <path d="M344 328 L368 320 L371 338 L354 340 Z" fill="#fff" opacity=".92"/>
-      <path d="M344 328 L356 320 L360 329" fill="none" stroke="rgba(198,147,42,.5)" stroke-width="1"/>
-      <!-- SLEEVES -->
-      <path d="M162 448 Q146 494 140 546 L155 562 Q170 508 186 458 Z" fill="url(#hsuit)" stroke="#2a2e48" stroke-width=".5"/>
-      <rect x="138" y="546" width="30" height="14" rx="1" fill="#1c2038"/>
-      <line x1="136" y1="556" x2="168" y2="558" stroke="url(#hshirt)" stroke-width="3.5" stroke-linecap="round"/>
-      <circle cx="153" cy="548" r="2.6" fill="#12141e" stroke="rgba(198,147,42,.48)" stroke-width=".7"/>
-      <circle cx="153" cy="557" r="2.6" fill="#12141e" stroke="rgba(198,147,42,.48)" stroke-width=".7"/>
-      <path d="M398 448 Q414 494 420 546 L405 562 Q390 508 374 458 Z" fill="url(#hsuit)" stroke="#2a2e48" stroke-width=".5"/>
-      <rect x="392" y="546" width="30" height="14" rx="1" fill="#1c2038"/>
-      <line x1="424" y1="556" x2="392" y2="558" stroke="url(#hshirt)" stroke-width="3.5" stroke-linecap="round"/>
-      <circle cx="407" cy="548" r="2.6" fill="#12141e" stroke="rgba(198,147,42,.48)" stroke-width=".7"/>
-      <circle cx="407" cy="557" r="2.6" fill="#12141e" stroke="rgba(198,147,42,.48)" stroke-width=".7"/>
-      <!-- JACKET BUTTONS -->
-      <circle cx="280" cy="462" r="5" fill="#0e1020" stroke="rgba(198,147,42,.5)" stroke-width=".9"/>
-      <circle cx="280" cy="494" r="5" fill="#0e1020" stroke="rgba(198,147,42,.5)" stroke-width=".9"/>
-      <circle cx="280" cy="524" r="4" fill="#0e1020" stroke="rgba(198,147,42,.45)" stroke-width=".9"/>
-      <!-- NECK -->
-      <rect x="266" y="244" width="28" height="54" rx="14" fill="url(#hskin)"/>
-      <!-- HEAD -->
-      <ellipse cx="280" cy="200" rx="46" ry="52" fill="url(#hskin)"/>
-      <path d="M235 188 Q244 150 280 152 Q316 150 325 188 Q318 160 280 162 Q242 160 235 188 Z" fill="#2a1e12"/>
-      <ellipse cx="234" cy="208" rx="6" ry="10" fill="url(#hskin)"/>
-      <ellipse cx="326" cy="208" rx="6" ry="10" fill="url(#hskin)"/>
-      <path d="M256 197 Q265 191 275 195" fill="none" stroke="#3a2a18" stroke-width="1.8" stroke-linecap="round"/>
-      <path d="M285 195 Q295 191 304 197" fill="none" stroke="#3a2a18" stroke-width="1.8" stroke-linecap="round"/>
-      <ellipse cx="265" cy="205" rx="5.5" ry="6" fill="#3a2a18"/>
-      <ellipse cx="295" cy="205" rx="5.5" ry="6" fill="#3a2a18"/>
-      <circle cx="263" cy="203" r="1.5" fill="rgba(255,255,255,.55)"/>
-      <circle cx="293" cy="203" r="1.5" fill="rgba(255,255,255,.55)"/>
-      <path d="M272 220 Q280 227 288 220" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="1.5" stroke-linecap="round"/>
-      <ellipse cx="280" cy="897" rx="108" ry="9" fill="rgba(0,0,0,.26)"/>
-      <!-- COLLECTION BADGE -->
-      <rect x="434" y="365" width="66" height="120" fill="rgba(26,74,60,.82)"/>
-      <text x="467" y="425" font-family="serif" font-size="9.5" fill="rgba(198,147,42,.85)" text-anchor="middle" letter-spacing="2" transform="rotate(-90,467,425)">SOVEREIGN · SS 2026</text>
+    <svg width="260" height="400" viewBox="0 0 260 400" fill="none">
+      <ellipse cx="130" cy="48" rx="26" ry="30" fill="#D4A574"/>
+      <ellipse cx="130" cy="28" rx="26" ry="15" fill="#2C1810"/>
+      <rect cx="120" y="74" width="20" height="16" fill="#D4A574" x="120"/>
+      <path d="M82 88 L122 80 L130 100 L138 80 L178 88 L186 170 L168 180 L130 175 L92 180 L74 170Z" fill="#1B2B4B"/>
+      <path d="M122 80 L108 88 L92 106 L108 114 L130 100Z" fill="#243660"/>
+      <path d="M138 80 L152 88 L168 106 L152 114 L130 100Z" fill="#243660"/>
+      <path d="M126 96 L130 100 L134 96 L132 138 L130 146 L128 138Z" fill="#C6932A"/>
+      <rect x="104" y="174" width="22" height="108" rx="2" fill="#1B2B4B"/>
+      <rect x="134" y="174" width="22" height="108" rx="2" fill="#1B2B4B"/>
+      <ellipse cx="115" cy="285" rx="18" ry="7" fill="#111"/>
+      <ellipse cx="145" cy="285" rx="18" ry="7" fill="#111"/>
+      <path d="M82 88 L62 152 L78 158 L96 108Z" fill="#1B2B4B"/>
+      <path d="M178 88 L198 152 L182 158 L164 108Z" fill="#1B2B4B"/>
+      <rect x="64" y="149" width="14" height="9" rx="1" fill="#C6932A"/>
+      <rect x="182" y="149" width="14" height="9" rx="1" fill="#C6932A"/>
+      <path d="M162 108 L172 106 L174 118 L164 120Z" fill="#FDFAF4"/>
+      <path d="M164 106 L168 102 L172 106" stroke="#FDFAF4" stroke-width="1.5" fill="none"/>
+      <circle cx="130" cy="118" r="2.5" fill="#C6932A"/>
+      <circle cx="130" cy="132" r="2.5" fill="#C6932A"/>
+      <circle cx="130" cy="146" r="2.5" fill="#C6932A"/>
+      <ellipse cx="126" cy="42" rx="3" ry="4" fill="#2C1810"/>
+      <ellipse cx="134" cy="42" rx="3" ry="4" fill="#2C1810"/>
+      <path d="M126 56 Q130 61 134 56" stroke="#2C1810" stroke-width="1.5" fill="none"/>
     </svg>
-
-    <div class="hero-badge">
-      <p>New Season</p>
-      <strong>SS 2026 Collection</strong>
-    </div>
   </div>
 </section>
 
-<!-- ══ MARQUEE ══ -->
-<div class="marquee-bar">
-  <div class="marquee-inner">
-    <span>Super 150s Wool</span><span class="dot">✦</span>
-    <span>Bespoke Tailoring</span><span class="dot">✦</span>
-    <span>Hand-stitched Lapels</span><span class="dot">✦</span>
-    <span>Loro Piana Fabrics</span><span class="dot">✦</span>
-    <span>British Heritage Cloth</span><span class="dot">✦</span>
-    <span>Free Lifetime Alterations</span><span class="dot">✦</span>
-    <span>SS 2026 — Now Available</span><span class="dot">✦</span>
-    <span>Super 150s Wool</span><span class="dot">✦</span>
-    <span>Bespoke Tailoring</span><span class="dot">✦</span>
-    <span>Hand-stitched Lapels</span><span class="dot">✦</span>
-    <span>Loro Piana Fabrics</span><span class="dot">✦</span>
-    <span>British Heritage Cloth</span><span class="dot">✦</span>
-    <span>Free Lifetime Alterations</span><span class="dot">✦</span>
-    <span>SS 2026 — Now Available</span><span class="dot">✦</span>
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-inner" id="marqueeInner"></div>
+</div>
+
+<!-- SHOP SECTION -->
+<section class="section" id="shop">
+  <div class="reveal" style="margin-bottom:2.5rem;">
+    <div class="eyebrow">SS 2026 Collection</div>
+    <h2 class="section-title">Ready-to-Wear & <em>Bespoke</em></h2>
+    <div class="rule"></div>
+  </div>
+  <div class="filter-bar reveal">
+    <button class="filter-btn active" data-filter="all">All Pieces</button>
+    <button class="filter-btn" data-filter="suits">Suits</button>
+    <button class="filter-btn" data-filter="blazers">Blazers</button>
+    <button class="filter-btn" data-filter="bespoke">Bespoke</button>
+    <button class="filter-btn" data-filter="accessories">Accessories</button>
+  </div>
+  <div class="product-grid" id="productGrid"></div>
+</section>
+
+<!-- FEATURED BESPOKE STRIP -->
+<div class="featured-strip" id="lookbook">
+  <div class="featured-img">
+    <svg width="220" height="340" viewBox="0 0 220 340" fill="none">
+      <ellipse cx="110" cy="40" rx="22" ry="26" fill="#D4A574"/>
+      <ellipse cx="110" cy="22" rx="22" ry="12" fill="#1C1C1C"/>
+      <path d="M70 60 L106 52 L110 64 L114 52 L150 60 L156 144 L138 152 L110 148 L82 152 L64 144Z" fill="#3D3D3D"/>
+      <path d="M106 52 L94 60 L80 76 L94 82 L110 64Z" fill="#4A4A4A"/>
+      <path d="M114 52 L126 60 L140 76 L126 82 L110 64Z" fill="#4A4A4A"/>
+      <circle cx="100" cy="98" r="3" fill="#C6932A"/>
+      <circle cx="120" cy="98" r="3" fill="#C6932A"/>
+      <circle cx="100" cy="112" r="3" fill="#C6932A"/>
+      <circle cx="120" cy="112" r="3" fill="#C6932A"/>
+      <path d="M105 58 L110 64 L115 58 L113 100 L110 108 L107 100Z" fill="#C6932A"/>
+      <rect x="86" y="148" width="18" height="100" rx="1" fill="#3D3D3D"/>
+      <rect x="116" y="148" width="18" height="100" rx="1" fill="#3D3D3D"/>
+      <ellipse cx="95" cy="250" rx="16" ry="6" fill="#111"/>
+      <ellipse cx="125" cy="250" rx="16" ry="6" fill="#111"/>
+      <path d="M70 60 L54 116 L68 120 L84 78Z" fill="#3D3D3D"/>
+      <path d="M150 60 L166 116 L152 120 L136 78Z" fill="#3D3D3D"/>
+    </svg>
+  </div>
+  <div class="featured-content">
+    <div class="eyebrow">The Sovereign Collection</div>
+    <h2 class="featured-title">Double-breasted.<br><em>Unapologetically bold.</em></h2>
+    <p class="featured-desc">The Sovereign is for the man who doesn't enter a room — he arrives. Cut in our finest Huddersfield tweed with a full canvas construction.</p>
+    <div class="featured-points">
+      <div class="fp">Full canvas construction — moulds to your body over time</div>
+      <div class="fp">Hand-stitched lapels and buttonholes</div>
+      <div class="fp">Six-button double-breasted front</div>
+      <div class="fp">Bemberg silk lining — the mark of a proper suit</div>
+    </div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <button class="btn-gold" onclick="openCheckout({name:'The Sovereign DB',price:2650,fabric:'Huddersfield Tweed'})">Buy Now — £2,650</button>
+      <a href="#bespoke" class="btn-outline-white">Make it Bespoke</a>
+    </div>
   </div>
 </div>
 
-<!-- ══ COLLECTIONS ══ -->
-<section class="section collections" id="collections">
-  <div class="coll-header">
-    <div>
-      <p class="eyebrow reveal">The Collection</p>
-      <h2 class="section-title reveal">Suits Built for Men<br>Who <em>Command.</em></h2>
-    </div>
-    <a href="#" class="view-all reveal">View All →</a>
-  </div>
-
-  <div class="coll-grid reveal">
-
-    <!-- CARD 1 — NAVY PINSTRIPE (tall) -->
-    <div class="c-card tall">
-      <div class="c-card-img">
-        <svg viewBox="0 0 380 850" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="nb" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1c2244"/><stop offset="100%" stop-color="#0e1128"/></linearGradient>
-            <linearGradient id="ns" x1=".1" y1="0" x2=".9" y2="1"><stop offset="0%" stop-color="#1e2650"/><stop offset="100%" stop-color="#101435"/></linearGradient>
-          </defs>
-          <rect width="380" height="850" fill="url(#nb)"/>
-          <rect x="0" y="0" width="380" height="850" fill="rgba(100,140,255,.03)"/>
-          <!-- pinstripes -->
-          <line x1="60" y1="0" x2="60" y2="850" stroke="rgba(200,220,255,.04)" stroke-width=".8"/>
-          <line x1="100" y1="0" x2="100" y2="850" stroke="rgba(200,220,255,.035)" stroke-width=".8"/>
-          <line x1="140" y1="0" x2="140" y2="850" stroke="rgba(200,220,255,.04)" stroke-width=".8"/>
-          <line x1="180" y1="0" x2="180" y2="850" stroke="rgba(200,220,255,.045)" stroke-width=".8"/>
-          <line x1="220" y1="0" x2="220" y2="850" stroke="rgba(200,220,255,.04)" stroke-width=".8"/>
-          <line x1="260" y1="0" x2="260" y2="850" stroke="rgba(200,220,255,.035)" stroke-width=".8"/>
-          <line x1="300" y1="0" x2="300" y2="850" stroke="rgba(200,220,255,.04)" stroke-width=".8"/>
-          <!-- trousers -->
-          <path d="M148 690 L155 850 L182 850 L188 706 Z" fill="#101330" stroke="#161940" stroke-width=".5"/>
-          <path d="M232 690 L225 850 L198 850 L192 706 Z" fill="#101330" stroke="#161940" stroke-width=".5"/>
-          <line x1="167" y1="714" x2="169" y2="850" stroke="rgba(200,220,255,.04)" stroke-width="1.5"/>
-          <line x1="213" y1="714" x2="211" y2="850" stroke="rgba(200,220,255,.04)" stroke-width="1.5"/>
-          <rect x="150" y="685" width="80" height="10" rx="0" fill="#0c0f26"/>
-          <!-- jacket -->
-          <path d="M112 296 Q102 330 97 420 L88 690 L292 690 L283 420 Q278 330 268 296 L242 278 Q218 445 190 451 Q162 445 138 278 Z" fill="url(#ns)" stroke="#242852" stroke-width=".5"/>
-          <!-- stripes on jacket -->
-          <line x1="151" y1="316" x2="147" y2="678" stroke="rgba(200,220,255,.05)" stroke-width=".9"/>
-          <line x1="170" y1="316" x2="167" y2="678" stroke="rgba(200,220,255,.042)" stroke-width=".9"/>
-          <line x1="195" y1="320" x2="195" y2="680" stroke="rgba(200,220,255,.038)" stroke-width=".9"/>
-          <line x1="220" y1="316" x2="223" y2="678" stroke="rgba(200,220,255,.042)" stroke-width=".9"/>
-          <line x1="239" y1="316" x2="243" y2="678" stroke="rgba(200,220,255,.05)" stroke-width=".9"/>
-          <!-- lapels -->
-          <path d="M138 278 Q132 305 129 340 Q157 328 168 297 Z" fill="#222848" stroke="#2c3260" stroke-width=".5"/>
-          <path d="M242 278 Q248 305 251 340 Q223 328 212 297 Z" fill="#222848" stroke="#2c3260" stroke-width=".5"/>
-          <!-- shirt -->
-          <path d="M162 278 Q190 305 218 278 Q207 268 190 265 Q173 268 162 278 Z" fill="#f0ece4"/>
-          <path d="M164 300 Q190 328 216 300 L212 400 Q190 410 168 400 Z" fill="#ece8e0" opacity=".8"/>
-          <!-- burgundy tie -->
-          <path d="M187 290 L188 303 L184 380 L190 390 L196 380 L192 303 L193 290 Z" fill="#7a1a2e"/>
-          <path d="M187 290 L185 282 L190 275 L195 282 L193 290 Z" fill="#8a2030"/>
-          <!-- pocket square white -->
-          <path d="M234 308 L252 301 L254 315 L240 318 Z" fill="white" opacity=".9"/>
-          <!-- sleeves -->
-          <path d="M97 420 Q83 462 78 518 L90 534 Q105 488 118 436 Z" fill="url(#ns)"/>
-          <path d="M283 420 Q297 462 302 518 L290 534 Q275 488 262 436 Z" fill="url(#ns)"/>
-          <line x1="78" y1="528" x2="104" y2="530" stroke="#e0d8cc" stroke-width="3" stroke-linecap="round"/>
-          <line x1="302" y1="528" x2="276" y2="530" stroke="#e0d8cc" stroke-width="3" stroke-linecap="round"/>
-          <!-- buttons -->
-          <circle cx="190" cy="442" r="4.5" fill="#0a0e24" stroke="rgba(150,180,255,.38)" stroke-width=".8"/>
-          <circle cx="190" cy="468" r="4.5" fill="#0a0e24" stroke="rgba(150,180,255,.38)" stroke-width=".8"/>
-          <circle cx="190" cy="492" r="4" fill="#0a0e24" stroke="rgba(150,180,255,.35)" stroke-width=".8"/>
-          <!-- head & neck -->
-          <rect x="179" y="238" width="22" height="44" rx="11" fill="#c8946a"/>
-          <ellipse cx="190" cy="202" rx="34" ry="40" fill="#c8946a"/>
-          <path d="M157 192 Q163 160 190 162 Q217 160 223 192 Q217 168 190 170 Q163 168 157 192 Z" fill="#281e12"/>
-          <ellipse cx="154" cy="210" rx="5" ry="8" fill="#c8946a"/>
-          <ellipse cx="226" cy="210" rx="5" ry="8" fill="#c8946a"/>
-          <ellipse cx="177" cy="208" rx="4.5" ry="5" fill="rgba(0,0,0,.2)"/>
-          <ellipse cx="203" cy="208" rx="4.5" ry="5" fill="rgba(0,0,0,.2)"/>
-          <path d="M181 224 Q190 230 199 224" fill="none" stroke="rgba(0,0,0,.17)" stroke-width="1.4" stroke-linecap="round"/>
-          <ellipse cx="190" cy="847" rx="78" ry="7" fill="rgba(0,0,0,.28)"/>
-        </svg>
-      </div>
-      <div class="c-tag">Best Seller</div>
-      <div class="c-overlay">
-        <p class="c-cat">Signature Collection</p>
-        <p class="c-name">The Diplomat — Navy Pinstripe</p>
-        <p class="c-price">From £1,840</p>
+<!-- BESPOKE SECTION -->
+<section class="section bespoke-section" id="bespoke">
+  <div class="bespoke-inner">
+    <div class="reveal">
+      <div class="eyebrow">Bespoke Atelier</div>
+      <h2 class="section-title">Where cloth becomes <em>character</em></h2>
+      <div class="rule"></div>
+      <p class="section-sub" style="margin-bottom:2rem">Three appointments. Six to eight weeks. A suit that fits only you and will outlast every trend.</p>
+      <div class="bespoke-steps">
+        <div class="b-step"><div class="b-num">I</div><div><div class="b-title">Consultation & Cloth</div><div class="b-desc">We begin with a conversation about occasion, preference, and cloth. Over 400 fabrics from the finest mills in England, Scotland, and Italy.</div></div></div>
+        <div class="b-step"><div class="b-num">II</div><div><div class="b-title">Pattern & Baste Fitting</div><div class="b-desc">Your pattern is cut by hand. The baste fitting allows our tailor to see the cloth on the body — adjusting silhouette before the final cut.</div></div></div>
+        <div class="b-step"><div class="b-num">III</div><div><div class="b-title">Finishing & Delivery</div><div class="b-desc">Every buttonhole hand-sewn. Every seam pressed. Your suit arrives in a NobleCut garment bag, ready to wear.</div></div></div>
       </div>
     </div>
-
-    <!-- CARD 2 — CHARCOAL -->
-    <div class="c-card">
-      <div class="c-card-img">
-        <svg viewBox="0 0 300 490" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="cb" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#252525"/><stop offset="100%" stop-color="#111"/></linearGradient>
-            <linearGradient id="cs" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2e2e2e"/><stop offset="100%" stop-color="#1a1a1a"/></linearGradient>
-          </defs>
-          <rect width="300" height="490" fill="url(#cb)"/>
-          <ellipse cx="150" cy="150" rx="130" ry="120" fill="rgba(255,255,255,.025)"/>
-          <!-- trousers -->
-          <path d="M108 418 L114 490 L138 490 L144 432 Z" fill="#141414" stroke="#1e1e1e" stroke-width=".5"/>
-          <path d="M192 418 L186 490 L162 490 L156 432 Z" fill="#141414" stroke="#1e1e1e" stroke-width=".5"/>
-          <!-- jacket -->
-          <path d="M90 174 Q80 204 76 266 L70 420 L230 420 L224 266 Q220 204 210 174 L188 159 Q168 278 150 283 Q132 278 112 159 Z" fill="url(#cs)" stroke="#333" stroke-width=".5"/>
-          <!-- herringbone texture -->
-          <line x1="124" y1="196" x2="120" y2="410" stroke="rgba(255,255,255,.042)" stroke-width=".9"/>
-          <line x1="143" y1="196" x2="140" y2="410" stroke="rgba(255,255,255,.035)" stroke-width=".9"/>
-          <line x1="165" y1="198" x2="165" y2="411" stroke="rgba(255,255,255,.03)" stroke-width=".9"/>
-          <line x1="187" y1="196" x2="190" y2="410" stroke="rgba(255,255,255,.035)" stroke-width=".9"/>
-          <line x1="206" y1="196" x2="210" y2="410" stroke="rgba(255,255,255,.042)" stroke-width=".9"/>
-          <!-- lapels -->
-          <path d="M112 159 Q106 182 104 210 Q127 200 137 172 Z" fill="#363636" stroke="#424242" stroke-width=".5"/>
-          <path d="M188 159 Q194 182 196 210 Q173 200 163 172 Z" fill="#363636" stroke="#424242" stroke-width=".5"/>
-          <!-- shirt -->
-          <path d="M130 159 Q150 182 170 159 Q158 150 150 147 Q142 150 130 159 Z" fill="#f0ece4"/>
-          <!-- gold tie -->
-          <path d="M147 169 L148 179 L145 240 L150 248 L155 240 L152 179 L153 169 Z" fill="#C6932A"/>
-          <path d="M147 169 L146 163 L150 157 L154 163 L153 169 Z" fill="#e8b84b"/>
-          <!-- emerald pocket square -->
-          <path d="M190 185 L206 178 L208 193 L194 195 Z" fill="#1A4A3C" opacity=".9"/>
-          <!-- sleeves -->
-          <path d="M76 266 Q62 298 58 332 L70 346 Q83 308 94 272 Z" fill="url(#cs)"/>
-          <path d="M224 266 Q238 298 242 332 L230 346 Q217 308 206 272 Z" fill="url(#cs)"/>
-          <line x1="58" y1="340" x2="84" y2="342" stroke="#e0d8cc" stroke-width="2.8" stroke-linecap="round"/>
-          <line x1="242" y1="340" x2="216" y2="342" stroke="#e0d8cc" stroke-width="2.8" stroke-linecap="round"/>
-          <!-- buttons -->
-          <circle cx="150" cy="316" r="3.5" fill="#111" stroke="rgba(255,255,255,.28)" stroke-width=".7"/>
-          <circle cx="150" cy="338" r="3.5" fill="#111" stroke="rgba(255,255,255,.28)" stroke-width=".7"/>
-          <!-- head -->
-          <rect x="140" y="149" width="20" height="17" rx="10" fill="#b88860"/>
-          <ellipse cx="150" cy="117" rx="30" ry="34" fill="#b88860"/>
-          <path d="M122 108 Q128 78 150 80 Q172 78 178 108 Q172 86 150 88 Q128 86 122 108 Z" fill="#1e1408"/>
-          <ellipse cx="136" cy="124" rx="4" ry="7" fill="#b88860"/>
-          <ellipse cx="164" cy="124" rx="4" ry="7" fill="#b88860"/>
-          <ellipse cx="139" cy="120" rx="4" ry="5" fill="rgba(0,0,0,.22)"/>
-          <ellipse cx="161" cy="120" rx="4" ry="5" fill="rgba(0,0,0,.22)"/>
-          <ellipse cx="150" cy="488" rx="65" ry="6" fill="rgba(0,0,0,.32)"/>
-        </svg>
-      </div>
-      <div class="c-overlay">
-        <p class="c-cat">Heritage Line</p>
-        <p class="c-name">The Envoy — Charcoal</p>
-        <p class="c-price">From £1,620</p>
-      </div>
-    </div>
-
-    <!-- CARD 3 — CAMEL LINEN -->
-    <div class="c-card">
-      <div class="c-tag" style="background:var(--em)">New In</div>
-      <div class="c-card-img">
-        <svg viewBox="0 0 300 490" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="lbb" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#a06830"/><stop offset="100%" stop-color="#6b4018"/></linearGradient>
-            <linearGradient id="lbs" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#d4a060"/><stop offset="100%" stop-color="#b07838"/></linearGradient>
-          </defs>
-          <rect width="300" height="490" fill="url(#lbb)"/>
-          <ellipse cx="150" cy="160" rx="140" ry="130" fill="rgba(255,220,150,.06)"/>
-          <!-- trousers -->
-          <path d="M108 418 L114 490 L138 490 L144 432 Z" fill="#8a5c24" stroke="#9a6c34" stroke-width=".5"/>
-          <path d="M192 418 L186 490 L162 490 L156 432 Z" fill="#8a5c24" stroke="#9a6c34" stroke-width=".5"/>
-          <line x1="124" y1="434" x2="126" y2="490" stroke="rgba(255,255,255,.1)" stroke-width="1.5"/>
-          <line x1="176" y1="434" x2="174" y2="490" stroke="rgba(255,255,255,.1)" stroke-width="1.5"/>
-          <!-- jacket linen -->
-          <path d="M90 174 Q80 204 76 266 L70 420 L230 420 L224 266 Q220 204 210 174 L188 159 Q168 278 150 283 Q132 278 112 159 Z" fill="url(#lbs)" stroke="#c09048" stroke-width=".5"/>
-          <!-- linen texture -->
-          <line x1="124" y1="196" x2="120" y2="410" stroke="rgba(255,240,200,.09)" stroke-width=".9"/>
-          <line x1="143" y1="196" x2="140" y2="410" stroke="rgba(255,240,200,.075)" stroke-width=".9"/>
-          <line x1="165" y1="198" x2="165" y2="411" stroke="rgba(255,240,200,.065)" stroke-width=".9"/>
-          <line x1="187" y1="196" x2="190" y2="410" stroke="rgba(255,240,200,.075)" stroke-width=".9"/>
-          <line x1="206" y1="196" x2="210" y2="410" stroke="rgba(255,240,200,.09)" stroke-width=".9"/>
-          <!-- lapels -->
-          <path d="M112 159 Q106 182 104 210 Q127 200 137 172 Z" fill="#c09040" stroke="#d0a050" stroke-width=".5"/>
-          <path d="M188 159 Q194 182 196 210 Q173 200 163 172 Z" fill="#c09040" stroke="#d0a050" stroke-width=".5"/>
-          <!-- white shirt -->
-          <path d="M130 159 Q150 182 170 159 Q158 150 150 147 Q142 150 130 159 Z" fill="#f5f0e8"/>
-          <!-- emerald tie -->
-          <path d="M147 169 L148 179 L145 240 L150 248 L155 240 L152 179 L153 169 Z" fill="#1A4A3C"/>
-          <path d="M147 169 L146 163 L150 157 L154 163 L153 169 Z" fill="#2D6B57"/>
-          <!-- white pocket sq -->
-          <path d="M190 185 L206 178 L208 193 L194 195 Z" fill="white" opacity=".92"/>
-          <!-- sleeves -->
-          <path d="M76 266 Q62 298 58 332 L70 346 Q83 308 94 272 Z" fill="url(#lbs)"/>
-          <path d="M224 266 Q238 298 242 332 L230 346 Q217 308 206 272 Z" fill="url(#lbs)"/>
-          <line x1="58" y1="340" x2="84" y2="342" stroke="#f5f0e8" stroke-width="2.8" stroke-linecap="round"/>
-          <line x1="242" y1="340" x2="216" y2="342" stroke="#f5f0e8" stroke-width="2.8" stroke-linecap="round"/>
-          <!-- buttons -->
-          <circle cx="150" cy="316" r="3.5" fill="#8a5c20" stroke="rgba(255,255,255,.3)" stroke-width=".7"/>
-          <circle cx="150" cy="338" r="3.5" fill="#8a5c20" stroke="rgba(255,255,255,.3)" stroke-width=".7"/>
-          <!-- head -->
-          <rect x="140" y="149" width="20" height="17" rx="10" fill="#d4a870"/>
-          <ellipse cx="150" cy="117" rx="30" ry="34" fill="#d4a870"/>
-          <path d="M122 108 Q128 78 150 80 Q172 78 178 108 Q172 86 150 88 Q128 86 122 108 Z" fill="#2a1e0e"/>
-          <ellipse cx="136" cy="124" rx="4" ry="7" fill="#d4a870"/>
-          <ellipse cx="164" cy="124" rx="4" ry="7" fill="#d4a870"/>
-          <ellipse cx="139" cy="120" rx="4" ry="5" fill="rgba(0,0,0,.2)"/>
-          <ellipse cx="161" cy="120" rx="4" ry="5" fill="rgba(0,0,0,.2)"/>
-          <ellipse cx="150" cy="488" rx="65" ry="6" fill="rgba(0,0,0,.22)"/>
-        </svg>
-      </div>
-      <div class="c-overlay">
-        <p class="c-cat">Summer Edit</p>
-        <p class="c-name">The Consul — Camel Linen</p>
-        <p class="c-price">From £1,380</p>
-      </div>
-    </div>
-
-    <!-- CARD 4 — TEAL DOUBLE BREASTED -->
-    <div class="c-card">
-      <div class="c-card-img">
-        <svg viewBox="0 0 300 314" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="tbb" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#163832"/><stop offset="100%" stop-color="#0c2420"/></linearGradient>
-            <linearGradient id="tbs" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1e4e44"/><stop offset="100%" stop-color="#123830"/></linearGradient>
-          </defs>
-          <rect width="300" height="314" fill="url(#tbb)"/>
-          <!-- double breasted jacket top -->
-          <path d="M72 108 Q62 132 56 192 L50 315 L250 315 L244 192 Q238 132 228 108 L202 93 Q178 215 150 220 Q122 215 98 93 Z" fill="url(#tbs)" stroke="#2a5e52" stroke-width=".5"/>
-          <!-- db lapels (wider) -->
-          <path d="M98 93 Q90 118 87 148 Q117 137 130 109 Z" fill="#1e4840" stroke="#2e6258" stroke-width=".5"/>
-          <path d="M202 93 Q210 118 213 148 Q183 137 170 109 Z" fill="#1e4840" stroke="#2e6258" stroke-width=".5"/>
-          <!-- shirt ivory -->
-          <path d="M128 93 Q150 116 172 93 Q158 83 150 80 Q142 83 128 93 Z" fill="#f0ece4"/>
-          <!-- gold tie -->
-          <path d="M147 101 L148 112 L145 165 L150 173 L155 165 L152 112 L153 101 Z" fill="#C6932A"/>
-          <path d="M147 101 L146 95 L150 89 L154 95 L153 101 Z" fill="#e8b84b"/>
-          <!-- double-breasted 6 buttons -->
-          <circle cx="134" cy="198" r="3.8" fill="#0e2e28" stroke="rgba(100,200,180,.5)" stroke-width=".8"/>
-          <circle cx="134" cy="218" r="3.8" fill="#0e2e28" stroke="rgba(100,200,180,.5)" stroke-width=".8"/>
-          <circle cx="134" cy="238" r="3.8" fill="#0e2e28" stroke="rgba(100,200,180,.5)" stroke-width=".8"/>
-          <circle cx="166" cy="198" r="3.8" fill="#0e2e28" stroke="rgba(100,200,180,.5)" stroke-width=".8"/>
-          <circle cx="166" cy="218" r="3.8" fill="#0e2e28" stroke="rgba(100,200,180,.5)" stroke-width=".8"/>
-          <circle cx="166" cy="238" r="3.8" fill="#0e2e28" stroke="rgba(100,200,180,.5)" stroke-width=".8"/>
-          <!-- gold pocket sq -->
-          <path d="M204 120 L222 112 L225 128 L208 130 Z" fill="#e8b84b" opacity=".85"/>
-          <!-- sleeves -->
-          <path d="M56 192 Q42 222 38 258 L50 272 L65 230 L72 200 Z" fill="url(#tbs)"/>
-          <path d="M244 192 Q258 222 262 258 L250 272 L235 230 L228 200 Z" fill="url(#tbs)"/>
-          <line x1="38" y1="265" x2="64" y2="267" stroke="#e0dcd4" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="262" y1="265" x2="236" y2="267" stroke="#e0dcd4" stroke-width="2.5" stroke-linecap="round"/>
-          <!-- head -->
-          <rect x="140" y="79" width="20" height="20" rx="10" fill="#c09060"/>
-          <ellipse cx="150" cy="46" rx="30" ry="34" fill="#c09060"/>
-          <path d="M122 37 Q128 8 150 10 Q172 8 178 37 Q172 14 150 16 Q128 14 122 37 Z" fill="#18100a"/>
-          <ellipse cx="136" cy="54" rx="4" ry="5.5" fill="rgba(0,0,0,.22)"/>
-          <ellipse cx="164" cy="54" rx="4" ry="5.5" fill="rgba(0,0,0,.22)"/>
-          <ellipse cx="150" cy="312" rx="65" ry="6" fill="rgba(0,0,0,.3)"/>
-        </svg>
-      </div>
-      <div class="c-overlay">
-        <p class="c-cat">Evening Collection</p>
-        <p class="c-name">The Sovereign — Teal DB</p>
-        <p class="c-price">From £2,100</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══ BESPOKE ══ -->
-<section class="bespoke" id="bespoke">
-  <div class="bespoke-vis reveal-l">
-    <svg viewBox="0 0 480 600" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
-      <defs>
-        <linearGradient id="besb" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2D6B57"/><stop offset="100%" stop-color="#1A4A3C"/></linearGradient>
-      </defs>
-      <rect width="480" height="600" fill="url(#besb)"/>
-      <!-- Fabric swatches -->
-      <rect x="55" y="72" width="105" height="138" rx="2" fill="#1c2848" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-      <rect x="65" y="82" width="85" height="118" rx="1" fill="#182240"/>
-      <line x1="74" y1="82" x2="74" y2="200" stroke="rgba(200,215,255,.12)" stroke-width=".8"/>
-      <line x1="87" y1="82" x2="87" y2="200" stroke="rgba(200,215,255,.1)" stroke-width=".8"/>
-      <line x1="100" y1="82" x2="100" y2="200" stroke="rgba(200,215,255,.1)" stroke-width=".8"/>
-      <line x1="113" y1="82" x2="113" y2="200" stroke="rgba(200,215,255,.12)" stroke-width=".8"/>
-      <text x="107" y="228" font-family="serif" font-size="8.5" fill="rgba(255,255,255,.28)" text-anchor="middle" letter-spacing="1.5">NAVY PINSTRIPE</text>
-      <rect x="185" y="58" width="112" height="145" rx="2" fill="#8a6030" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-      <rect x="195" y="68" width="92" height="125" rx="1" fill="#C8A06A"/>
-      <line x1="204" y1="68" x2="204" y2="193" stroke="rgba(255,230,160,.18)" stroke-width=".8"/>
-      <line x1="218" y1="68" x2="218" y2="193" stroke="rgba(255,230,160,.15)" stroke-width=".8"/>
-      <line x1="232" y1="68" x2="232" y2="193" stroke="rgba(255,230,160,.15)" stroke-width=".8"/>
-      <line x1="246" y1="68" x2="246" y2="193" stroke="rgba(255,230,160,.18)" stroke-width=".8"/>
-      <text x="241" y="220" font-family="serif" font-size="8.5" fill="rgba(255,255,255,.28)" text-anchor="middle" letter-spacing="1.5">CAMEL LINEN</text>
-      <rect x="325" y="78" width="104" height="130" rx="2" fill="#202020" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-      <rect x="335" y="88" width="84" height="110" rx="1" fill="#2a2a2a"/>
-      <text x="377" y="234" font-family="serif" font-size="8.5" fill="rgba(255,255,255,.28)" text-anchor="middle" letter-spacing="1.5">CHARCOAL</text>
-      <!-- Measuring tape -->
-      <rect x="55" y="285" width="370" height="16" rx="8" fill="#e8d8a0" opacity=".65"/>
-      <rect x="55" y="285" width="370" height="16" rx="8" fill="none" stroke="rgba(198,147,42,.55)" stroke-width=".8"/>
-      <line x1="90" y1="285" x2="90" y2="301" stroke="rgba(100,60,0,.5)" stroke-width=".8"/>
-      <line x1="112" y1="285" x2="112" y2="301" stroke="rgba(100,60,0,.5)" stroke-width=".8"/>
-      <line x1="134" y1="285" x2="134" y2="301" stroke="rgba(100,60,0,.5)" stroke-width=".8"/>
-      <line x1="156" y1="285" x2="156" y2="301" stroke="rgba(100,60,0,.5)" stroke-width=".8"/>
-      <line x1="178" y1="285" x2="178" y2="301" stroke="rgba(100,60,0,.5)" stroke-width=".8"/>
-      <line x1="200" y1="285" x2="200" y2="301" stroke="rgba(100,60,0,.5)" stroke-width=".8"/>
-      <line x1="222" y1="285" x2="222" y2="301" stroke="rgba(100,60,0,.5)" stroke-width=".8"/>
-      <line x1="244" y1="285" x2="244" y2="301" stroke="rgba(100,60,0,.5)" stroke-width=".8"/>
-      <line x1="266" y1="285" x2="266" y2="301" stroke="rgba(100,60,0,.5)" stroke-width=".8"/>
-      <line x1="288" y1="285" x2="288" y2="301" stroke="rgba(100,60,0,.5)" stroke-width=".8"/>
-      <line x1="310" y1="285" x2="310" y2="301" stroke="rgba(100,60,0,.5)" stroke-width=".8"/>
-      <line x1="332" y1="285" x2="332" y2="301" stroke="rgba(100,60,0,.5)" stroke-width=".8"/>
-      <line x1="354" y1="285" x2="354" y2="301" stroke="rgba(100,60,0,.5)" stroke-width=".8"/>
-      <line x1="376" y1="285" x2="376" y2="301" stroke="rgba(100,60,0,.5)" stroke-width=".8"/>
-      <line x1="398" y1="285" x2="398" y2="301" stroke="rgba(100,60,0,.5)" stroke-width=".8"/>
-      <!-- Scissors -->
-      <circle cx="196" cy="370" r="13" fill="none" stroke="rgba(198,147,42,.6)" stroke-width="1.5"/>
-      <circle cx="244" cy="370" r="13" fill="none" stroke="rgba(198,147,42,.6)" stroke-width="1.5"/>
-      <path d="M196 370 L270 412 L284 399 L210 357 Z" fill="none" stroke="rgba(198,147,42,.6)" stroke-width="1.5"/>
-      <path d="M244 370 L170 412 L156 399 L230 357 Z" fill="none" stroke="rgba(198,147,42,.6)" stroke-width="1.5"/>
-      <!-- Thread spool -->
-      <ellipse cx="348" cy="400" rx="24" ry="32" fill="rgba(45,107,87,.6)" stroke="rgba(198,147,42,.4)" stroke-width="1"/>
-      <ellipse cx="348" cy="378" rx="24" ry="8" fill="rgba(45,107,87,.8)"/>
-      <ellipse cx="348" cy="422" rx="24" ry="8" fill="rgba(45,107,87,.8)"/>
-      <ellipse cx="348" cy="400" rx="10" ry="15" fill="rgba(198,147,42,.5)"/>
-      <!-- needle -->
-      <path d="M118 464 Q158 444 200 455 Q242 466 284 445" fill="none" stroke="rgba(198,147,42,.3)" stroke-width=".8" stroke-dasharray="3,3"/>
-      <circle cx="118" cy="464" r="3" fill="rgba(198,147,42,.6)"/>
-      <!-- Chalk lines -->
-      <line x1="76" y1="448" x2="196" y2="436" stroke="rgba(255,255,255,.12)" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <!-- label -->
-      <rect x="153" y="510" width="174" height="52" rx="1" fill="rgba(0,0,0,.24)" stroke="rgba(198,147,42,.24)" stroke-width=".8"/>
-      <text x="240" y="532" font-family="serif" font-size="11.5" fill="rgba(198,147,42,.7)" text-anchor="middle" letter-spacing="3">NOBLECUT</text>
-      <text x="240" y="550" font-family="serif" font-size="8" fill="rgba(255,255,255,.28)" text-anchor="middle" letter-spacing="2.5">BESPOKE ATELIER · LONDON</text>
-    </svg>
-  </div>
-  <div class="bespoke-content reveal-r">
-    <p class="bespoke-eyebrow">The Atelier</p>
-    <h2 class="bespoke-title">A Suit Made<br>Only <em>for You.</em></h2>
-    <p class="bespoke-desc">Bespoke at NobleCut is an unhurried art. Your measurements, your cloth, your silhouette — refined across three appointments until nothing remains but perfection.</p>
-    <div class="bespoke-steps">
-      <div class="b-step">
-        <span class="b-num">I</span>
-        <div class="b-body">
-          <h4>Consultation</h4>
-          <p>Discuss your lifestyle, occasions, and vision with our senior tailor at our London or Paris atelier.</p>
+    <div class="reveal">
+      <div class="enquiry-form">
+        <div class="form-title">Book a Free Consultation</div>
+        <div class="form-sub">We'll get back to you within 24 hours to confirm your appointment.</div>
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="Edward"></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Richardson"></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="edward@example.com"></div>
+        <div class="form-group"><label>Phone (WhatsApp preferred)</label><input type="tel" placeholder="+44 7700 000000"></div>
+        <div class="form-group"><label>Occasion / Commission Type</label>
+          <select>
+            <option>Wedding suit — bespoke</option>
+            <option>Business suit — bespoke</option>
+            <option>Evening wear — black tie</option>
+            <option>Ready-to-wear alteration</option>
+            <option>Full wardrobe consultation</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Tell us about your commission</label><textarea placeholder="I'm looking for a navy pinstripe suit for..."></textarea></div>
+        <button class="btn-submit" onclick="submitEnquiry(this)">Send Enquiry</button>
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-top:1rem;font-size:0.78rem;color:var(--mid)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Your details are kept private. No spam, ever.
         </div>
       </div>
-      <div class="b-step">
-        <span class="b-num">II</span>
-        <div class="b-body">
-          <h4>Cloth & Pattern</h4>
-          <p>Select from 4,000+ cloths sourced from Loro Piana, Holland & Sherry, and Huddersfield mills.</p>
-        </div>
-      </div>
-      <div class="b-step">
-        <span class="b-num">III</span>
-        <div class="b-body">
-          <h4>Fitting & Delivery</h4>
-          <p>Two precision fittings, then delivery in 10–12 weeks with complimentary lifetime alterations.</p>
-        </div>
-      </div>
-    </div>
-    <a href="#" class="btn-white">Book Your Consultation</a>
-  </div>
-</section>
-
-<!-- ══ LOOKBOOK ══ -->
-<section class="section lookbook" id="lookbook">
-  <p class="eyebrow reveal">SS 2026 Lookbook</p>
-  <h2 class="section-title reveal">The <em>Gentleman</em><br>in Every Scene.</h2>
-  <div class="look-grid reveal">
-
-    <!-- Tall — Winter White -->
-    <div class="l-card tall">
-      <div class="l-img">
-        <svg viewBox="0 0 320 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="ww" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D8CAB0"/><stop offset="100%" stop-color="#BCAA88"/></linearGradient>
-            <linearGradient id="wws" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F0E8D8"/><stop offset="100%" stop-color="#DACABA"/></linearGradient>
-          </defs>
-          <rect width="320" height="800" fill="url(#ww)"/>
-          <line x1="80" y1="0" x2="80" y2="800" stroke="rgba(255,255,255,.12)" stroke-width=".8"/>
-          <line x1="240" y1="0" x2="240" y2="800" stroke="rgba(255,255,255,.1)" stroke-width=".8"/>
-          <!-- trousers -->
-          <path d="M138 666 L144 800 L156 800 L160 680 Z" fill="#d4c6b0" stroke="#c8baa4" stroke-width=".5"/>
-          <path d="M182 666 L176 800 L164 800 L160 680 Z" fill="#d4c6b0" stroke="#c8baa4" stroke-width=".5"/>
-          <line x1="147" y1="682" x2="149" y2="800" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
-          <line x1="173" y1="682" x2="171" y2="800" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
-          <rect x="140" y="660" width="40" height="10" rx="0" fill="#c8baa2"/>
-          <!-- cream/winter white jacket -->
-          <path d="M100 286 Q90 318 86 400 L80 666 L240 666 L234 400 Q230 318 220 286 L200 272 Q178 424 160 430 Q142 424 120 272 Z" fill="url(#wws)" stroke="#d0c4a8" stroke-width=".5"/>
-          <!-- chalk stripes -->
-          <line x1="128" y1="308" x2="125" y2="655" stroke="rgba(180,160,120,.2)" stroke-width=".8"/>
-          <line x1="148" y1="308" x2="146" y2="655" stroke="rgba(180,160,120,.16)" stroke-width=".8"/>
-          <line x1="172" y1="312" x2="172" y2="656" stroke="rgba(180,160,120,.14)" stroke-width=".8"/>
-          <line x1="196" y1="308" x2="198" y2="655" stroke="rgba(180,160,120,.16)" stroke-width=".8"/>
-          <line x1="216" y1="308" x2="219" y2="655" stroke="rgba(180,160,120,.2)" stroke-width=".8"/>
-          <!-- lapels -->
-          <path d="M120 272 Q113 298 110 328 Q135 316 145 287 Z" fill="#e2d8c4" stroke="#ccc0a8" stroke-width=".5"/>
-          <path d="M200 272 Q207 298 210 328 Q185 316 175 287 Z" fill="#e2d8c4" stroke="#ccc0a8" stroke-width=".5"/>
-          <!-- black shirt (contrast) -->
-          <path d="M138 272 Q160 296 182 272 Q170 263 160 260 Q150 263 138 272 Z" fill="#1a1a1a"/>
-          <!-- white silk tie -->
-          <path d="M157 281 L158 291 L155 352 L160 360 L165 352 L162 291 L163 281 Z" fill="white"/>
-          <path d="M157 281 L156 275 L160 269 L164 275 L163 281 Z" fill="#e8e8e8"/>
-          <!-- gold pocket sq -->
-          <path d="M205 298 L219 291 L221 306 L208 308 Z" fill="#C6932A" opacity=".9"/>
-          <!-- sleeves -->
-          <path d="M86 400 Q72 440 67 490 L80 506 L96 453 L103 408 Z" fill="url(#wws)"/>
-          <path d="M234 400 Q248 440 253 490 L240 506 L224 453 L217 408 Z" fill="url(#wws)"/>
-          <line x1="67" y1="502" x2="94" y2="504" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
-          <line x1="253" y1="502" x2="226" y2="504" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
-          <!-- buttons -->
-          <circle cx="160" cy="440" r="4.5" fill="rgba(0,0,0,.18)" stroke="rgba(180,160,120,.5)" stroke-width=".8"/>
-          <circle cx="160" cy="464" r="4.5" fill="rgba(0,0,0,.18)" stroke="rgba(180,160,120,.5)" stroke-width=".8"/>
-          <!-- head -->
-          <rect x="150" y="230" width="20" height="48" rx="10" fill="#b88050"/>
-          <ellipse cx="160" cy="192" rx="36" ry="42" fill="#b88050"/>
-          <path d="M126 180 Q133 148 160 150 Q187 148 194 180 Q187 156 160 158 Q133 156 126 180 Z" fill="#18100a"/>
-          <ellipse cx="122" cy="200" rx="5" ry="9" fill="#b88050"/>
-          <ellipse cx="198" cy="200" rx="5" ry="9" fill="#b88050"/>
-          <ellipse cx="143" cy="198" rx="5" ry="5.5" fill="rgba(0,0,0,.22)"/>
-          <ellipse cx="177" cy="198" rx="5" ry="5.5" fill="rgba(0,0,0,.22)"/>
-          <path d="M150 214 Q160 220 170 214" fill="none" stroke="rgba(0,0,0,.17)" stroke-width="1.4" stroke-linecap="round"/>
-          <ellipse cx="160" cy="797" rx="72" ry="7" fill="rgba(0,0,0,.2)"/>
-        </svg>
-      </div>
-      <div class="l-info">
-        <p class="l-name">The Winter White</p>
-        <p class="l-sub">Editorial — Morning Light</p>
-      </div>
-    </div>
-
-    <!-- Wide top — Evening Tuxedo -->
-    <div class="l-card wide">
-      <div class="l-img">
-        <svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="evb" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0d0e1c"/><stop offset="100%" stop-color="#181028"/></linearGradient>
-          </defs>
-          <rect width="700" height="400" fill="url(#evb)"/>
-          <!-- stars -->
-          <circle cx="80" cy="60" r="1" fill="rgba(255,255,255,.3)"/>
-          <circle cx="220" cy="28" r=".8" fill="rgba(255,255,255,.25)"/>
-          <circle cx="585" cy="48" r="1.2" fill="rgba(255,255,255,.22)"/>
-          <circle cx="648" cy="88" r=".8" fill="rgba(255,255,255,.3)"/>
-          <circle cx="460" cy="22" r="1" fill="rgba(255,255,255,.22)"/>
-          <circle cx="330" cy="15" r=".7" fill="rgba(255,255,255,.28)"/>
-          <!-- gold floor glow -->
-          <ellipse cx="350" cy="397" rx="290" ry="12" fill="rgba(198,147,42,.07)"/>
-          <!-- FIGURE 1 — black tux -->
-          <path d="M234 102 L226 392 L310 392 L302 102 Z" fill="#090a18" stroke="#141526" stroke-width=".5"/>
-          <path d="M234 102 Q224 122 221 152 Q248 141 260 113 Z" fill="#131422" stroke="#202130" stroke-width=".5"/>
-          <path d="M302 102 Q312 122 315 152 Q288 141 276 113 Z" fill="#131422" stroke="#202130" stroke-width=".5"/>
-          <path d="M249 102 Q268 125 287 102 Q276 93 268 91 Q260 93 249 102 Z" fill="#f0ece4"/>
-          <!-- emerald tie -->
-          <path d="M265 110 L266 120 L263 163 L268 170 L273 163 L270 120 L271 110 Z" fill="#1A4A3C"/>
-          <path d="M265 110 L264 104 L268 98 L272 104 L271 110 Z" fill="#2D6B57"/>
-          <!-- white pocket sq -->
-          <path d="M282 120 L298 113 L300 124 L287 126 Z" fill="white" opacity=".9"/>
-          <path d="M214 184 Q200 226 196 268 L208 282 L223 237 L232 192 Z" fill="#090a18"/>
-          <path d="M322 184 Q336 226 340 268 L328 282 L313 237 L304 192 Z" fill="#090a18"/>
-          <line x1="196" y1="276" x2="222" y2="278" stroke="#e0d8cc" stroke-width="2.8" stroke-linecap="round"/>
-          <line x1="340" y1="276" x2="314" y2="278" stroke="#e0d8cc" stroke-width="2.8" stroke-linecap="round"/>
-          <circle cx="268" cy="252" r="4" fill="#060610" stroke="rgba(150,150,200,.38)" stroke-width=".8"/>
-          <circle cx="268" cy="274" r="4" fill="#060610" stroke="rgba(150,150,200,.38)" stroke-width=".8"/>
-          <!-- head 1 -->
-          <rect x="257" y="88" width="22" height="18" rx="11" fill="#b88050"/>
-          <ellipse cx="268" cy="60" rx="30" ry="34" fill="#b88050"/>
-          <path d="M240 50 Q247 23 268 25 Q289 23 296 50 Q289 30 268 32 Q247 30 240 50 Z" fill="#150e08"/>
-          <ellipse cx="252" cy="68" rx="4.5" ry="5.5" fill="rgba(0,0,0,.22)"/>
-          <ellipse cx="284" cy="68" rx="4.5" ry="5.5" fill="rgba(0,0,0,.22)"/>
-
-          <!-- FIGURE 2 — midnight blue tux -->
-          <path d="M396 110 L388 392 L472 392 L464 110 Z" fill="#0c1030" stroke="#181c3a" stroke-width=".5"/>
-          <path d="M396 110 Q386 130 383 160 Q410 149 422 121 Z" fill="#161a38" stroke="#222640" stroke-width=".5"/>
-          <path d="M464 110 Q474 130 477 160 Q450 149 438 121 Z" fill="#161a38" stroke="#222640" stroke-width=".5"/>
-          <path d="M413 110 Q430 133 447 110 Q437 101 430 99 Q423 101 413 110 Z" fill="#f5f0e8"/>
-          <!-- gold tie -->
-          <path d="M428 118 L429 128 L426 170 L430 178 L434 170 L432 128 L433 118 Z" fill="#C6932A"/>
-          <path d="M428 118 L427 112 L430 106 L434 112 L433 118 Z" fill="#e8b84b"/>
-          <!-- gold pocket sq -->
-          <path d="M448 129 L464 122 L466 133 L452 135 Z" fill="#C6932A" opacity=".88"/>
-          <path d="M375 192 Q362 234 358 276 L370 290 L386 245 L394 200 Z" fill="#0c1030"/>
-          <path d="M485 192 Q498 234 502 276 L490 290 L474 245 L466 200 Z" fill="#0c1030"/>
-          <line x1="358" y1="284" x2="384" y2="286" stroke="#e0d8cc" stroke-width="2.8" stroke-linecap="round"/>
-          <line x1="502" y1="284" x2="476" y2="286" stroke="#e0d8cc" stroke-width="2.8" stroke-linecap="round"/>
-          <circle cx="430" cy="262" r="4" fill="#08091e" stroke="rgba(100,120,220,.38)" stroke-width=".8"/>
-          <circle cx="430" cy="284" r="4" fill="#08091e" stroke="rgba(100,120,220,.38)" stroke-width=".8"/>
-          <!-- head 2 -->
-          <rect x="419" y="97" width="22" height="18" rx="11" fill="#c89870"/>
-          <ellipse cx="430" cy="67" rx="30" ry="34" fill="#c89870"/>
-          <path d="M402 57 Q409 30 430 32 Q451 30 458 57 Q451 36 430 38 Q409 36 402 57 Z" fill="#22180c"/>
-          <ellipse cx="413" cy="75" rx="4.5" ry="5.5" fill="rgba(0,0,0,.2)"/>
-          <ellipse cx="447" cy="75" rx="4.5" ry="5.5" fill="rgba(0,0,0,.2)"/>
-        </svg>
-      </div>
-      <div class="l-info">
-        <p class="l-name">Black Tie Evening</p>
-        <p class="l-sub">Tuxedo Collection — After Dark</p>
-      </div>
-    </div>
-
-    <!-- Bottom left — Tweed -->
-    <div class="l-card">
-      <div class="l-img">
-        <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="twb" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e8d4b8"/><stop offset="100%" stop-color="#c8b090"/></linearGradient>
-            <linearGradient id="tws" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4a3828"/><stop offset="100%" stop-color="#2e2018"/></linearGradient>
-          </defs>
-          <rect width="320" height="400" fill="url(#twb)"/>
-          <!-- brown tweed jacket -->
-          <path d="M70 148 Q60 180 56 252 L50 402 L270 402 L264 252 Q260 180 250 148 L224 132 Q200 278 160 284 Q120 278 96 132 Z" fill="url(#tws)" stroke="#4a3828" stroke-width=".5"/>
-          <!-- tweed texture -->
-          <line x1="110" y1="170" x2="106" y2="393" stroke="rgba(255,210,160,.07)" stroke-width=".9"/>
-          <line x1="132" y1="170" x2="129" y2="393" stroke="rgba(255,210,160,.06)" stroke-width=".9"/>
-          <line x1="160" y1="174" x2="160" y2="393" stroke="rgba(255,210,160,.055)" stroke-width=".9"/>
-          <line x1="188" y1="170" x2="191" y2="393" stroke="rgba(255,210,160,.06)" stroke-width=".9"/>
-          <line x1="210" y1="170" x2="214" y2="393" stroke="rgba(255,210,160,.07)" stroke-width=".9"/>
-          <line x1="56" y1="252" x2="264" y2="252" stroke="rgba(255,210,160,.035)" stroke-width=".7"/>
-          <line x1="56" y1="290" x2="264" y2="290" stroke="rgba(255,210,160,.035)" stroke-width=".7"/>
-          <line x1="56" y1="328" x2="264" y2="328" stroke="rgba(255,210,160,.035)" stroke-width=".7"/>
-          <!-- lapels -->
-          <path d="M96 132 Q89 158 86 186 Q113 174 124 147 Z" fill="#3e2e1e" stroke="#543e2e" stroke-width=".5"/>
-          <path d="M224 132 Q231 158 234 186 Q207 174 196 147 Z" fill="#3e2e1e" stroke="#543e2e" stroke-width=".5"/>
-          <!-- cream turtle neck -->
-          <rect x="144" y="120" width="32" height="48" rx="14" fill="#e8e0d0"/>
-          <!-- rust pocket sq -->
-          <path d="M217 165 L234 157 L236 172 L220 174 Z" fill="#A84030" opacity=".9"/>
-          <!-- sleeves -->
-          <path d="M56 252 Q42 288 37 336 L50 349 L66 303 L74 260 Z" fill="url(#tws)"/>
-          <path d="M264 252 Q278 288 283 336 L270 349 L254 303 L246 260 Z" fill="url(#tws)"/>
-          <!-- elbow patches -->
-          <ellipse cx="50" cy="302" rx="14" ry="19" fill="rgba(100,70,40,.28)" stroke="rgba(150,100,60,.28)" stroke-width=".8"/>
-          <ellipse cx="270" cy="302" rx="14" ry="19" fill="rgba(100,70,40,.28)" stroke="rgba(150,100,60,.28)" stroke-width=".8"/>
-          <line x1="37" y1="343" x2="63" y2="345" stroke="#e0dcd4" stroke-width="2.8" stroke-linecap="round"/>
-          <line x1="283" y1="343" x2="257" y2="345" stroke="#e0dcd4" stroke-width="2.8" stroke-linecap="round"/>
-          <!-- head -->
-          <rect x="149" y="113" width="22" height="20" rx="11" fill="#c09068"/>
-          <ellipse cx="160" cy="80" rx="32" ry="36" fill="#c09068"/>
-          <path d="M130 70 Q137 40 160 42 Q183 40 190 70 Q183 48 160 50 Q137 48 130 70 Z" fill="#201408"/>
-          <ellipse cx="143" cy="88" rx="4.5" ry="5.5" fill="rgba(0,0,0,.22)"/>
-          <ellipse cx="177" cy="88" rx="4.5" ry="5.5" fill="rgba(0,0,0,.22)"/>
-        </svg>
-      </div>
-      <div class="l-info">
-        <p class="l-name">Country Tweed</p>
-        <p class="l-sub">Weekend Edit</p>
-      </div>
-    </div>
-
-    <!-- Bottom right — Detail close-up -->
-    <div class="l-card">
-      <div class="l-img">
-        <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="deb" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1A4A3C"/><stop offset="100%" stop-color="#0E2E26"/></linearGradient>
-          </defs>
-          <rect width="320" height="400" fill="url(#deb)"/>
-          <!-- jacket fabric panel -->
-          <rect x="0" y="100" width="320" height="300" fill="#181e2c" opacity=".78"/>
-          <!-- Lapels detailed -->
-          <path d="M80 182 Q58 225 53 288 Q112 264 136 202 Z" fill="#20263a" stroke="#2c3252" stroke-width=".8"/>
-          <path d="M240 182 Q262 225 267 288 Q208 264 184 202 Z" fill="#20263a" stroke="#2c3252" stroke-width=".8"/>
-          <!-- Boutonnière gold flower -->
-          <circle cx="160" cy="215" r="9" fill="#C6932A" opacity=".9"/>
-          <circle cx="153" cy="209" r="6" fill="#e8b84b" opacity=".8"/>
-          <circle cx="167" cy="209" r="6" fill="#C6932A" opacity=".85"/>
-          <circle cx="160" cy="205" r="6" fill="#e8b84b" opacity=".8"/>
-          <line x1="160" y1="224" x2="160" y2="268" stroke="rgba(50,150,80,.7)" stroke-width="2"/>
-          <!-- shirt strip -->
-          <path d="M128 172 Q160 196 192 172 L192 285 Q160 296 128 285 Z" fill="#f0ece4" opacity=".14"/>
-          <!-- emerald tie -->
-          <path d="M156 184 L157 196 L154 254 L160 262 L166 254 L163 196 L164 184 Z" fill="#1A4A3C"/>
-          <path d="M156 184 L155 178 L160 172 L165 178 L164 184 Z" fill="#2D6B57"/>
-          <!-- gold pocket square double fold -->
-          <path d="M196 208 L224 198 L228 218 L210 220 Z" fill="#C6932A" opacity=".95"/>
-          <path d="M196 208 L208 196 L218 206" fill="none" stroke="rgba(255,255,255,.28)" stroke-width=".9"/>
-          <!-- cufflinks visible at bottom -->
-          <rect x="42" y="342" width="58" height="13" rx="6" fill="#20263a"/>
-          <line x1="42" y1="354" x2="68" y2="356" stroke="#f0ece4" stroke-width="4.5" stroke-linecap="round"/>
-          <circle cx="58" cy="348" r="9" fill="#C6932A"/>
-          <circle cx="58" cy="348" r="5.5" fill="#e8b84b"/>
-          <text x="58" y="352" font-family="serif" font-size="6" fill="rgba(0,0,0,.35)" text-anchor="middle" font-style="italic">NC</text>
-          <rect x="220" y="342" width="58" height="13" rx="6" fill="#20263a"/>
-          <line x1="220" y1="354" x2="278" y2="356" stroke="#f0ece4" stroke-width="4.5" stroke-linecap="round"/>
-          <circle cx="262" cy="348" r="9" fill="#C6932A"/>
-          <circle cx="262" cy="348" r="5.5" fill="#e8b84b"/>
-          <text x="262" y="352" font-family="serif" font-size="6" fill="rgba(0,0,0,.35)" text-anchor="middle" font-style="italic">NC</text>
-        </svg>
-      </div>
-      <div class="l-info">
-        <p class="l-name">The Gold Details</p>
-        <p class="l-sub">Accessories Close-up</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══ ACCESSORIES ══ -->
-<section class="section accessories" id="accessories">
-  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:0">
-    <div>
-      <p class="eyebrow reveal">Complete the Look</p>
-      <h2 class="section-title reveal">The Details That<br><em>Define</em> a Gentleman.</h2>
-    </div>
-  </div>
-  <div class="acc-grid reveal">
-
-    <!-- Burgundy Silk Tie -->
-    <div class="a-card">
-      <div class="a-img">
-        <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg" width="110">
-          <defs>
-            <linearGradient id="tie" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#9B2335"/><stop offset="100%" stop-color="#6B1220"/></linearGradient>
-            <linearGradient id="tiesh" x1=".2" y1="0" x2=".8" y2="1"><stop offset="0%" stop-color="rgba(255,255,255,.16)"/><stop offset="100%" stop-color="transparent"/></linearGradient>
-          </defs>
-          <path d="M82 18 L77 34 L66 250 L100 270 L134 250 L123 34 L118 18 Z" fill="url(#tie)"/>
-          <path d="M82 18 L77 34 L66 250 L100 270 L134 250 L123 34 L118 18 Z" fill="url(#tiesh)"/>
-          <path d="M82 18 L80 8 L100 0 L120 8 L118 18 Z" fill="#a82838"/>
-          <line x1="86" y1="38" x2="84" y2="230" stroke="rgba(255,255,255,.07)" stroke-width="1.5"/>
-          <line x1="100" y1="38" x2="100" y2="244" stroke="rgba(255,255,255,.055)" stroke-width="1.5"/>
-          <line x1="114" y1="38" x2="116" y2="230" stroke="rgba(255,255,255,.07)" stroke-width="1.5"/>
-          <path d="M80 82 L100 74 L120 82 L100 90 Z" fill="rgba(255,255,255,.045)"/>
-          <path d="M80 122 L100 114 L120 122 L100 130 Z" fill="rgba(255,255,255,.045)"/>
-          <path d="M80 162 L100 154 L120 162 L100 170 Z" fill="rgba(255,255,255,.045)"/>
-          <path d="M80 202 L100 194 L120 202 L100 210 Z" fill="rgba(255,255,255,.045)"/>
-        </svg>
-      </div>
-      <div class="a-info">
-        <p class="a-cat">Neckwear</p>
-        <p class="a-name">Burgundy Silk Grenadine Tie</p>
-        <div class="a-foot">
-          <span class="a-price">£120</span>
-          <button class="a-add" onclick="addCart(this)">+</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- White Linen Pocket Square -->
-    <div class="a-card">
-      <div class="a-img">
-        <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" width="155">
-          <defs>
-            <linearGradient id="ps" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F8F4EC"/><stop offset="100%" stop-color="#EAE4D8"/></linearGradient>
-          </defs>
-          <rect x="40" y="60" width="160" height="158" rx="2" fill="url(#ps)" stroke="rgba(198,147,42,.2)" stroke-width="1"/>
-          <line x1="40" y1="60" x2="120" y2="28" stroke="rgba(0,0,0,.055)" stroke-width=".8"/>
-          <line x1="200" y1="60" x2="120" y2="28" stroke="rgba(0,0,0,.055)" stroke-width=".8"/>
-          <path d="M40 60 L80 32 L100 50 L80 60 Z" fill="#F2ECE4"/>
-          <path d="M120 28 L150 48 L120 58 L90 48 Z" fill="#EEE8E0"/>
-          <path d="M200 60 L160 32 L140 50 L160 60 Z" fill="#F2ECE4"/>
-          <rect x="47" y="67" width="146" height="145" rx="1" fill="none" stroke="rgba(198,147,42,.32)" stroke-width=".8"/>
-          <text x="120" y="155" font-family="serif" font-size="28" fill="rgba(198,147,42,.18)" text-anchor="middle" font-style="italic">NC</text>
-        </svg>
-      </div>
-      <div class="a-info">
-        <p class="a-cat">Accessories</p>
-        <p class="a-name">White Linen Pocket Square</p>
-        <div class="a-foot">
-          <span class="a-price">£65</span>
-          <button class="a-add" onclick="addCart(this)">+</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Gold Cufflinks -->
-    <div class="a-card">
-      <div class="a-img">
-        <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" width="175">
-          <defs>
-            <radialGradient id="cg" cx="30%" cy="28%"><stop offset="0%" stop-color="#F0D060"/><stop offset="45%" stop-color="#C6932A"/><stop offset="100%" stop-color="#8A6010"/></radialGradient>
-            <radialGradient id="cgf" cx="35%" cy="30%"><stop offset="0%" stop-color="#F5D870"/><stop offset="100%" stop-color="#A07820"/></radialGradient>
-          </defs>
-          <circle cx="78" cy="110" r="37" fill="url(#cg)"/>
-          <circle cx="78" cy="110" r="31" fill="url(#cgf)"/>
-          <circle cx="78" cy="110" r="23" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/>
-          <text x="78" y="116" font-family="serif" font-size="12" fill="rgba(0,0,0,.22)" text-anchor="middle" font-style="italic">NC</text>
-          <rect x="52" y="150" width="52" height="11" rx="5.5" fill="url(#cg)"/>
-          <circle cx="168" cy="110" r="37" fill="url(#cg)"/>
-          <circle cx="168" cy="110" r="31" fill="url(#cgf)"/>
-          <circle cx="168" cy="110" r="23" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/>
-          <text x="168" y="116" font-family="serif" font-size="12" fill="rgba(0,0,0,.22)" text-anchor="middle" font-style="italic">NC</text>
-          <rect x="142" y="150" width="52" height="11" rx="5.5" fill="url(#cg)"/>
-        </svg>
-      </div>
-      <div class="a-info">
-        <p class="a-cat">Cufflinks</p>
-        <p class="a-name">Gold Monogram NC Links</p>
-        <div class="a-foot">
-          <span class="a-price">£340</span>
-          <button class="a-add" onclick="addCart(this)">+</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Cognac Oxford -->
-    <div class="a-card">
-      <div class="a-img">
-        <svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg" width="210">
-          <defs>
-            <linearGradient id="sh" x1=".1" y1="0" x2=".9" y2="1"><stop offset="0%" stop-color="#6B3A1F"/><stop offset="100%" stop-color="#3A1A08"/></linearGradient>
-            <radialGradient id="shg" cx="28%" cy="22%"><stop offset="0%" stop-color="rgba(255,255,255,.23)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
-          </defs>
-          <ellipse cx="130" cy="184" rx="113" ry="14" fill="#1a0c04"/>
-          <ellipse cx="130" cy="179" rx="111" ry="8" fill="#220e04"/>
-          <path d="M18 149 Q17 95 72 89 Q108 85 148 87 Q210 89 243 124 L245 153 Q210 161 130 165 Q62 164 18 156 Z" fill="url(#sh)"/>
-          <path d="M18 149 Q17 95 72 89 Q108 85 148 87 Q210 89 243 124 L245 153 Q210 161 130 165 Q62 164 18 156 Z" fill="url(#shg)"/>
-          <path d="M72 94 Q108 89 130 91 Q130 113 108 116 Q82 114 72 94 Z" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/>
-          <!-- brogue punching -->
-          <circle cx="84" cy="100" r="1.2" fill="rgba(255,255,255,.12)"/>
-          <circle cx="92" cy="96" r="1.2" fill="rgba(255,255,255,.12)"/>
-          <circle cx="100" cy="94" r="1.2" fill="rgba(255,255,255,.12)"/>
-          <circle cx="108" cy="93" r="1.2" fill="rgba(255,255,255,.12)"/>
-          <circle cx="116" cy="94" r="1.2" fill="rgba(255,255,255,.12)"/>
-          <circle cx="124" cy="96" r="1.2" fill="rgba(255,255,255,.12)"/>
-          <!-- lace panel -->
-          <rect x="108" y="97" width="60" height="43" rx="1" fill="rgba(0,0,0,.14)"/>
-          <line x1="112" y1="103" x2="164" y2="103" stroke="rgba(230,210,180,.7)" stroke-width="1.8"/>
-          <line x1="111" y1="113" x2="165" y2="113" stroke="rgba(230,210,180,.7)" stroke-width="1.8"/>
-          <line x1="110" y1="123" x2="166" y2="123" stroke="rgba(230,210,180,.7)" stroke-width="1.8"/>
-          <line x1="110" y1="133" x2="166" y2="133" stroke="rgba(230,210,180,.7)" stroke-width="1.8"/>
-          <line x1="112" y1="103" x2="110" y2="133" stroke="rgba(230,210,180,.28)" stroke-width="1"/>
-          <line x1="164" y1="103" x2="166" y2="133" stroke="rgba(230,210,180,.28)" stroke-width="1"/>
-          <path d="M18 149 Q18 120 26 108 Q26 149 30 161 Z" fill="rgba(0,0,0,.18)"/>
-        </svg>
-      </div>
-      <div class="a-info">
-        <p class="a-cat">Footwear</p>
-        <p class="a-name">Brogue Cap-toe Oxford</p>
-        <div class="a-foot">
-          <span class="a-price">£580</span>
-          <button class="a-add" onclick="addCart(this)">+</button>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══ TESTIMONIAL ══ -->
-<section class="testimonial">
-  <p class="test-eyebrow reveal">What Our Clients Say</p>
-  <div class="test-stars reveal">
-    <span class="test-star">★</span><span class="test-star">★</span>
-    <span class="test-star">★</span><span class="test-star">★</span><span class="test-star">★</span>
-  </div>
-  <p class="test-quote reveal">"Walking into the boardroom in my NobleCut suit changed everything. I wasn't just dressed — I was armoured. It's the last suit you'll ever need to think about."</p>
-  <p class="test-attr reveal">James Whitmore — Managing Director, Whitmore & Partners</p>
-  <div class="test-clients reveal">
-    <div class="test-client">
-      <div class="tc-n">4,200+</div>
-      <div class="tc-l">Bespoke suits made</div>
-    </div>
-    <div class="test-client">
-      <div class="tc-n">98%</div>
-      <div class="tc-l">Client satisfaction</div>
-    </div>
-    <div class="test-client">
-      <div class="tc-n">62</div>
-      <div class="tc-l">Years of craft</div>
-    </div>
-    <div class="test-client">
-      <div class="tc-n">3</div>
-      <div class="tc-l">World ateliers</div>
     </div>
   </div>
 </section>
 
-<!-- ══ MATERIALS ══ -->
-<section class="section materials" id="materials">
-  <p class="eyebrow reveal">Our Fabrics</p>
-  <h2 class="section-title reveal">Only the <em>Finest</em><br>Cloths on Earth.</h2>
-  <div class="mat-grid reveal">
-    <div class="mat-cell">
-      <div class="mat-icon">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M2 10 Q10 2 18 10 Q10 18 2 10Z" stroke="#1A4A3C" stroke-width="1.5" fill="none"/>
-        </svg>
-      </div>
-      <p class="mat-name">Super 150s Wool</p>
-      <p class="mat-desc">Sourced from Ermenegildo Zegna mills in Biella. Exceptionally fine with a natural drape that resists creasing through the longest days.</p>
-    </div>
-    <div class="mat-cell">
-      <div class="mat-icon">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <rect x="3" y="3" width="14" height="14" stroke="#1A4A3C" stroke-width="1.5" fill="none"/>
-          <line x1="3" y1="10" x2="17" y2="10" stroke="#1A4A3C" stroke-width=".8"/>
-          <line x1="10" y1="3" x2="10" y2="17" stroke="#1A4A3C" stroke-width=".8"/>
-        </svg>
-      </div>
-      <p class="mat-name">Irish Linen</p>
-      <p class="mat-desc">Cool and textural, woven in Co. Down. Ideal for warmer months without sacrificing structure. It breathes beautifully and ages with grace.</p>
-    </div>
-    <div class="mat-cell">
-      <div class="mat-icon">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <circle cx="10" cy="10" r="7" stroke="#1A4A3C" stroke-width="1.5" fill="none"/>
-          <circle cx="10" cy="10" r="3" stroke="#1A4A3C" stroke-width="1" fill="none"/>
-        </svg>
-      </div>
-      <p class="mat-name">Huddersfield Tweed</p>
-      <p class="mat-desc">Woven from British fleece in West Yorkshire. Our heritage tweeds carry both weight and history — cut equally well for country and city.</p>
-    </div>
-    <div class="mat-cell">
-      <div class="mat-icon">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M10 2 L18 10 L10 18 L2 10 Z" stroke="#1A4A3C" stroke-width="1.5" fill="none"/>
-        </svg>
-      </div>
-      <p class="mat-name">Cashmere Blend</p>
-      <p class="mat-desc">A whisper-light wool-cashmere blend for our finest travel and evening pieces. Unrivalled softness that only improves with every wear.</p>
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="about">
+  <div class="reveal">
+    <div class="stars-row">★★★★★</div>
+    <blockquote class="testi-quote">"I've worn NobleCut suits to every important meeting of my career. There is no substitute for cloth that fits the man — not the other way around."</blockquote>
+    <div class="testi-author">— Edward R., Managing Director, London</div>
+    <div class="stats-row">
+      <div class="stat-item"><div class="num">4,200+</div><div class="lbl">Suits made</div></div>
+      <div class="stat-item"><div class="num">98%</div><div class="lbl">Client satisfaction</div></div>
+      <div class="stat-item"><div class="num">62</div><div class="lbl">Years of craft</div></div>
+      <div class="stat-item"><div class="num">3</div><div class="lbl">London ateliers</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══ CTA BANNER ══ -->
+<!-- CTA BANNER -->
 <div class="cta-banner">
-  <div>
-    <p class="bespoke-eyebrow reveal">Ready to Begin?</p>
-    <p class="cta-title reveal">Your Suit.<br>Your <em>Story.</em></p>
-    <p class="cta-sub reveal">Visit any of our three world ateliers or start online. Free consultation. Complimentary lifetime alterations. Ships worldwide.</p>
+  <div class="cta-text">
+    <div class="cta-title">Your suit is waiting to be made.</div>
+    <p>Three appointments. One suit built to last a lifetime.</p>
   </div>
-  <div class="cta-btns reveal">
-    <a href="#bespoke" class="btn-white">Book a Fitting</a>
-    <a href="#collections" class="btn-outline-white">Shop Ready-to-Wear</a>
+  <div class="cta-btns">
+    <button class="btn-white" onclick="document.getElementById('bespoke').scrollIntoView({behavior:'smooth'})">Book a Fitting</button>
+    <a href="#shop" class="btn-outline-w">Shop Ready-to-Wear</a>
   </div>
 </div>
 
-<!-- ══ FOOTER ══ -->
+<!-- FOOTER -->
 <footer>
-  <div class="foot-top">
+  <div class="footer-grid">
     <div>
-      <div class="foot-logo">
-        <div class="logo-star" style="width:22px;height:22px;background:var(--gold)">
-          <svg width="11" height="11" viewBox="0 0 13 13" fill="none">
-            <path d="M6.5 0.5L8.2 4.5H12.5L9.15 7.3L10.5 11.8L6.5 9.3L2.5 11.8L3.85 7.3L0.5 4.5H4.8Z" fill="white"/>
-          </svg>
-        </div>
-        NobleCut
+      <div class="f-logo">Noble<span>Cut</span></div>
+      <p class="f-tagline">Bespoke tailoring for men who understand that the finest things are made slowly, with care, and without compromise.</p>
+      <div class="f-social">
+        <a href="#">in</a>
+        <a href="#">ig</a>
+        <a href="#">tw</a>
+        <a href="#">fb</a>
       </div>
-      <p class="foot-tag">Fine tailoring for men who understand that clothing is not decoration — it is language. Three ateliers. One standard: perfection.</p>
     </div>
-    <div class="foot-col">
-      <h5>Collections</h5>
-      <ul>
-        <li><a href="#">Suits</a></li>
-        <li><a href="#">Blazers</a></li>
-        <li><a href="#">Trousers</a></li>
-        <li><a href="#">Shirts</a></li>
-        <li><a href="#">Overcoats</a></li>
-        <li><a href="#">Tuxedos</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h5>Services</h5>
-      <ul>
-        <li><a href="#">Bespoke Tailoring</a></li>
-        <li><a href="#">Made to Measure</a></li>
-        <li><a href="#">Alterations</a></li>
-        <li><a href="#">Cloth Library</a></li>
-        <li><a href="#">Corporate Orders</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h5>Ateliers</h5>
-      <ul>
-        <li><a href="#">London — Savile Row</a></li>
-        <li><a href="#">Paris — 8ème</a></li>
-        <li><a href="#">New York — Madison</a></li>
-        <li><a href="#">Book a Visit</a></li>
-      </ul>
-    </div>
+    <div class="f-col"><h4>Collections</h4><ul><li><a href="#">The Diplomat</a></li><li><a href="#">The Envoy</a></li><li><a href="#">The Consul</a></li><li><a href="#">The Sovereign</a></li><li><a href="#">Accessories</a></li></ul></div>
+    <div class="f-col"><h4>Services</h4><ul><li><a href="#">Bespoke Tailoring</a></li><li><a href="#">Made to Measure</a></li><li><a href="#">Alterations</a></li><li><a href="#">Cloth Selection</a></li><li><a href="#">Gift Cards</a></li></ul></div>
+    <div class="f-col"><h4>Visit Us</h4><ul><li><a href="#">Mayfair Atelier</a></li><li><a href="#">Canary Wharf</a></li><li><a href="#">Edinburgh</a></li><li><a href="#">Contact</a></li><li><a href="#">About NobleCut</a></li></ul></div>
   </div>
-  <div class="foot-bottom">
-    <span>© 2026 NobleCut. All rights reserved.</span>
-    <span>Privacy Policy · Terms of Service · Accessibility</span>
+  <div class="footer-bottom">
+    <span>© 2026 NobleCut Ltd. All rights reserved.</span>
+    <span><a href="#">Privacy Policy</a> · <a href="#">Terms</a> · <a href="#">Care Guide</a></span>
   </div>
 </footer>
 
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-head">
+    <h3>Your Bag (<span id="cartCountHead">0</span>)</h3>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="empty-cart">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <p>Your bag is empty</p>
+    </div>
+  </div>
+  <div class="cart-foot" id="cartFoot" style="display:none">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-price" id="cartTotal">£0</span>
+    </div>
+    <button class="btn-checkout" onclick="openCheckoutFromCart()">Proceed to Checkout</button>
+    <button class="btn-wa-checkout" onclick="whatsappOrder()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Order via WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Complete Your Order</h3>
+      <button class="modal-close" onclick="closeCheckout()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">Order Summary</div>
+      <div id="modalOrderSummary" style="margin-bottom:1.4rem;font-size:0.9rem;color:var(--charcoal)"></div>
+      <div class="modal-section-title">Your Details</div>
+      <div class="form-row" style="margin-bottom:0">
+        <div class="form-group"><label>First Name</label><input type="text" id="checkoutFirst" placeholder="Edward"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" id="checkoutLast" placeholder="Richardson"></div>
+      </div>
+      <div class="form-group"><label>Email</label><input type="email" id="checkoutEmail" placeholder="edward@example.com"></div>
+      <div class="form-group"><label>Phone</label><input type="tel" id="checkoutPhone" placeholder="+44 7700 000000"></div>
+      <div class="modal-section-title" style="margin-top:1rem">Payment</div>
+      <div class="stripe-note">
+        <strong>To activate online payments:</strong> Sign up at <strong>stripe.com</strong>, get your publishable key, and replace <code>YOUR_STRIPE_KEY</code> in this file. Stripe charges 1.4% + 20p per transaction.
+      </div>
+      <div class="form-group"><label>Card Number</label>
+        <div class="card-mock">
+          <span>•••• •••• •••• ••••</span>
+          <div class="card-brands"><span class="card-brand" style="color:#1A1F71">VISA</span><span class="card-brand" style="color:#EB001B">MC</span><span class="card-brand" style="color:#00A0E9">AMEX</span></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Expiry</label><div class="card-mock">MM / YY</div></div>
+        <div class="form-group"><label>CVC</label><div class="card-mock">•••</div></div>
+      </div>
+      <button class="btn-pay" onclick="processPayment()">Pay Securely</button>
+      <div class="secure-note">🔒 Secured by Stripe · SSL encrypted · PCI compliant</div>
+      <div style="text-align:center;margin-top:1.2rem">
+        <button class="btn-wa-checkout" style="width:100%" onclick="whatsappOrderDirect()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Order via WhatsApp instead
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHATSAPP FLOAT -->
+<button class="wa-float" onclick="window.open('https://wa.me/447700000000?text=Hi%20NobleCut%2C%20I%27d%20like%20to%20enquire%20about%20a%20suit.','_blank')">
+  <div class="wa-tooltip">Chat with us</div>
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</button>
+
 <script>
-/* ── SCROLL NAV ── */
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>{
-  nav.classList.toggle('scrolled',window.scrollY>60);
-},{passive:true});
+// ── WHATSAPP NUMBER — change this to your real number ──
+const WA_NUMBER = '447700000000';
 
-/* ── REVEAL ON SCROLL ── */
-const revealEls=document.querySelectorAll('.reveal,.reveal-l,.reveal-r');
-const revealIO=new IntersectionObserver((entries)=>{
-  entries.forEach((e,i)=>{
-    if(e.isIntersecting){
-      setTimeout(()=>e.target.classList.add('up'),i*70);
-      revealIO.unobserve(e.target);
-    }
-  });
-},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-revealEls.forEach(el=>revealIO.observe(el));
+// ── PRODUCTS ──
+const products = [
+  {id:1,name:'The Diplomat',fabric:'Navy Pinstripe — Super 150s',price:2400,was:null,category:'suits',tag:'best',sizes:['36S','38R','40R','42R','44R','46R'],color:'#1B2B4B'},
+  {id:2,name:'The Envoy',fabric:'Charcoal Herringbone — Wool',price:2100,was:null,category:'suits',tag:null,sizes:['36R','38R','40R','42R','44R'],color:'#3D3D3D'},
+  {id:3,name:'The Consul',fabric:'Camel Irish Linen',price:1950,was:null,category:'suits',tag:'new',sizes:['38R','40R','42R','44R'],color:'#C8A96E'},
+  {id:4,name:'The Sovereign DB',fabric:'Teal Double-Breasted',price:2650,was:null,category:'suits',tag:'new',sizes:['38R','40R','42R','44R','46R'],color:'#2A5B6E'},
+  {id:5,name:'The Clifton Blazer',fabric:'Navy Hopsack — Unstructured',price:950,was:1200,category:'blazers',tag:'sale',sizes:['S','M','L','XL'],color:'#1B2B4B'},
+  {id:6,name:'The Mayfair Blazer',fabric:'Camel Cashmere Blend',price:1100,was:null,category:'blazers',tag:null,sizes:['S','M','L','XL'],color:'#C8A96E'},
+  {id:7,name:'Commission — Full Bespoke',fabric:'Your choice of 400+ fabrics',price:3200,was:null,category:'bespoke',tag:'bespoke',sizes:['Your size'],color:'#1A4A3C'},
+  {id:8,name:'Commission — Made to Measure',fabric:'Adapted from our core patterns',price:1800,was:null,category:'bespoke',tag:'bespoke',sizes:['Your size'],color:'#152238'},
+  {id:9,name:'Burgundy Silk Tie',fabric:'Italian Silk — Hand-rolled edges',price:120,was:null,category:'accessories',tag:null,sizes:['One size'],color:'#8B1A1A'},
+  {id:10,name:'White Linen Square',fabric:'Irish Linen — 3-peak',price:65,was:null,category:'accessories',tag:null,sizes:['One size'],color:'#FDFAF4'},
+  {id:11,name:'Gold NC Cufflinks',fabric:'18ct Gold Vermeil',price:340,was:null,category:'accessories',tag:'new',sizes:['One size'],color:'#C6932A'},
+  {id:12,name:'Brogue Oxford',fabric:'Black Calf — Hand-welted',price:580,was:null,category:'accessories',tag:null,sizes:['7','8','9','10','11','12'],color:'#1C1C1C'},
+];
 
-/* ── CART ── */
-let cartCount=0;
-const cartEl=document.querySelector('.nav-cart');
-function addCart(btn){
-  cartCount++;
-  if(cartEl)cartEl.textContent=`Cart (${cartCount})`;
-  const orig=btn.textContent;
-  btn.textContent='✓';
-  btn.style.background='var(--em)';
-  btn.style.color='#fff';
-  btn.style.borderColor='var(--em)';
-  setTimeout(()=>{
-    btn.textContent=orig;
-    btn.style.background='';
-    btn.style.color='';
-    btn.style.borderColor='';
-  },1600);
+// suit SVG by color
+function suitSVG(color,cat){
+  if(cat==='accessories'){
+    return`<svg width="80" height="80" viewBox="0 0 80 80"><rect x="10" y="10" width="60" height="60" rx="4" fill="${color}" opacity="0.85"/><text x="40" y="46" text-anchor="middle" fill="white" font-size="22" font-family="Playfair Display" font-style="italic">NC</text></svg>`;
+  }
+  return`<svg width="120" height="200" viewBox="0 0 120 200" fill="none">
+    <ellipse cx="60" cy="22" rx="16" ry="18" fill="#D4A574"/>
+    <ellipse cx="60" cy="10" rx="16" ry="9" fill="#2C1810"/>
+    <rect x="52" y="37" width="16" height="10" fill="#D4A574"/>
+    <path d="M36 44 L56 38 L60 50 L64 38 L84 44 L88 108 L76 114 L60 110 L44 114 L32 108Z" fill="${color}"/>
+    <path d="M56 38 L46 44 L38 56 L46 60 L60 50Z" fill="${color}" opacity="0.7" style="filter:brightness(1.15)"/>
+    <path d="M64 38 L74 44 L82 56 L74 60 L60 50Z" fill="${color}" opacity="0.7" style="filter:brightness(1.15)"/>
+    <path d="M57 46 L60 50 L63 46 L62 76 L60 82 L58 76Z" fill="#C6932A"/>
+    <rect x="44" y="110" width="14" height="68" rx="1" fill="${color}"/>
+    <rect x="62" y="110" width="14" height="68" rx="1" fill="${color}"/>
+    <ellipse cx="51" cy="180" rx="12" ry="5" fill="#111"/>
+    <ellipse cx="69" cy="180" rx="12" ry="5" fill="#111"/>
+    <path d="M36 44 L24 82 L34 86 L46 56Z" fill="${color}"/>
+    <path d="M84 44 L96 82 L86 86 L74 56Z" fill="${color}"/>
+    <circle cx="60" cy="62" r="2" fill="#C6932A"/>
+    <circle cx="60" cy="72" r="2" fill="#C6932A"/>
+  </svg>`;
 }
 
-/* ── SMOOTH ANCHOR SCROLL ── */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const t=document.querySelector(a.getAttribute('href'));
-    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+// Render products
+const cart=[];
+let currentFilter='all';
+let currentCheckoutItem=null;
+
+function renderProducts(filter='all'){
+  const grid=document.getElementById('productGrid');
+  const filtered=filter==='all'?products:products.filter(p=>p.category===filter);
+  grid.innerHTML=filtered.map(p=>`
+    <div class="product-card" data-id="${p.id}">
+      <div class="product-img">
+        ${suitSVG(p.color,p.category)}
+        <div class="img-overlay">
+          <button class="quick-btn" onclick="event.stopPropagation();quickAdd(${p.id})">Quick Add</button>
+          <button class="quick-btn" onclick="event.stopPropagation();openCheckout(${JSON.stringify(p).replace(/"/g,'&quot;')})">Buy Now</button>
+        </div>
+        <div class="product-tags">
+          ${p.tag==='best'?'<span class="tag tag-best">Best Seller</span>':''}
+          ${p.tag==='new'?'<span class="tag tag-new">New In</span>':''}
+          ${p.tag==='sale'?'<span class="tag tag-sale">Sale</span>':''}
+          ${p.tag==='bespoke'?'<span class="tag tag-bespoke">Bespoke</span>':''}
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <div class="product-fabric">${p.fabric}</div>
+        <div class="product-bottom">
+          <div class="product-price">
+            ${p.was?`<span class="was">£${p.was.toLocaleString()}</span>`:''}
+            £${p.price.toLocaleString()}
+          </div>
+        </div>
+        <div class="sizes" id="sizes-${p.id}">
+          ${p.sizes.map((s,i)=>`<button class="size-btn${i===0?' sel':''}" onclick="selectSize(${p.id},this,'${s}')">${s}</button>`).join('')}
+        </div>
+        <div class="card-actions">
+          <button class="btn-add" id="add-${p.id}" onclick="addToCart(${p.id})">Add to Bag</button>
+          <button class="btn-wa" title="Enquire on WhatsApp" onclick="waEnquire('${p.name}','£${p.price.toLocaleString()}')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function selectSize(id,btn,size){
+  document.querySelectorAll(`#sizes-${id} .size-btn`).forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+}
+
+function getSelectedSize(id){
+  const sel=document.querySelector(`#sizes-${id} .sel`);
+  return sel?sel.textContent:'';
+}
+
+function addToCart(id){
+  const p=products.find(x=>x.id===id);
+  const size=getSelectedSize(id);
+  cart.push({...p,size,uid:Date.now()});
+  updateCartUI();
+  const btn=document.getElementById('add-'+id);
+  if(btn){btn.textContent='✓ Added';btn.classList.add('added');setTimeout(()=>{btn.textContent='Add to Bag';btn.classList.remove('added')},2000)}
+  openCart();
+}
+
+function quickAdd(id){
+  const p=products.find(x=>x.id===id);
+  cart.push({...p,size:p.sizes[0],uid:Date.now()});
+  updateCartUI();
+  openCart();
+}
+
+function updateCartUI(){
+  const count=cart.length;
+  const total=cart.reduce((s,i)=>s+i.price,0);
+  document.getElementById('cartBadge').textContent=count;
+  document.getElementById('cartBadge').classList.toggle('show',count>0);
+  document.getElementById('cartCountHead').textContent=count;
+  document.getElementById('cartTotal').textContent='£'+total.toLocaleString();
+  const itemsEl=document.getElementById('cartItems');
+  const footEl=document.getElementById('cartFoot');
+  if(count===0){
+    itemsEl.innerHTML='<div class="empty-cart"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><p>Your bag is empty</p></div>';
+    footEl.style.display='none';
+  } else {
+    footEl.style.display='block';
+    itemsEl.innerHTML=cart.map(i=>`
+      <div class="cart-item">
+        <div class="cart-item-img">${suitSVG(i.color,i.category).replace('width="120" height="200"','width="60" height="80"')}</div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${i.name}</div>
+          <div class="cart-item-detail">${i.fabric} · Size ${i.size}</div>
+          <div class="cart-item-price">£${i.price.toLocaleString()}</div>
+          <button class="cart-item-remove" onclick="removeFromCart(${i.uid})">Remove</button>
+        </div>
+      </div>
+    `).join('');
+  }
+}
+
+function removeFromCart(uid){cart.splice(cart.findIndex(i=>i.uid===uid),1);updateCartUI()}
+function openCart(){document.getElementById('cartOverlay').classList.add('open');document.getElementById('cartSidebar').classList.add('open')}
+function closeCart(){document.getElementById('cartOverlay').classList.remove('open');document.getElementById('cartSidebar').classList.remove('open')}
+document.getElementById('cartToggle').addEventListener('click',()=>{if(document.getElementById('cartSidebar').classList.contains('open'))closeCart();else openCart()});
+
+// Checkout
+function openCheckout(item){
+  currentCheckoutItem=item;
+  document.getElementById('modalOrderSummary').innerHTML=`
+    <div style="display:flex;justify-content:space-between;padding:0.8rem;background:var(--ivory);border:1px solid var(--border)">
+      <div><strong>${item.name}</strong><br><span style="font-size:0.8rem;color:var(--mid)">${item.fabric||''}</span></div>
+      <strong>£${Number(item.price).toLocaleString()}</strong>
+    </div>`;
+  document.getElementById('checkoutModal').classList.add('open');
+  closeCart();
+}
+
+function openCheckoutFromCart(){
+  const total=cart.reduce((s,i)=>s+i.price,0);
+  currentCheckoutItem={name:`${cart.length} item(s)`,price:total,fabric:''};
+  document.getElementById('modalOrderSummary').innerHTML=
+    cart.map(i=>`<div style="display:flex;justify-content:space-between;padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.88rem"><span>${i.name} · ${i.size}</span><span>£${i.price.toLocaleString()}</span></div>`).join('')+
+    `<div style="display:flex;justify-content:space-between;padding:0.7rem 0;font-weight:600"><span>Total</span><span>£${total.toLocaleString()}</span></div>`;
+  document.getElementById('checkoutModal').classList.add('open');
+  closeCart();
+}
+
+function closeCheckout(){document.getElementById('checkoutModal').classList.remove('open')}
+
+function processPayment(){
+  const first=document.getElementById('checkoutFirst').value;
+  const email=document.getElementById('checkoutEmail').value;
+  if(!first||!email){alert('Please fill in your name and email to continue.');return}
+  // TO ACTIVATE: replace this with real Stripe.js integration
+  alert('✓ Order received!\n\nThank you '+first+'. We\'ll confirm your order at '+email+' within 24 hours.\n\nTo activate live payments, add your Stripe key to this file.');
+  closeCheckout();
+}
+
+// WhatsApp
+function waEnquire(name,price){
+  const msg=encodeURIComponent(`Hi NobleCut, I'm interested in ${name} (${price}). Could you tell me more?`);
+  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank');
+}
+
+function whatsappOrder(){
+  const items=cart.map(i=>`${i.name} (${i.size}) - £${i.price.toLocaleString()}`).join('\n');
+  const total=cart.reduce((s,i)=>s+i.price,0);
+  const msg=encodeURIComponent(`Hi NobleCut, I'd like to order:\n\n${items}\n\nTotal: £${total.toLocaleString()}\n\nPlease confirm availability.`);
+  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank');
+}
+
+function whatsappOrderDirect(){
+  if(currentCheckoutItem){
+    const msg=encodeURIComponent(`Hi NobleCut, I'd like to order: ${currentCheckoutItem.name} - £${Number(currentCheckoutItem.price).toLocaleString()}. Please confirm.`);
+    window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank');
+  }
+  closeCheckout();
+}
+
+function submitEnquiry(btn){
+  btn.textContent='Sending...';
+  setTimeout(()=>{
+    btn.textContent='✓ Enquiry Sent!';
+    btn.style.background='#1A7A3A';
+    setTimeout(()=>{btn.textContent='Send Enquiry';btn.style.background=''},3000);
+  },1000);
+}
+
+// Filter
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    renderProducts(btn.dataset.filter);
   });
 });
+
+// Marquee
+const msgs=['SS 2026 Collection Now Available','✦','Bespoke Commissions Open','✦','Free Consultation — Mayfair Atelier','✦','New: The Sovereign Double-Breasted','✦','Complimentary Alterations for Life','✦','SS 2026 Collection Now Available','✦','Bespoke Commissions Open','✦','Free Consultation — Mayfair Atelier','✦','New: The Sovereign Double-Breasted','✦','Complimentary Alterations for Life','✦'];
+const track=document.getElementById('marqueeInner');
+msgs.forEach(m=>{const s=document.createElement('span');s.className=m==='✦'?'dot':'';s.textContent=m;track.appendChild(s)});
+
+// Nav scroll
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('shadow',window.scrollY>20));
+
+// Reveal
+const ro=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);ro.unobserve(e.target)}})},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}}));
+
+// Init
+renderProducts('all');
 </script>
 </body>
 </html>
